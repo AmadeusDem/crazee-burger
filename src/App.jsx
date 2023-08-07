@@ -1,5 +1,11 @@
+import LoginPage from "./components/pages/login/LoginPage";
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <LoginPage />
+    </>
+  );
 }
 
 export default App;
