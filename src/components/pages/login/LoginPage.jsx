@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import LoginForm from "./LoginForm";
 import Logo from "../../Logo";
+import backgroundImage from "/images/burger-background.jpg";
 
 export default function LoginPage() {
   return (
@@ -17,4 +18,9 @@ const LoginPageStyled = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  background: url(${backgroundImage}), rgba(0, 0, 0, 0.7);
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: darken;
 `;
