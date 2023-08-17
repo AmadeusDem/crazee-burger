@@ -1,6 +1,6 @@
 import logoImg from "/images/logo-orange.png";
 import { styled } from "styled-components";
-import { theme } from "../../theme";
+import { theme } from "../../../theme";
 
 export default function Logo() {
   return (
@@ -17,16 +17,20 @@ const LogoStyled = styled.div`
   align-items: center;
 
   img {
-    width: 12.5rem;
-    height: 9.375rem;
-    margin: 0 1.28rem;
+    width: 200px;
+    height: 150px;
+    margin: 0 20px;
+    object-fit: contain;
   }
 
   h1 {
     text-transform: uppercase;
     text-align: center;
-    font-family: "Amatic SC";
-    font-size: 6.875rem;
+    font-family: "Amatic SC", cursive;
+    font-size: 110px;
     color: ${theme.colors.primary};
+    line-height: 0px;
+    letter-spacing: 1.5px;
+    font-weight: 700;
   }
 `;

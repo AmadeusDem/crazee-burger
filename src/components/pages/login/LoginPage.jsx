@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import LoginForm from "./LoginForm";
-import Logo from "../../Logo";
+import Logo from "../../reusable-ui/Logo";
 import backgroundImage from "/images/burger-background.jpg";
 
 export default function LoginPage() {
