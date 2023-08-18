@@ -38,41 +38,36 @@ export default function LoginForm() {
 }
 
 const LoginFormStyled = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
   max-width: 500px;
   min-width: 400px;
+  margin: 0 auto;
+  padding: 40px 0;
   color: ${theme.colors.white};
-  font-family: Amatic SC;
+  font-family: "Amatic SC", cursive;
   text-transform: uppercase;
 
   h1 {
-    font-size: 48px;
-    font-weight: 700;
-    margin-top: 39.27px;
-    margin-bottom: 32.16px;
+    font-size: ${theme.fonts.P5};
+    font-weight: ${theme.weights.bold};
+    margin-bottom: ${theme.spacing.lg};
   }
 
   hr {
-    width: 400px;
-    height: 3px;
-    background: ${theme.colors.primary_burger};
-    border: 1px solid ${theme.colors.primary};
-    margin-bottom: 40px;
+    border: 1.5px solid ${theme.colors.primary};
+    margin-bottom: ${theme.gridUnit * 5}px;
   }
 
   h2 {
-    font-size: 2.25rem;
-    font-weight: 700;
-    margin-bottom: 1.12rem;
+    font-size: ${theme.fonts.P4};
+    margin: 20px 10px 10px;
   }
 
   .icon {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 15px;
+    font-size: ${theme.fonts.P0};
     margin-left: 10px;
   }
 `;

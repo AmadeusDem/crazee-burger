@@ -15,22 +15,26 @@ export default function Logo() {
 const LogoStyled = styled.div`
   display: flex;
   align-items: center;
-
-  img {
-    width: 200px;
-    height: 150px;
-    margin: 0 20px;
-    object-fit: contain;
-  }
+  transform: scale(2.5);
+  margin-bottom: 40px;
 
   h1 {
-    text-transform: uppercase;
+    display: inline;
     text-align: center;
-    font-family: "Amatic SC", cursive;
-    font-size: 110px;
     color: ${theme.colors.primary};
-    line-height: 0px;
+    font-size: ${theme.colors.P4};
+    line-height: 1em;
+    font-weight: ${theme.weights.bold};
+    text-transform: uppercase;
     letter-spacing: 1.5px;
-    font-weight: 700;
+    font-family: "Amatic SC", cursive;
+  }
+
+  img {
+    object-fit: contain;
+    object-position: center;
+    height: 60px;
+    width: 80px;
+    margin: 0 ${theme.gridUnit / 2}px;
   }
 `;
