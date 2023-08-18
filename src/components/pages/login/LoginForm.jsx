@@ -5,6 +5,7 @@ import { theme } from "../../../../theme";
 import { IoChevronForward } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs";
 import TextInput from "../../reusable-ui/TextInput";
+import PrimaryButton from "../../reusable-ui/PrimaryButton";
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
@@ -29,12 +30,9 @@ export default function LoginForm() {
         onChange={handleChange}
         placeholder="Entrez votre prénom"
         required
-        Icon={<BsPersonCircle className="user-icon" />}
+        Icon={<BsPersonCircle className="icon" />}
       />
-      <button>
-        <span>Accéder à mon espace</span>
-        <IoChevronForward className="chevron-icon" />
-      </button>
+      <PrimaryButton label="Accéder à mon espace" Icon={<IoChevronForward className="icon" />} />
     </LoginFormStyled>
   );
 }
@@ -70,39 +68,11 @@ const LoginFormStyled = styled.form`
     margin-bottom: 1.12rem;
   }
 
-  button {
-    width: 100%;
-    height: 53px;
-
+  .icon {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
-
-    border: 1px solid #ff9f1b;
-    border-radius: 5px;
-
-    background-color: ${theme.colors.primary};
-    color: white;
-    font-weight: 700;
-
-    cursor: pointer;
-
-    .chevron-icon {
-      margin: 0;
-      width: 15px;
-      height: 15px;
-
-      color: white;
-    }
-  }
-
-  button:hover {
-    background: white;
-    color: #ff9f1b;
-
-    .chevron-icon {
-      color: #ff9f1b;
-    }
+    font-size: 15px;
+    margin-left: 10px;
   }
 `;

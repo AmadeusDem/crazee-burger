@@ -19,10 +19,8 @@ const TextInputStyled = styled.div`
   gap: 13px;
   margin-bottom: 1.12rem;
 
-  .user-icon {
+  .icon {
     color: #747b91;
-    width: 15px;
-    height: 15px;
   }
 
   input {
