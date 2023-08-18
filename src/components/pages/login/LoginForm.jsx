@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import { theme } from "../../../../theme";
 import { IoChevronForward } from "react-icons/io5";
+import { BsPersonCircle } from "react-icons/bs";
 import LoginInput from "./LoginInput";
 
 export default function LoginForm() {
@@ -25,10 +26,10 @@ export default function LoginForm() {
       <h2>Connectez-vous</h2>
       <LoginInput
         value={username}
-        type="text"
         onChange={handleChange}
         placeholder="Entrez votre prénom"
         required
+        Icon={<BsPersonCircle className="user-icon" />}
       />
       <button>
         <span>Accéder à mon espace</span>

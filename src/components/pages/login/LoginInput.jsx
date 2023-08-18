@@ -1,17 +1,10 @@
 import styled from "styled-components";
-import { BsPersonCircle } from "react-icons/bs";
 
-export default function LoginInput({ value, onChange, placeholder, type, required = false }) {
+export default function LoginInput({ value, onChange, Icon, ...extraProps }) {
   return (
     <LoginInputStyled>
-      <BsPersonCircle className="user-icon" />
-      <input
-        type={type}
-        value={value}
-        placeholder={placeholder}
-        onChange={onChange}
-        required={required}
-      />
+      {Icon && Icon}
+      <input onChange={onChange} value={value} type="text" {...extraProps} />
     </LoginInputStyled>
   );
 }
