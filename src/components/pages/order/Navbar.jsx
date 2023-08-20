@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import Logo from "../../reusable-ui/Logo.jsx";
 import NavbarRightSide from "./NavbarRightSide";
+import { theme } from "../../../../theme/index.js";
 
 export default function Navbar({ username }) {
   return (
@@ -12,11 +13,13 @@ export default function Navbar({ username }) {
 }
 
 const NavbarStyled = styled.nav`
-  background: green;
-  height: 5.25rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 1.25rem;
-  padding-right: 4.375rem;
+
+  height: 5.25rem;
+  padding: 0 1.25rem;
+
+  background: ${theme.colors.white};
+  border-radius: ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound} 0 0;
 `;
