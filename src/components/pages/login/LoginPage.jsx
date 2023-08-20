@@ -6,7 +6,7 @@ import backgroundImage from "/images/burger-background.jpg";
 export default function LoginPage() {
   return (
     <LoginPageStyled>
-      <Logo />
+      <Logo className="logo" />
       <LoginForm />
     </LoginPageStyled>
   );
@@ -18,9 +18,14 @@ const LoginPageStyled = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: "Amatic SC", cursive;
 
   background: url(${backgroundImage}), rgba(0, 0, 0, 0.7);
   background-size: cover;
   background-position: center;
   background-blend-mode: darken;
+
+  .logo {
+    transform: scale(2.5);
+  }
 `;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
-import { theme } from "../../../../theme";
+import { theme } from "../../../theme";
 import { IoChevronForward } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs";
 import TextInput from "../../reusable-ui/TextInput";
@@ -44,13 +44,13 @@ const LoginFormStyled = styled.form`
   margin: 0 auto;
   padding: 40px 0;
   color: ${theme.colors.white};
-  font-family: "Amatic SC", cursive;
+
   text-transform: uppercase;
 
   h1 {
     font-size: ${theme.fonts.P5};
     font-weight: ${theme.weights.bold};
-    margin-bottom: ${theme.spacing.lg};
+    margin: ${theme.spacing.lg} 0;
   }
 
   hr {
