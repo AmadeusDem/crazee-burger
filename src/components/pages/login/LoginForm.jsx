@@ -44,7 +44,7 @@ const LoginFormStyled = styled.form`
   margin: 0 auto;
   padding: 40px 0;
   color: ${theme.colors.white};
-  font-family: "Amatic SC", cursive;
+
   text-transform: uppercase;
 
   h1 {

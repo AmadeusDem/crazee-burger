@@ -18,6 +18,7 @@ const LoginPageStyled = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: "Amatic SC", cursive;
 
   background: url(${backgroundImage}), rgba(0, 0, 0, 0.7);
   background-size: cover;
