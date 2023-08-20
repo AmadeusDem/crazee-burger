@@ -1,15 +1,20 @@
-import { Link } from "react-router-dom";
 import { styled } from "styled-components";
+import { theme } from "../../../../theme";
+
+import Profile from "./Profile";
 
 export default function NavbarRightSide({ username }) {
   return (
     <NavbarRightSideStyled>
-      <h1>Hey, {username}</h1>
-      <Link to="/">Déconnexion</Link>
+      <Profile username={username} />
     </NavbarRightSideStyled>
   );
 }
 
 const NavbarRightSideStyled = styled.div`
-  background: yellow;
+  color: ${theme.colors.greyBlue};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
 `;
