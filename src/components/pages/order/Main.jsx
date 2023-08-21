@@ -7,7 +7,7 @@ export default function Main() {
 
 const MainStyled = styled.main`
   background: ${theme.colors.background_white};
-  box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+  box-shadow: ${theme.shadows.strong};
   border-radius: 0px 0px ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
   flex: 1;
 `;
