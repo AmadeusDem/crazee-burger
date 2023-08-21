@@ -1,17 +1,17 @@
 import { styled } from "styled-components";
-import { fakeMenu1, fakeMenu2 } from "../../../fakeData/fakeMenu";
+import { fakeMenu1, fakeMenu2 } from "../../../../fakeData/fakeMenu";
 import ProductTemplate from "./ProductTemplate";
-import { formatPrice } from "../../../utils/maths";
-import PrimaryButton from "../../reusable-ui/PrimaryButton";
+import { formatPrice } from "../../../../utils/maths";
 
 export default function Products() {
-  const menuData = fakeMenu1;
+  const menuData = fakeMenu2;
 
   return (
     <ProductsStyled>
       {menuData.map((product) => (
         <ProductTemplate
           key={product.id}
+          image={product.imageSource}
           title={product.title}
           price={formatPrice(product.price.toPrecision(2))}
         />

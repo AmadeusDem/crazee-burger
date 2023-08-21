@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
-import Logo from "../../reusable-ui/Logo.jsx";
-import NavbarRightSide from "./NavbarRightSide";
-import { theme } from "../../../theme/index.js";
-import { reloadPage } from "../../../utils/window.js";
+import Logo from "../../../reusable-ui/Logo.jsx";
+import NavbarRightSide from "./NavbarRightSide.jsx";
+import { theme } from "../../../../theme/index.js";
+import { reloadPage } from "../../../../utils/window.js";
 
 export default function Navbar({ username }) {
   return (

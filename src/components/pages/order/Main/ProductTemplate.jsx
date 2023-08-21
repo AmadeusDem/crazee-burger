@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import PrimaryButton from "../../reusable-ui/PrimaryButton.jsx";
+import PrimaryButton from "../../../reusable-ui/PrimaryButton.jsx";
 
 export default function ProductTemplate({ image, title, price }) {
   return (
@@ -9,7 +9,7 @@ export default function ProductTemplate({ image, title, price }) {
         <h2>{title}</h2>
         <div className="card-description">
           <p>{price}</p>
-          <PrimaryButton label="Ajouter" className="card-button" />
+          <PrimaryButton label="Ajouter" className="card-primary-button" />
         </div>
       </div>
     </ProductTemplateStyled>
@@ -17,6 +17,10 @@ export default function ProductTemplate({ image, title, price }) {
 }
 
 const ProductTemplateStyled = styled.article`
-  width: 240px;
-  background: yellow;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 20px 10px 20px;
+  justify-content: flex-end;
+
+  background: white;
 `;
