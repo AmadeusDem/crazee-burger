@@ -1,11 +1,11 @@
 import { styled } from "styled-components";
 import { theme } from "../../../../theme";
-import Products from "./Products";
+import Menu from "./Menu";
 
 export default function Main() {
   return (
     <MainStyled>
-      <Products />
+      <Menu />
     </MainStyled>
   );
 }

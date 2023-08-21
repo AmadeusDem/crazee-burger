@@ -1,26 +1,26 @@
 import { styled } from "styled-components";
 import { fakeMenu1, fakeMenu2 } from "../../../../fakeData/fakeMenu";
-import ProductTemplate from "./ProductTemplate";
+import Card from "./Card";
 import { formatPrice } from "../../../../utils/maths";
 
-export default function Products() {
+export default function Menu() {
   const menuData = fakeMenu2;
 
   return (
-    <ProductsStyled>
+    <MenuStyled>
       {menuData.map((product) => (
-        <ProductTemplate
+        <Card
           key={product.id}
           image={product.imageSource}
           title={product.title}
           price={formatPrice(product.price.toPrecision(2))}
         />
       ))}
-    </ProductsStyled>
+    </MenuStyled>
   );
 }
 
-const ProductsStyled = styled.section`
+const MenuStyled = styled.section`
   display: grid;
   flex: 1;
   justify-content: center;

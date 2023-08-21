@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
 import PrimaryButton from "../../../reusable-ui/PrimaryButton.jsx";
 
-export default function ProductTemplate({ image, title, price }) {
+export default function Card({ image, title, price }) {
   return (
-    <ProductTemplateStyled>
+    <CardStyled>
       <img src={image} alt="Titre de l'article" />
       <div className="card-information">
         <h2>{title}</h2>
@@ -12,11 +12,11 @@ export default function ProductTemplate({ image, title, price }) {
           <PrimaryButton label="Ajouter" className="card-primary-button" />
         </div>
       </div>
-    </ProductTemplateStyled>
+    </CardStyled>
   );
 }
 
-const ProductTemplateStyled = styled.article`
+const CardStyled = styled.article`
   display: flex;
   flex-direction: column;
   padding: 50px 20px 10px 20px;
