@@ -54,7 +54,7 @@ const LoginFormStyled = styled.form`
   }
 
   hr {
-    border: 1.5px solid ${theme.colors.primary};
+    border: 1.5px solid ${theme.colors.loginLine};
     margin-bottom: ${theme.gridUnit * 5}px;
   }
 
