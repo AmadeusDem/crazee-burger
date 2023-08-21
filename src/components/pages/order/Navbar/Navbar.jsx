@@ -23,6 +23,7 @@ const NavbarStyled = styled.nav`
 
   background: ${theme.colors.white};
   border-radius: ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound} 0 0;
+  border-bottom: 1px solid ${theme.colors.greyLight};
 
   .logo:hover {
     cursor: pointer;
