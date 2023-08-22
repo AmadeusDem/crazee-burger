@@ -12,33 +12,29 @@ export default function PrimaryButton({ className, label, Icon }) {
 
 const PrimaryButtonStyled = styled.button`
   width: 100%;
-  height: 53px;
-
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-
-  border: 1px solid #ff9f1b;
-  border-radius: 5px;
-
+  position: relative; //is used in case you want to create interactive icons where an icon replaces the text label.
+  white-space: nowrap; //prevents the text label from wrapping to the next line.
+  text-decoration: none; //removes the text decoration in case you’re applying the .btn class to a link.
+  line-height: 1;
+  padding: 1.125rem 1.5rem;
+  border-radius: ${theme.borderRadius.round};
+  font-size: ${theme.fonts.P0};
+  font-weight: ${theme.weights.heavy};
+  color: ${theme.colors.white};
   background-color: ${theme.colors.primary};
-  color: white;
-  font-weight: 700;
-
+  border: 1px solid ${theme.colors.primary};
   cursor: pointer;
 
-  .icon {
-    margin: 0;
-    color: white;
-  }
-
   &:hover {
-    background: white;
-    color: #ff9f1b;
-
-    .icon {
-      color: #ff9f1b;
-    }
+    color: ${theme.colors.primary};
+    background-color: ${theme.colors.white};
+    transition: all 200ms ease-out;
+  }
+  &:active {
+    color: ${theme.colors.white};
+    background-color: ${theme.colors.primary};
   }
 `;
