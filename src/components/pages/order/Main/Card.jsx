@@ -11,8 +11,12 @@ export default function Card({ image, title, price }) {
       <div className="card-information">
         <h2>{title}</h2>
         <div className="card-description">
-          <p>{price}</p>
-          <PrimaryButton label="Ajouter" className="card-primary-button" />
+          <div className="left-description">
+            <p>{price}</p>
+          </div>
+          <div className="right-description">
+            <PrimaryButton label="Ajouter" className="primary-button" />
+          </div>
         </div>
       </div>
     </CardStyled>
@@ -28,7 +32,7 @@ const CardStyled = styled.article`
   padding-bottom: 10px;
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
   border-radius: ${theme.borderRadius.extraRound};
-  background: white;
+  background: ${theme.colors.white};
 
   .image {
     width: 100%;
@@ -50,13 +54,37 @@ const CardStyled = styled.article`
 
     h2 {
       margin: auto 0;
-      font-size: 36px;
+      font-size: ${theme.fonts.P4};
       position: relative;
       bottom: 10px;
       font-family: "Amatic SC", cursive;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+    }
+
+    .card-description {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      .left-description {
+        display: flex;
+        align-items: center;
+        color: ${theme.colors.primary};
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .right-description {
+        display: flex;
+        align-items: center;
+
+        .primary-button {
+          font-size: ${theme.fonts.XS};
+          padding: 0.75rem;
+        }
+      }
     }
   }
 `;
