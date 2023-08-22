@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
-import PrimaryButton from "../../../reusable-ui/PrimaryButton.jsx";
-import { theme } from "../../../../theme/index.js";
+import PrimaryButton from "./PrimaryButton.jsx";
+import { theme } from "../../theme/index.js";
 
-export default function Card({ image, title, price }) {
+export default function Card({ title, image, leftText, buttonLabel }) {
   return (
     <CardStyled>
       <div className="image">
@@ -12,10 +12,10 @@ export default function Card({ image, title, price }) {
         <h2>{title}</h2>
         <div className="card-description">
           <div className="left-description">
-            <p>{price}</p>
+            <p>{leftText}</p>
           </div>
           <div className="right-description">
-            <PrimaryButton label="Ajouter" className="primary-button" />
+            <PrimaryButton label={buttonLabel} className="primary-button" />
           </div>
         </div>
       </div>
