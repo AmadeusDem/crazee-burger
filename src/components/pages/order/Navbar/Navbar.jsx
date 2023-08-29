@@ -4,11 +4,11 @@ import NavbarRightSide from "./NavbarRightSide.jsx";
 import { theme } from "../../../../theme/index.js";
 import { reloadPage } from "../../../../utils/window.js";
 
-export default function Navbar({ username }) {
+export default function Navbar() {
   return (
     <NavbarStyled>
       <Logo onClick={reloadPage} className="logo" />
-      <NavbarRightSide username={username} />
+      <NavbarRightSide />
     </NavbarStyled>
   );
 }
