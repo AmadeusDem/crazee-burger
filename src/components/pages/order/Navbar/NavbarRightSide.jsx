@@ -37,7 +37,7 @@ export default function NavbarRightSide({ username }) {
 const NavbarRightSideStyled = styled.div`
   color: ${theme.colors.greyBlue};
   display: flex;
-  gap: 3.125rem;
+  gap: 1.875rem;
   justify-content: center;
   align-items: center;
   padding: 10px 20px;
