@@ -12,7 +12,6 @@ export default function Admin() {
 }
 
 const AdminStyled = styled.div`
-  background: yellow;
   display: flex;
   flex-direction: column;
 
