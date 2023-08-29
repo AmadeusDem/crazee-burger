@@ -28,7 +28,7 @@ const TextInputStyled = styled.div`
   }
 
   input {
-    font-size: ${theme.fonts.P0};
+    font-size: ${theme.fonts.SM};
     border: none;
     width: 100%;
 
