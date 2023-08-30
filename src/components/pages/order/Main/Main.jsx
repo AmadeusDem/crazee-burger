@@ -1,21 +1,27 @@
 import { styled } from "styled-components";
 import { theme } from "../../../../theme";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { OrderContext } from "../../../../context/OrderContext";
 import Menu from "./Menu";
 import Admin from "./Admin/Admin";
+import { AdminContext } from "../../../../context/AdminContext";
 
 export default function Main() {
   const { isAdminMode } = useContext(OrderContext);
+  const [isPanelOpen, setIsPanelOpen] = useState(true);
+
+  const adminContextValue = { isPanelOpen, setIsPanelOpen };
 
   return (
-    <MainStyled>
-      {/* <div className="basket">Basket</div> */}
-      <div className="menu-and-admin">
-        <Menu />
-        {isAdminMode && <Admin />}
-      </div>
-    </MainStyled>
+    <AdminContext.Provider value={adminContextValue}>
+      <MainStyled>
+        {/* <div className="basket">Basket</div> */}
+        <div className="menu-and-admin">
+          <Menu />
+          {isAdminMode && <Admin />}
+        </div>
+      </MainStyled>
+    </AdminContext.Provider>
   );
 }
 
