@@ -1,9 +1,7 @@
 import { styled } from "styled-components";
 
 export default function AdminTabs() {
-  return <AdminTabsStyled></AdminTabsStyled>;
+  return <AdminTabsStyled>Tabs</AdminTabsStyled>;
 }
 
-const AdminTabsStyled = styled.div`
-  height: 2.75rem;
-`;
+const AdminTabsStyled = styled.div``;
