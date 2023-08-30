@@ -9,8 +9,14 @@ import { AdminContext } from "../../../../context/AdminContext";
 export default function Main() {
   const { isAdminMode } = useContext(OrderContext);
   const [isPanelOpen, setIsPanelOpen] = useState(true);
+  const [selectedTab, setSelectedTab] = useState("add");
 
-  const adminContextValue = { isPanelOpen, setIsPanelOpen };
+  const adminContextValue = {
+    isPanelOpen,
+    setIsPanelOpen,
+    selectedTab,
+    setSelectedTab,
+  };
 
   return (
     <AdminContext.Provider value={adminContextValue}>
