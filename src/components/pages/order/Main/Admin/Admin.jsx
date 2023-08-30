@@ -1,11 +1,11 @@
 import { styled } from "styled-components";
-import TabsContainer from "./AdminTabs";
+import AdminTabs from "./AdminTabs";
 import PanelContent from "./AdminPanel";
 
 export default function Admin() {
   return (
     <AdminStyled>
-      <TabsContainer />
+      <AdminTabs />
       <PanelContent />
     </AdminStyled>
   );
