@@ -14,6 +14,11 @@ export default function AdminPanel() {
 
 const AdminPanelStyled = styled.div`
   height: 15.625rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  padding: 20px 30px;
   background: ${theme.colors.white};
   border: 1px solid ${theme.colors.greyLight};
   box-shadow: ${theme.shadows.medium};
