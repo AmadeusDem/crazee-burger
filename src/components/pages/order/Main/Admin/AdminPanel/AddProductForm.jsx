@@ -4,27 +4,48 @@ import { BsCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import TextInput from "../../../../../reusable-ui/TextInput.jsx";
 import PrimaryButton from "../../../../../reusable-ui/PrimaryButton.jsx";
+import { useState } from "react";
 
 export default function AddProductForm() {
+  const [name, setName] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [price, setPrice] = useState(null);
+
+  const handleNameChange = (e) => setName(e.target.value);
+
+  const handleImageUrlChange = (e) => setImageUrl(e.target.value);
+
+  const handlePriceChange = (e) => setPrice(e.target.value);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <AddProductFormStyled>
+    <AddProductFormStyled onSubmit={handleSubmit}>
       <div className="image-preview">
-        <div className="no-image">Aucune image</div>
+        {imageUrl ? <img src={imageUrl} /> : <div className="no-image">Aucune image</div>}
       </div>
       <TextInput
         className="text-input name-input"
         Icon={<FaHamburger className="icon" />}
         placeholder="Nom du produit (ex: Super Burger)"
+        value={name}
+        onChange={handleNameChange}
       />
       <TextInput
         className="text-input image-input"
         Icon={<BsCameraFill className="icon" />}
         placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
+        value={imageUrl}
+        onChange={handleImageUrlChange}
       />
       <TextInput
         className="text-input price-input"
         Icon={<MdOutlineEuro className="icon" />}
         placeholder="Prix"
+        value={price}
+        onChange={handlePriceChange}
       />
       <PrimaryButton label="Ajouter un nouveau produit au menu" className="add-product-button" />
     </AddProductFormStyled>
@@ -67,6 +88,14 @@ const AddProductFormStyled = styled.form`
     color: #93a2b1;
     border-radius: 5px;
     border: 1px solid #e4e5e9;
+
+    .no-image {
+    }
+
+    img {
+      width: 100%;
+      object-fit: contain;
+    }
   }
 
   .name-input {
