@@ -26,6 +26,7 @@ const MenuStyled = styled.section`
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 240px);
+  overflow-y: scroll;
 
   padding: 50px 50px 150px;
   grid-gap: 3.75rem 5.3125rem;
