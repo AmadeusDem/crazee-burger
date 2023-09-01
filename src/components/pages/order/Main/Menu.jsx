@@ -1,11 +1,12 @@
-import { useState } from "react";
 import { styled } from "styled-components";
 import { formatPrice } from "../../../../utils/maths";
-import { fakeMenu } from "../../../../fakeData/fakeMenu";
+
 import Card from "../../../reusable-ui/Card";
+import { useContext } from "react";
+import { AdminContext } from "../../../../context/AdminContext";
 
 export default function Menu() {
-  const [products, setProducts] = useState(fakeMenu.LARGE);
+  const { products } = useContext(AdminContext);
 
   return (
     <MenuStyled>

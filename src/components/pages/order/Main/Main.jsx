@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import { theme } from "../../../../theme";
 import { useContext, useState } from "react";
 import { OrderContext } from "../../../../context/OrderContext";
+import { fakeMenu } from "../../../../fakeData/fakeMenu";
 import Menu from "./Menu";
 import Admin from "./Admin/Admin";
 import { AdminContext } from "../../../../context/AdminContext";
@@ -10,12 +11,15 @@ export default function Main() {
   const { isAdminMode } = useContext(OrderContext);
   const [isPanelOpen, setIsPanelOpen] = useState(true);
   const [selectedTab, setSelectedTab] = useState("add");
+  const [products, setProducts] = useState(fakeMenu.LARGE);
 
   const adminContextValue = {
     isPanelOpen,
     setIsPanelOpen,
     selectedTab,
     setSelectedTab,
+    products,
+    setProducts,
   };
 
   return (

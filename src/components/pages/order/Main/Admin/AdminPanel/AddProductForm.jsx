@@ -4,12 +4,14 @@ import { BsCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import TextInput from "../../../../../reusable-ui/TextInput.jsx";
 import PrimaryButton from "../../../../../reusable-ui/PrimaryButton.jsx";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AdminContext } from "../../../../../../context/AdminContext.jsx";
 
 export default function AddProductForm() {
+  const { products, setProducts } = useContext(AdminContext);
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const [price, setPrice] = useState(null);
+  const [price, setPrice] = useState("");
 
   const handleNameChange = (e) => setName(e.target.value);
 
@@ -19,6 +21,21 @@ export default function AddProductForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setProducts([
+      {
+        id: products.length + 1,
+        imageSource: imageUrl || "../../../../../../../public/images/coming-soon.png",
+        title: name,
+        price: parseFloat(price),
+        quantity: 0,
+        isAvailable: true,
+        isAdvertised: false,
+      },
+      ...products,
+    ]);
+    setName("");
+    setImageUrl("");
+    setPrice("");
   };
 
   return (
@@ -81,7 +98,7 @@ const AddProductFormStyled = styled.form`
 
   .image-preview {
     grid-area: preview;
-    background: #f5f5f7;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -93,7 +110,8 @@ const AddProductFormStyled = styled.form`
     }
 
     img {
-      width: 100%;
+      width: 100px;
+      height: 100px;
       object-fit: contain;
     }
   }
