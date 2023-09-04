@@ -5,6 +5,8 @@ import Card from "../../../reusable-ui/Card";
 import { useContext } from "react";
 import { AdminContext } from "../../../../context/AdminContext";
 
+const PRODUCT_IMAGE_DEFAULT = "/images/coming-soon.png";
+
 export default function Menu() {
   const { menu } = useContext(AdminContext);
 
@@ -13,7 +15,7 @@ export default function Menu() {
       {menu.map(({ id, imageSource, title, price }) => (
         <Card
           key={id}
-          image={imageSource}
+          image={imageSource ? imageSource : PRODUCT_IMAGE_DEFAULT}
           title={title}
           leftText={formatPrice(price.toPrecision(2))}
           buttonLabel="Ajouter"
