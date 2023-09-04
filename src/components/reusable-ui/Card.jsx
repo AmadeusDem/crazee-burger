@@ -3,12 +3,14 @@ import PrimaryButton from "./PrimaryButton.jsx";
 import { theme } from "../../theme/index.js";
 import { TiDelete } from "react-icons/ti";
 
-export default function Card({ title, image, leftText, buttonLabel }) {
+export default function Card({ title, image, leftText, buttonLabel, hasDeleteButton }) {
   return (
     <CardStyled>
-      <button className="delete-button" aria-label="delete-button">
-        <TiDelete className="icon" />
-      </button>
+      {hasDeleteButton && (
+        <button className="delete-button" aria-label="delete-button">
+          <TiDelete className="icon" />
+        </button>
+      )}
       <div className="image">
         <img src={image} alt="Titre de l'article" />
       </div>

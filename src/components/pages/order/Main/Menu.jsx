@@ -4,12 +4,14 @@ import { formatPrice } from "../../../../utils/maths";
 import Card from "../../../reusable-ui/Card";
 import { useContext } from "react";
 import { AdminContext } from "../../../../context/AdminContext";
+import { OrderContext } from "../../../../context/OrderContext.jsx";
 import { replaceFrenchCommaWithDot } from "../../../../utils/maths";
 
 const PRODUCT_IMAGE_DEFAULT = "/images/coming-soon.png";
 
 export default function Menu() {
   const { menu } = useContext(AdminContext);
+  const { isAdminMode } = useContext(OrderContext);
 
   return (
     <MenuStyled>
@@ -20,6 +22,7 @@ export default function Menu() {
           title={title}
           leftText={formatPrice(parseFloat(replaceFrenchCommaWithDot(price)).toFixed(1))}
           buttonLabel="Ajouter"
+          hasDeleteButton={isAdminMode}
         />
       ))}
     </MenuStyled>
