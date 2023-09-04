@@ -5,6 +5,6 @@ export const AdminContext = createContext({
   setIsPanelOpen: () => {},
   selectedTab: "",
   setSelectedTab: () => {},
-  products: [],
-  setProducts: () => {},
+  menu: [],
+  handleAdd: () => {},
 });

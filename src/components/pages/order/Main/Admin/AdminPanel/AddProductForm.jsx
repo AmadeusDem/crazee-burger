@@ -7,62 +7,71 @@ import PrimaryButton from "../../../../../reusable-ui/PrimaryButton.jsx";
 import { useContext, useState } from "react";
 import { AdminContext } from "../../../../../../context/AdminContext.jsx";
 
+const EMPTY_PRODUCT = {
+  id: "",
+  imageSource: "",
+  title: "",
+  price: 0,
+  quantity: 0,
+  isAvailable: true,
+  isAdvertised: false,
+};
+
 export default function AddProductForm() {
-  const { products, setProducts } = useContext(AdminContext);
-  const [name, setName] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [price, setPrice] = useState("");
+  const { handleAdd } = useContext(AdminContext);
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
-  const handleNameChange = (e) => setName(e.target.value);
+  const { title, imageSource, price } = newProduct;
 
-  const handleImageUrlChange = (e) => setImageUrl(e.target.value);
-
-  const handlePriceChange = (e) => setPrice(e.target.value);
+  const handleChange = (e) => {
+    const eventName = e.target.name;
+    const value = e.target.value;
+    setNewProduct({
+      ...newProduct,
+      [eventName]: eventName === "price" ? parseFloat(value) : value,
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setProducts([
-      {
-        id: products.length + 1,
-        imageSource: imageUrl || "../../../../../../../public/images/coming-soon.png",
-        title: name,
-        price: parseFloat(price),
-        quantity: 0,
-        isAvailable: true,
-        isAdvertised: false,
-      },
-      ...products,
-    ]);
-    setName("");
-    setImageUrl("");
-    setPrice("");
+    console.log(newProduct);
+    const productToAdd = {
+      ...newProduct,
+      id: crypto.randomUUID(),
+    };
+
+    handleAdd(productToAdd);
+    setNewProduct(EMPTY_PRODUCT);
   };
 
   return (
     <AddProductFormStyled onSubmit={handleSubmit}>
       <div className="image-preview">
-        {imageUrl ? <img src={imageUrl} /> : <div className="no-image">Aucune image</div>}
+        {imageSource ? <img src={imageSource} /> : <div className="no-image">Aucune image</div>}
       </div>
       <TextInput
+        name="title"
         className="text-input name-input"
         Icon={<FaHamburger className="icon" />}
         placeholder="Nom du produit (ex: Super Burger)"
-        value={name}
-        onChange={handleNameChange}
+        value={title}
+        onChange={handleChange}
       />
       <TextInput
+        name="imageSource"
         className="text-input image-input"
         Icon={<BsCameraFill className="icon" />}
         placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
-        value={imageUrl}
-        onChange={handleImageUrlChange}
+        value={imageSource}
+        onChange={handleChange}
       />
       <TextInput
+        name="price"
         className="text-input price-input"
         Icon={<MdOutlineEuro className="icon" />}
         placeholder="Prix"
-        value={price}
-        onChange={handlePriceChange}
+        value={price ? price : ""}
+        onChange={handleChange}
       />
       <PrimaryButton label="Ajouter un nouveau produit au menu" className="add-product-button" />
     </AddProductFormStyled>
@@ -107,6 +116,7 @@ const AddProductFormStyled = styled.form`
     border: 1px solid #e4e5e9;
 
     .no-image {
+      text-align: center;
     }
 
     img {

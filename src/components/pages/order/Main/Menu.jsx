@@ -6,11 +6,11 @@ import { useContext } from "react";
 import { AdminContext } from "../../../../context/AdminContext";
 
 export default function Menu() {
-  const { products } = useContext(AdminContext);
+  const { menu } = useContext(AdminContext);
 
   return (
     <MenuStyled>
-      {products.map(({ id, imageSource, title, price }) => (
+      {menu.map(({ id, imageSource, title, price }) => (
         <Card
           key={id}
           image={imageSource}

@@ -11,15 +11,19 @@ export default function Main() {
   const { isAdminMode } = useContext(OrderContext);
   const [isPanelOpen, setIsPanelOpen] = useState(true);
   const [selectedTab, setSelectedTab] = useState("add");
-  const [products, setProducts] = useState(fakeMenu.LARGE);
+  const [menu, setMenu] = useState(fakeMenu.LARGE);
+
+  const handleAdd = (newProduct) => {
+    setMenu([newProduct, ...menu]);
+  };
 
   const adminContextValue = {
     isPanelOpen,
     setIsPanelOpen,
     selectedTab,
     setSelectedTab,
-    products,
-    setProducts,
+    menu,
+    handleAdd,
   };
 
   return (
