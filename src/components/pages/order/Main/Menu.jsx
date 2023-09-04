@@ -10,7 +10,7 @@ import { replaceFrenchCommaWithDot } from "../../../../utils/maths";
 const PRODUCT_IMAGE_DEFAULT = "/images/coming-soon.png";
 
 export default function Menu() {
-  const { menu } = useContext(AdminContext);
+  const { menu, handleDelete } = useContext(AdminContext);
   const { isAdminMode } = useContext(OrderContext);
 
   return (
@@ -23,6 +23,7 @@ export default function Menu() {
           leftText={formatPrice(parseFloat(replaceFrenchCommaWithDot(price)).toFixed(1))}
           buttonLabel="Ajouter"
           hasDeleteButton={isAdminMode}
+          onDelete={() => handleDelete(id)}
         />
       ))}
     </MenuStyled>

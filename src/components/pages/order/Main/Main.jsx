@@ -17,6 +17,14 @@ export default function Main() {
     setMenu([newProduct, ...menu]);
   };
 
+  const handleDelete = (idToDelete) => {
+    const menuCopy = JSON.parse(JSON.stringify(menu));
+
+    const filteredMenu = menuCopy.filter((product) => product.id !== idToDelete);
+
+    setMenu(filteredMenu);
+  };
+
   const adminContextValue = {
     isPanelOpen,
     setIsPanelOpen,
@@ -24,6 +32,7 @@ export default function Main() {
     setSelectedTab,
     menu,
     handleAdd,
+    handleDelete,
   };
 
   return (

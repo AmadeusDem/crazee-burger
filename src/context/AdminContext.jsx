@@ -7,4 +7,5 @@ export const AdminContext = createContext({
   setSelectedTab: () => {},
   menu: [],
   handleAdd: () => {},
+  handleDelete: () => {},
 });
