@@ -6,6 +6,8 @@ import Input from "../../../../../reusable-ui/Input.jsx";
 import PrimaryButton from "../../../../../reusable-ui/PrimaryButton.jsx";
 import { useContext, useState } from "react";
 import { AdminContext } from "../../../../../../context/AdminContext.jsx";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -22,6 +24,19 @@ export default function AddProductForm() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   const { title, imageSource, price } = newProduct;
+
+  const displaySuccessToast = () => {
+    toast.success("Produit ajouté avec succès !", {
+      theme: "dark",
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
   const handleChange = (e) => {
     const eventName = e.target.name;
@@ -41,6 +56,7 @@ export default function AddProductForm() {
     };
 
     handleAdd(productToAdd);
+    displaySuccessToast();
     setNewProduct(EMPTY_PRODUCT);
   };
 
@@ -85,12 +101,12 @@ const AddProductFormStyled = styled.form`
   display: grid;
   grid-gap: 8px 20px;
   grid-template-columns: 20% 1fr 2fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: repeat(4, 1fr);
   grid-template-areas:
     "preview name name"
     "preview image image"
     "preview price price"
-    ". button .";
+    ". button success";
 
   .text-input {
     padding: 8px 16px 8px 24px;
@@ -137,6 +153,16 @@ const AddProductFormStyled = styled.form`
 
   .price-input {
     grid-area: price;
+  }
+
+  .successDiv {
+    grid-area: success;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    .successMessage {
+    }
   }
 
   .add-product-button {
