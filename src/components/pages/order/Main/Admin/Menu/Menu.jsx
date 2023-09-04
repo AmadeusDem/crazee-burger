@@ -16,7 +16,7 @@ export default function Menu() {
   const { isAdminMode } = useContext(OrderContext);
 
   if (menu.length === 0) {
-    return isAdminMode ? <div>EmptyMenuAdmin</div> : <EmptyMenuUser />;
+    return isAdminMode ? <EmptyMenuAdmin handleReset={handleReset} /> : <EmptyMenuUser />;
   } else {
     return (
       <MenuStyled>

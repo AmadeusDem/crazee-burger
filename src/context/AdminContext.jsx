@@ -8,4 +8,5 @@ export const AdminContext = createContext({
   menu: [],
   handleAdd: () => {},
   handleDelete: () => {},
+  handleReset: () => {},
 });

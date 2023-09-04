@@ -3,15 +3,17 @@ import { theme } from "../../../../theme";
 import { useContext, useState } from "react";
 import { OrderContext } from "../../../../context/OrderContext";
 import { fakeMenu } from "../../../../fakeData/fakeMenu";
-import Menu from "./Menu";
+import Menu from "./Admin/Menu/Menu";
 import Admin from "./Admin/Admin";
 import { AdminContext } from "../../../../context/AdminContext";
+
+const DEFAULT_MENU = fakeMenu.MEDIUM;
 
 export default function Main() {
   const { isAdminMode } = useContext(OrderContext);
   const [isPanelOpen, setIsPanelOpen] = useState(true);
   const [selectedTab, setSelectedTab] = useState("add");
-  const [menu, setMenu] = useState(fakeMenu.LARGE);
+  const [menu, setMenu] = useState(DEFAULT_MENU);
 
   const handleAdd = (newProduct) => {
     setMenu([newProduct, ...menu]);
@@ -25,6 +27,10 @@ export default function Main() {
     setMenu(filteredMenu);
   };
 
+  const handleReset = () => {
+    setMenu(DEFAULT_MENU);
+  };
+
   const adminContextValue = {
     isPanelOpen,
     setIsPanelOpen,
@@ -33,6 +39,7 @@ export default function Main() {
     menu,
     handleAdd,
     handleDelete,
+    handleReset,
   };
 
   return (

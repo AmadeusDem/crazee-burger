@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
 import { theme } from "../../theme/index";
 
-export default function PrimaryButton({ className, label, Icon }) {
+export default function PrimaryButton({ className, label, Icon, onClick }) {
   return (
-    <PrimaryButtonStyled className={className}>
+    <PrimaryButtonStyled className={className} onClick={onClick}>
       <span>{label}</span>
       {Icon && Icon}
     </PrimaryButtonStyled>
