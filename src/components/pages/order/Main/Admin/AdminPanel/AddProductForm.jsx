@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import { FaHamburger } from "react-icons/fa";
 import { BsCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
-import TextInput from "../../../../../reusable-ui/TextInput.jsx";
+import Input from "../../../../../reusable-ui/Input.jsx";
 import PrimaryButton from "../../../../../reusable-ui/PrimaryButton.jsx";
 import { useContext, useState } from "react";
 import { AdminContext } from "../../../../../../context/AdminContext.jsx";
@@ -49,7 +49,7 @@ export default function AddProductForm() {
       <div className="image-preview">
         {imageSource ? <img src={imageSource} /> : <div className="no-image">Aucune image</div>}
       </div>
-      <TextInput
+      <Input
         name="title"
         className="text-input name-input"
         Icon={<FaHamburger className="icon" />}
@@ -57,15 +57,16 @@ export default function AddProductForm() {
         value={title}
         onChange={handleChange}
       />
-      <TextInput
+      <Input
         name="imageSource"
         className="text-input image-input"
         Icon={<BsCameraFill className="icon" />}
         placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
         value={imageSource}
         onChange={handleChange}
+        type="url"
       />
-      <TextInput
+      <Input
         name="price"
         className="text-input price-input"
         Icon={<MdOutlineEuro className="icon" />}

@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export default function TextInput({ value, onChange, Icon, className, ...extraProps }) {
+export default function Input({ value, onChange, Icon, className, type = "text", ...extraProps }) {
   return (
-    <TextInputStyled className={className}>
+    <InputStyled className={className}>
       {Icon && Icon}
-      <input onChange={onChange} value={value} type="text" {...extraProps} />
-    </TextInputStyled>
+      <input onChange={onChange} value={value} type={type} {...extraProps} />
+    </InputStyled>
   );
 }
 
-const TextInputStyled = styled.div`
+const InputStyled = styled.div`
   width: 100%;
 
   display: flex;
