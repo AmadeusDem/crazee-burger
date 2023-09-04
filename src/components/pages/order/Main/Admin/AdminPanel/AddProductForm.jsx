@@ -28,13 +28,13 @@ export default function AddProductForm() {
     const value = e.target.value;
     setNewProduct({
       ...newProduct,
-      [eventName]: eventName === "price" ? parseFloat(value) : value,
+      [eventName]: value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(newProduct);
+
     const productToAdd = {
       ...newProduct,
       id: crypto.randomUUID(),

@@ -4,6 +4,7 @@ import { formatPrice } from "../../../../utils/maths";
 import Card from "../../../reusable-ui/Card";
 import { useContext } from "react";
 import { AdminContext } from "../../../../context/AdminContext";
+import { replaceFrenchCommaWithDot } from "../../../../utils/maths";
 
 const PRODUCT_IMAGE_DEFAULT = "/images/coming-soon.png";
 
@@ -17,7 +18,7 @@ export default function Menu() {
           key={id}
           image={imageSource ? imageSource : PRODUCT_IMAGE_DEFAULT}
           title={title}
-          leftText={formatPrice(price.toPrecision(2))}
+          leftText={formatPrice(parseFloat(replaceFrenchCommaWithDot(price)).toFixed(1))}
           buttonLabel="Ajouter"
         />
       ))}
