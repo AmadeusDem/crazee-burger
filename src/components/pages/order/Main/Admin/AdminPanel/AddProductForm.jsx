@@ -3,7 +3,7 @@ import { FaHamburger } from "react-icons/fa";
 import { BsCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import Input from "../../../../../reusable-ui/Input.jsx";
-import PrimaryButton from "../../../../../reusable-ui/PrimaryButton.jsx";
+import PrimaryButton from "../../../../../reusable-ui/Button.jsx";
 import { useContext, useState } from "react";
 import { AdminContext } from "../../../../../../context/AdminContext.jsx";
 import { toast } from "react-toastify";

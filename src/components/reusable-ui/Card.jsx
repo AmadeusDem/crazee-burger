@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import PrimaryButton from "./PrimaryButton.jsx";
+import PrimaryButton from "./Button.jsx";
 import { theme } from "../../theme/index.js";
 import { TiDelete } from "react-icons/ti";
 

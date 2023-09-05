@@ -1,32 +1,40 @@
 import { styled } from "styled-components";
 import { theme } from "../../theme/index";
 
-export default function PrimaryButton({ className, label, Icon, onClick }) {
+export default function Button({ className, label, Icon, onClick, version = "primary" }) {
   return (
-    <PrimaryButtonStyled className={className} onClick={onClick}>
+    <ButtonStyled className={className} onClick={onClick}>
       <span>{label}</span>
       <div className="icon">{Icon && Icon}</div>
-    </PrimaryButtonStyled>
+    </ButtonStyled>
   );
 }
 
-const PrimaryButtonStyled = styled.button`
+const ButtonStyled = styled.button`
   width: 100%;
+
+  // Position and layout
   display: inline-flex;
   justify-content: center;
   align-items: center;
   position: relative; //is used in case you want to create interactive icons where an icon replaces the text label.
-  white-space: nowrap; //prevents the text label from wrapping to the next line.
-  text-decoration: none; //removes the text decoration in case you’re applying the .btn class to a link.
-  line-height: 1;
+
+  // Box model
   padding: 1.125rem 1.5rem;
   border-radius: ${theme.borderRadius.round};
+  border: 1px solid ${theme.colors.primary};
+
+  //Background
+  background: ${theme.colors.primary};
+  cursor: pointer;
+
+  // Typography
   font-size: ${theme.fonts.SM};
   font-weight: ${theme.weights.heavy};
   color: ${theme.colors.white};
-  background-color: ${theme.colors.primary};
-  border: 1px solid ${theme.colors.primary};
-  cursor: pointer;
+  line-height: 1;
+  text-decoration: none; //removes the text decoration in case you’re applying the .btn class to a link.
+  white-space: nowrap; //prevents the text label from wrapping to the next line.
 
   &:hover {
     color: ${theme.colors.primary};

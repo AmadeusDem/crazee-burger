@@ -5,7 +5,7 @@ import { theme } from "../../../theme";
 import { IoChevronForward } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs";
 import Input from "../../reusable-ui/Input";
-import PrimaryButton from "../../reusable-ui/PrimaryButton";
+import PrimaryButton from "../../reusable-ui/Button";
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
