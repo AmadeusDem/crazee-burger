@@ -8,6 +8,7 @@ import { useContext, useState } from "react";
 import { AdminContext } from "../../../../../../context/AdminContext.jsx";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { theme } from "../../../../../../theme/index.js";
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -93,7 +94,11 @@ export default function AddProductForm() {
         onChange={handleChange}
         version="minimalist"
       />
-      <PrimaryButton label="Ajouter un nouveau produit au menu" className="add-product-button" />
+      <PrimaryButton
+        label="Ajouter un nouveau produit au menu"
+        version="action"
+        className="add-product-button"
+      />
     </AddProductFormStyled>
   );
 }
@@ -117,9 +122,9 @@ const AddProductFormStyled = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #93a2b1;
-    border-radius: 5px;
-    border: 1px solid #e4e5e9;
+    color: ${theme.colors.greyBlue};
+    border-radius: ${theme.borderRadius.round};
+    border: 1px solid ${theme.colors.greyBlue};
 
     .no-image {
       text-align: center;
@@ -146,18 +151,5 @@ const AddProductFormStyled = styled.form`
 
   .add-product-button {
     grid-area: button;
-    background: #60bd4f;
-    border: 1px solid #60bd4f;
-    height: 2.1875rem;
-
-    &:hover {
-      color: #60bd4f;
-      background-color: white;
-      transition: all 200ms ease-out;
-    }
-    &:active {
-      color: white;
-      background-color: #60bd4f;
-    }
   }
 `;

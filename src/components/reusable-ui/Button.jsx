@@ -1,9 +1,9 @@
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 import { theme } from "../../theme/index";
 
 export default function Button({ className, label, Icon, onClick, version = "primary" }) {
   return (
-    <ButtonStyled className={className} onClick={onClick}>
+    <ButtonStyled className={className} onClick={onClick} version={version}>
       <span>{label}</span>
       <div className="icon">{Icon && Icon}</div>
     </ButtonStyled>
@@ -22,10 +22,8 @@ const ButtonStyled = styled.button`
   // Box model
   padding: 1.125rem 1.5rem;
   border-radius: ${theme.borderRadius.round};
-  border: 1px solid ${theme.colors.primary};
 
   //Background
-  background: ${theme.colors.primary};
   cursor: pointer;
 
   // Typography
@@ -51,5 +49,28 @@ const ButtonStyled = styled.button`
     justify-content: center;
     align-items: center;
     font-size: ${theme.fonts.SM};
+  }
+
+  ${(props) => {
+    if (props.version === "primary") return extraStylePrimary;
+    if (props.version === "action") return extraStyleAction;
+  }};
+`;
+
+const extraStylePrimary = css`
+  border: 1px solid ${theme.colors.primary};
+  background: ${theme.colors.primary};
+`;
+
+const extraStyleAction = css`
+  background: ${theme.colors.success};
+  border: 1px solid ${theme.colors.success};
+  height: 2.1875rem;
+
+  &:hover {
+    color: ${theme.colors.success};
+  }
+  &:active {
+    background-color: ${theme.colors.success};
   }
 `;
