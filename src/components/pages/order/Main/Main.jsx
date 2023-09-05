@@ -7,7 +7,7 @@ import Menu from "./Admin/Menu/Menu";
 import Admin from "./Admin/Admin";
 import { AdminContext } from "../../../../context/AdminContext";
 
-const DEFAULT_MENU = fakeMenu.MEDIUM;
+const DEFAULT_MENU = fakeMenu.LARGE;
 
 export default function Main() {
   const { isAdminMode } = useContext(OrderContext);

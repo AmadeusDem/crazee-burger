@@ -16,7 +16,11 @@ export default function Menu() {
   const { isAdminMode } = useContext(OrderContext);
 
   if (menu.length === 0) {
-    return isAdminMode ? <EmptyMenuAdmin handleReset={handleReset} /> : <EmptyMenuUser />;
+    return (
+      <EmptyMenuContainer>
+        {isAdminMode ? <EmptyMenuAdmin handleReset={handleReset} /> : <EmptyMenuUser />}
+      </EmptyMenuContainer>
+    );
   } else {
     return (
       <MenuStyled>
@@ -44,4 +48,10 @@ const MenuStyled = styled.section`
 
   padding: 50px 50px 150px;
   grid-gap: 3.75rem 5.3125rem;
+`;
+
+const EmptyMenuContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
