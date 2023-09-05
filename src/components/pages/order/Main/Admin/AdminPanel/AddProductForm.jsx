@@ -67,28 +67,31 @@ export default function AddProductForm() {
       </div>
       <Input
         name="title"
-        className="text-input name-input"
+        className="name-input"
         Icon={<FaHamburger className="icon" />}
         placeholder="Nom du produit (ex: Super Burger)"
         value={title}
         onChange={handleChange}
+        version="minimalist"
       />
       <Input
         name="imageSource"
-        className="text-input image-input"
+        className="image-input"
         Icon={<BsCameraFill className="icon" />}
         placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
         value={imageSource}
         onChange={handleChange}
         type="url"
+        version="minimalist"
       />
       <Input
         name="price"
-        className="text-input price-input"
+        className="price-input"
         Icon={<MdOutlineEuro className="icon" />}
         placeholder="Prix"
         value={price ? price : ""}
         onChange={handleChange}
+        version="minimalist"
       />
       <PrimaryButton label="Ajouter un nouveau produit au menu" className="add-product-button" />
     </AddProductFormStyled>
@@ -106,21 +109,7 @@ const AddProductFormStyled = styled.form`
     "preview name name"
     "preview image image"
     "preview price price"
-    ". button success";
-
-  .text-input {
-    padding: 8px 16px 8px 24px;
-    background: #f5f5f7;
-
-    input {
-      outline: none;
-      background: #f5f5f7;
-    }
-  }
-
-  .icon {
-    color: #747b91;
-  }
+    ". button .";
 
   .image-preview {
     grid-area: preview;
@@ -153,16 +142,6 @@ const AddProductFormStyled = styled.form`
 
   .price-input {
     grid-area: price;
-  }
-
-  .successDiv {
-    grid-area: success;
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-
-    .successMessage {
-    }
   }
 
   .add-product-button {

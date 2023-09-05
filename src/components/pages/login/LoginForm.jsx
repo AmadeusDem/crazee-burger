@@ -32,6 +32,7 @@ export default function LoginForm() {
         required
         Icon={<BsPersonCircle />}
         className="username-input"
+        version="normal"
       />
       <PrimaryButton label="Accéder à mon espace" Icon={<IoChevronForward />} />
     </LoginFormStyled>
@@ -62,9 +63,5 @@ const LoginFormStyled = styled.form`
   h2 {
     font-size: ${theme.fonts.P4};
     margin: 20px 10px 10px;
-  }
-
-  .username-input {
-    margin-bottom: 18px;
   }
 `;

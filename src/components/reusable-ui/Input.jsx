@@ -1,9 +1,18 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../theme";
+import { version } from "react";
 
-export default function Input({ value, onChange, Icon, className, type = "text", ...extraProps }) {
+export default function Input({
+  value,
+  onChange,
+  Icon,
+  className,
+  type = "text",
+  version = "normal",
+  ...extraProps
+}) {
   return (
-    <InputStyled className={className}>
+    <InputStyled className={className} version={version}>
       <div className="icon">{Icon && Icon}</div>
       <input onChange={onChange} value={value} type={type} {...extraProps} />
     </InputStyled>
@@ -11,14 +20,12 @@ export default function Input({ value, onChange, Icon, className, type = "text",
 }
 
 const InputStyled = styled.div`
-  width: 100%;
-
   display: flex;
   align-items: center;
 
   background: ${theme.colors.white};
   border-radius: ${theme.borderRadius.round};
-  gap: 13px;
+  gap: 0.9375rem;
 
   padding: 18px 24px;
 
@@ -38,5 +45,28 @@ const InputStyled = styled.div`
     &::placeholder {
       color: ${theme.colors.greyMedium};
     }
+  }
+
+  ${(props) => {
+    if (props.version === "normal") return extraStyleNormal;
+    if (props.version === "minimalist") return extraStyleMinimalist;
+  }};
+`;
+
+const extraStyleNormal = css`
+  margin-bottom: 18px;
+`;
+
+const extraStyleMinimalist = css`
+  background: #f5f5f7;
+  padding: 8px 16px 8px 24px;
+
+  input {
+    outline: none;
+    background: #f5f5f7;
+  }
+
+  .icon {
+    color: #747b91;
   }
 `;
