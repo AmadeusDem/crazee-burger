@@ -51,10 +51,7 @@ const ButtonStyled = styled.button`
     font-size: ${theme.fonts.SM};
   }
 
-  ${(props) => {
-    if (props.version === "primary") return extraStylePrimary;
-    if (props.version === "action") return extraStyleAction;
-  }};
+  ${({ version }) => extraStyle[version]}
 `;
 
 const extraStylePrimary = css`
@@ -74,3 +71,8 @@ const extraStyleAction = css`
     background-color: ${theme.colors.success};
   }
 `;
+
+const extraStyle = {
+  primary: extraStylePrimary,
+  action: extraStyleAction,
+};

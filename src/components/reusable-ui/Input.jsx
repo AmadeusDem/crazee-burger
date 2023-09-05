@@ -23,18 +23,14 @@ const InputStyled = styled.div`
   display: flex;
   align-items: center;
 
-  background: ${theme.colors.white};
   border-radius: ${theme.borderRadius.round};
   gap: 0.9375rem;
-
-  padding: 18px 24px;
 
   .icon {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: ${theme.fonts.SM};
-    color: ${theme.colors.greySemiDark};
   }
 
   input {
@@ -47,26 +43,34 @@ const InputStyled = styled.div`
     }
   }
 
-  ${(props) => {
-    if (props.version === "normal") return extraStyleNormal;
-    if (props.version === "minimalist") return extraStyleMinimalist;
-  }};
+  ${({ version }) => extraStyle[version]}
 `;
 
 const extraStyleNormal = css`
   margin-bottom: 18px;
+  padding: 18px 24px;
+  background: ${theme.colors.white};
+
+  .icon {
+    color: ${theme.colors.greySemiDark};
+  }
 `;
 
 const extraStyleMinimalist = css`
-  background: #f5f5f7;
+  background: ${theme.colors.background_white};
   padding: 8px 16px 8px 24px;
 
   input {
     outline: none;
-    background: #f5f5f7;
+    background: ${theme.colors.background_white};
   }
 
   .icon {
-    color: #747b91;
+    color: ${theme.colors.greyBlue};
   }
 `;
+
+const extraStyle = {
+  normal: extraStyleNormal,
+  minimalist: extraStyleMinimalist,
+};
