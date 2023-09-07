@@ -13,12 +13,13 @@ export default function AdminPanel() {
 }
 
 const AdminPanelStyled = styled.div`
-  height: 15.625rem;
+  height: 240px;
+
   width: 100%;
   display: flex;
   align-items: center;
 
-  padding: 20px 30px;
+  padding: 30px 5%;
   background: ${theme.colors.white};
   border: 1px solid ${theme.colors.greyLight};
   box-shadow: ${theme.shadows.medium};
