@@ -9,6 +9,7 @@ import { AdminContext } from "../../../../../../context/AdminContext.jsx";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { theme } from "../../../../../../theme/index.js";
+import ImagePreview from "./ImagePreview.jsx";
 
 export const EMPTY_PRODUCT = {
   id: "",
@@ -62,9 +63,7 @@ export default function AddProductForm() {
 
   return (
     <AddProductFormStyled onSubmit={handleSubmit}>
-      <div className="image-preview">
-        {imageSource ? <img src={imageSource} /> : <div className="no-image">Aucune image</div>}
-      </div>
+      <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title} />
       <Input
         name="title"
         className="name-input"
@@ -114,26 +113,6 @@ const AddProductFormStyled = styled.form`
     "preview image image"
     "preview price price"
     ". button .";
-
-  .image-preview {
-    grid-area: preview;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: ${theme.colors.greyBlue};
-    border-radius: ${theme.borderRadius.round};
-    border: 1px solid ${theme.colors.greyBlue};
-
-    .no-image {
-      text-align: center;
-    }
-
-    img {
-      width: 150px;
-      height: 150px;
-    }
-  }
 
   .name-input {
     grid-area: name;
