@@ -2,20 +2,48 @@ import { styled } from "styled-components";
 import { theme } from "../../../../theme";
 import { useContext, useState } from "react";
 import { OrderContext } from "../../../../context/OrderContext";
-import Menu from "./Menu";
+import { fakeMenu } from "../../../../fakeData/fakeMenu";
+import Menu from "./Admin/Menu/Menu";
 import Admin from "./Admin/Admin";
 import { AdminContext } from "../../../../context/AdminContext";
+import { EMPTY_PRODUCT } from "./Admin/AdminPanel/AddProductForm";
+
+const DEFAULT_MENU = fakeMenu.LARGE;
 
 export default function Main() {
   const { isAdminMode } = useContext(OrderContext);
   const [isPanelOpen, setIsPanelOpen] = useState(true);
   const [selectedTab, setSelectedTab] = useState("add");
+  const [menu, setMenu] = useState(DEFAULT_MENU);
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+
+  const handleAdd = (newProduct) => {
+    setMenu([newProduct, ...menu]);
+  };
+
+  const handleDelete = (idToDelete) => {
+    const menuCopy = JSON.parse(JSON.stringify(menu));
+
+    const filteredMenu = menuCopy.filter((product) => product.id !== idToDelete);
+
+    setMenu(filteredMenu);
+  };
+
+  const handleReset = () => {
+    setMenu(DEFAULT_MENU);
+  };
 
   const adminContextValue = {
     isPanelOpen,
     setIsPanelOpen,
     selectedTab,
     setSelectedTab,
+    menu,
+    handleAdd,
+    handleDelete,
+    handleReset,
+    newProduct,
+    setNewProduct,
   };
 
   return (

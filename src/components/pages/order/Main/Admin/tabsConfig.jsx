@@ -1,16 +1,19 @@
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";
+import AddProductForm from "./AdminPanel/AddProductForm";
 
 export const tabs = [
   {
     index: "add",
     label: "Ajouter un produit",
-    icon: AiOutlinePlus,
+    icon: <AiOutlinePlus />,
+    content: <AddProductForm />,
   },
   {
     index: "edit",
     label: "Modifier un produit",
-    icon: MdModeEditOutline,
+    icon: <MdModeEditOutline />,
+    content: "Modifier un produit",
   },
 ];
 

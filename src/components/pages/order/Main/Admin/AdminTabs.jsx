@@ -25,7 +25,7 @@ export default function AdminTabs() {
       {tabs.map((tab) => (
         <Tab
           key={tab.index}
-          Icon={<tab.icon />}
+          Icon={tab.icon}
           label={tab.label}
           className={selectedTab === tab.index && "is-active"}
           onClick={() => selectTab(tab.index)}

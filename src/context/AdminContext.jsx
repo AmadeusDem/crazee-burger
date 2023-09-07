@@ -5,4 +5,10 @@ export const AdminContext = createContext({
   setIsPanelOpen: () => {},
   selectedTab: "",
   setSelectedTab: () => {},
+  menu: [],
+  handleAdd: () => {},
+  handleDelete: () => {},
+  handleReset: () => {},
+  newProduct: [],
+  setNewProduct: () => {},
 });
