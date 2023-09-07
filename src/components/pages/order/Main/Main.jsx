@@ -6,6 +6,7 @@ import { fakeMenu } from "../../../../fakeData/fakeMenu";
 import Menu from "./Admin/Menu/Menu";
 import Admin from "./Admin/Admin";
 import { AdminContext } from "../../../../context/AdminContext";
+import { EMPTY_PRODUCT } from "./Admin/AdminPanel/AddProductForm";
 
 const DEFAULT_MENU = fakeMenu.LARGE;
 
@@ -14,6 +15,7 @@ export default function Main() {
   const [isPanelOpen, setIsPanelOpen] = useState(true);
   const [selectedTab, setSelectedTab] = useState("add");
   const [menu, setMenu] = useState(DEFAULT_MENU);
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   const handleAdd = (newProduct) => {
     setMenu([newProduct, ...menu]);
@@ -40,6 +42,8 @@ export default function Main() {
     handleAdd,
     handleDelete,
     handleReset,
+    newProduct,
+    setNewProduct,
   };
 
   return (

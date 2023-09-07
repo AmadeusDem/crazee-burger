@@ -9,4 +9,6 @@ export const AdminContext = createContext({
   handleAdd: () => {},
   handleDelete: () => {},
   handleReset: () => {},
+  newProduct: [],
+  setNewProduct: () => {},
 });

@@ -4,13 +4,13 @@ import { BsCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import Input from "../../../../../reusable-ui/Input.jsx";
 import PrimaryButton from "../../../../../reusable-ui/Button.jsx";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AdminContext } from "../../../../../../context/AdminContext.jsx";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { theme } from "../../../../../../theme/index.js";
 
-const EMPTY_PRODUCT = {
+export const EMPTY_PRODUCT = {
   id: "",
   imageSource: "",
   title: "",
@@ -21,8 +21,7 @@ const EMPTY_PRODUCT = {
 };
 
 export default function AddProductForm() {
-  const { handleAdd } = useContext(AdminContext);
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const { handleAdd, newProduct, setNewProduct } = useContext(AdminContext);
 
   const { title, imageSource, price } = newProduct;
 
@@ -131,9 +130,8 @@ const AddProductFormStyled = styled.form`
     }
 
     img {
-      width: 100px;
-      height: 100px;
-      object-fit: contain;
+      width: 150px;
+      height: 150px;
     }
   }
 
