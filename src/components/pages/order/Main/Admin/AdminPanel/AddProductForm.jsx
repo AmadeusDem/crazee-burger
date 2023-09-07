@@ -1,15 +1,12 @@
 import { styled } from "styled-components";
-import { FaHamburger } from "react-icons/fa";
-import { BsCameraFill } from "react-icons/bs";
-import { MdOutlineEuro } from "react-icons/md";
 import Input from "../../../../../reusable-ui/Input.jsx";
 import PrimaryButton from "../../../../../reusable-ui/Button.jsx";
 import { useContext } from "react";
 import { AdminContext } from "../../../../../../context/AdminContext.jsx";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { theme } from "../../../../../../theme/index.js";
 import ImagePreview from "./ImagePreview.jsx";
+import { getInputTextsConfig } from "./inputTextsConfig";
 
 export const EMPTY_PRODUCT = {
   id: "",
@@ -23,8 +20,6 @@ export const EMPTY_PRODUCT = {
 
 export default function AddProductForm() {
   const { handleAdd, newProduct, setNewProduct } = useContext(AdminContext);
-
-  const { title, imageSource, price } = newProduct;
 
   const displaySuccessToast = () => {
     toast.success("Produit ajouté avec succès !", {
@@ -61,37 +56,14 @@ export default function AddProductForm() {
     setNewProduct(EMPTY_PRODUCT);
   };
 
+  const InputTexts = getInputTextsConfig(newProduct);
+
   return (
     <AddProductFormStyled onSubmit={handleSubmit}>
       <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title} />
-      <Input
-        name="title"
-        className="name-input"
-        Icon={<FaHamburger className="icon" />}
-        placeholder="Nom du produit (ex: Super Burger)"
-        value={title}
-        onChange={handleChange}
-        version="minimalist"
-      />
-      <Input
-        name="imageSource"
-        className="image-input"
-        Icon={<BsCameraFill className="icon" />}
-        placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
-        value={imageSource}
-        onChange={handleChange}
-        type="url"
-        version="minimalist"
-      />
-      <Input
-        name="price"
-        className="price-input"
-        Icon={<MdOutlineEuro className="icon" />}
-        placeholder="Prix"
-        value={price ? price : ""}
-        onChange={handleChange}
-        version="minimalist"
-      />
+      {InputTexts.map((input) => (
+        <Input {...input} key={input.id} onChange={handleChange} />
+      ))}
       <PrimaryButton
         label="Ajouter un nouveau produit au menu"
         version="action"
