@@ -22,7 +22,19 @@ export default function Main() {
     setMenu([newProduct, ...menu]);
   };
 
+  const handleEdit = (productEdited) => {
+    const menuCopy = JSON.parse(JSON.stringify(menu));
+
+    const newMenu = menuCopy.map((product) =>
+      product.id === productEdited.id ? productEdited : product
+    );
+
+    setMenu(newMenu);
+    setProductToEdit(productEdited);
+  };
+
   const handleDelete = (idToDelete) => {
+    if (idToDelete === productToEdit.id) setProductToEdit(null);
     const menuCopy = JSON.parse(JSON.stringify(menu));
 
     const filteredMenu = menuCopy.filter((product) => product.id !== idToDelete);
@@ -56,6 +68,7 @@ export default function Main() {
     setNewProduct,
     onCardClick,
     productToEdit,
+    handleEdit,
   };
 
   return (

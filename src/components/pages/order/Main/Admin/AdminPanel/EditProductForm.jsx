@@ -6,11 +6,12 @@ import { AdminContext } from "../../../../../../context/AdminContext";
 import ImagePreview from "./ImagePreview";
 
 export default function EditProductForm() {
-  const { newProduct, productToEdit } = useContext(AdminContext);
+  const { productToEdit, handleEdit } = useContext(AdminContext);
 
   const handleChange = (e) => {
     const eventName = e.target.name;
     const value = e.target.value;
+    handleEdit({ ...productToEdit, [eventName]: value });
   };
 
   if (productToEdit) {

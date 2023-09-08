@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import PrimaryButton from "./Button.jsx";
+import Button from "./Button.jsx";
 import { theme } from "../../theme/index.js";
 import { TiDelete } from "react-icons/ti";
 
@@ -15,7 +15,14 @@ export default function Card({
   return (
     <CardStyled onClick={onClick}>
       {hasDeleteButton && (
-        <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
+        <button
+          className="delete-button"
+          aria-label="delete-button"
+          onClick={(e) => {
+            e.stopPropagation();
+            onDelete();
+          }}
+        >
           <TiDelete className="icon" />
         </button>
       )}
@@ -29,7 +36,7 @@ export default function Card({
             <p>{leftText}</p>
           </div>
           <div className="right-description">
-            <PrimaryButton label={buttonLabel} className="primary-button" />
+            <Button label={buttonLabel} className="primary-button" />
           </div>
         </div>
       </div>
