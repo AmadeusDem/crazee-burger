@@ -6,24 +6,26 @@ import { AdminContext } from "../../../../../../context/AdminContext";
 import ImagePreview from "./ImagePreview";
 
 export default function EditProductForm() {
-  const { newProduct } = useContext(AdminContext);
-
-  const InputText = getInputTextsConfig(newProduct);
+  const { newProduct, productToEdit } = useContext(AdminContext);
 
   const handleChange = (e) => {
     const eventName = e.target.name;
     const value = e.target.value;
-    console.log(eventName, value);
   };
 
-  return (
-    <EditProductFormStyled>
-      <ImagePreview />
-      {InputText.map((input) => (
-        <Input key={input.id} {...input} onChange={handleChange} />
-      ))}
-    </EditProductFormStyled>
-  );
+  if (productToEdit) {
+    const InputText = getInputTextsConfig(productToEdit);
+    return (
+      <EditProductFormStyled>
+        <ImagePreview imageSource={productToEdit.imageSource} title={productToEdit.title} />
+        {InputText.map((input) => (
+          <Input {...input} key={input.id} onChange={handleChange} />
+        ))}
+      </EditProductFormStyled>
+    );
+  } else {
+    return <div>Cliquer sur un produit pour le modifier</div>;
+  }
 }
 
 const EditProductFormStyled = styled.form`

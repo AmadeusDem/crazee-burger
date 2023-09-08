@@ -16,6 +16,7 @@ export default function Main() {
   const [selectedTab, setSelectedTab] = useState("add");
   const [menu, setMenu] = useState(DEFAULT_MENU);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const [productToEdit, setProductToEdit] = useState(null);
 
   const handleAdd = (newProduct) => {
     setMenu([newProduct, ...menu]);
@@ -35,6 +36,8 @@ export default function Main() {
 
   const onCardClick = (id) => {
     if (isAdminMode) {
+      const productSelected = menu.filter((product) => product.id === id);
+      setProductToEdit(productSelected[0]);
       setIsPanelOpen(true);
       setSelectedTab("edit");
     }
@@ -52,6 +55,7 @@ export default function Main() {
     newProduct,
     setNewProduct,
     onCardClick,
+    productToEdit,
   };
 
   return (
