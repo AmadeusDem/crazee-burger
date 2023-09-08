@@ -12,7 +12,7 @@ import EmptyMenuUser from "./EmptyMenuUser";
 const PRODUCT_IMAGE_DEFAULT = "/images/coming-soon.png";
 
 export default function Menu() {
-  const { menu, handleDelete, handleReset } = useContext(AdminContext);
+  const { menu, handleDelete, handleReset, onCardClick } = useContext(AdminContext);
   const { isAdminMode } = useContext(OrderContext);
 
   if (menu.length === 0) {
@@ -27,6 +27,7 @@ export default function Menu() {
         {menu.map(({ id, imageSource, title, price }) => (
           <Card
             key={id}
+            onClick={() => onCardClick(id)}
             image={imageSource ? imageSource : PRODUCT_IMAGE_DEFAULT}
             title={title}
             leftText={formatPrice(parseFloat(replaceFrenchCommaWithDot(price)).toFixed(1))}

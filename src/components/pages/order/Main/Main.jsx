@@ -33,6 +33,13 @@ export default function Main() {
     setMenu(DEFAULT_MENU);
   };
 
+  const onCardClick = (id) => {
+    if (isAdminMode) {
+      setIsPanelOpen(true);
+      setSelectedTab("edit");
+    }
+  };
+
   const adminContextValue = {
     isPanelOpen,
     setIsPanelOpen,
@@ -44,6 +51,7 @@ export default function Main() {
     handleReset,
     newProduct,
     setNewProduct,
+    onCardClick,
   };
 
   return (

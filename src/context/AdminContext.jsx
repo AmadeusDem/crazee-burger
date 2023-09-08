@@ -11,4 +11,5 @@ export const AdminContext = createContext({
   handleReset: () => {},
   newProduct: [],
   setNewProduct: () => {},
+  onCardClick: () => {},
 });
