@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import { theme } from "../../../../../../theme";
 
-export default function ImagePreview({ imageSource, title }) {
+export default function ImagePreview({ imageSource, title = "Titre de l'article" }) {
   return (
     <ImagePreviewStyled>
       {imageSource ? (
