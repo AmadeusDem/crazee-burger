@@ -34,7 +34,7 @@ export default function Main() {
   };
 
   const handleDelete = (idToDelete) => {
-    if (idToDelete === productToEdit.id) setProductToEdit(null);
+    if (productToEdit && idToDelete === productToEdit.id) setProductToEdit(null);
     const menuCopy = JSON.parse(JSON.stringify(menu));
 
     const filteredMenu = menuCopy.filter((product) => product.id !== idToDelete);

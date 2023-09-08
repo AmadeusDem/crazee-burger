@@ -7,7 +7,7 @@ export default function Button({ className, label, Icon, onClick, version = "pri
       className={className}
       onClick={(e) => {
         e.stopPropagation();
-        onClick;
+        onClick && onClick();
       }}
       version={version}
     >
