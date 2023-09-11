@@ -7,6 +7,7 @@ import Menu from "./Menu/Menu";
 import Admin from "./Admin/Admin";
 import { AdminContext } from "../../../../context/AdminContext";
 import { EMPTY_PRODUCT } from "../../../../enums/product";
+import { deepClone } from "../../../../utils/array";
 
 const DEFAULT_MENU = fakeMenu.LARGE;
 
@@ -19,12 +20,12 @@ export default function Main() {
   const [productToEdit, setProductToEdit] = useState(EMPTY_PRODUCT);
 
   const handleAdd = (newProduct) => {
-    const menuCopy = JSON.parse(JSON.stringify(menu));
+    const menuCopy = deepClone(menu);
     setMenu([newProduct, ...menuCopy]);
   };
 
   const handleEdit = (productEdited) => {
-    const menuCopy = JSON.parse(JSON.stringify(menu));
+    const menuCopy = deepClone(menu);
 
     const indexToEdit = menuCopy.findIndex((product) => product.id === productEdited.id);
 
@@ -36,7 +37,7 @@ export default function Main() {
   const handleDelete = (idToDelete) => {
     if (productToEdit && idToDelete === productToEdit.id) setProductToEdit(EMPTY_PRODUCT);
 
-    const menuCopy = JSON.parse(JSON.stringify(menu));
+    const menuCopy = deepClone(menu);
 
     const filteredMenu = menuCopy.filter((product) => product.id !== idToDelete);
 
