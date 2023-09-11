@@ -6,7 +6,7 @@ import { fakeMenu } from "../../../../fakeData/fakeMenu";
 import Menu from "./Menu/Menu";
 import Admin from "./Admin/Admin";
 import { AdminContext } from "../../../../context/AdminContext";
-import { EMPTY_PRODUCT } from "./Admin/AdminPanel/AddProductForm";
+import { EMPTY_PRODUCT } from "../../../../enums/product";
 
 const DEFAULT_MENU = fakeMenu.LARGE;
 

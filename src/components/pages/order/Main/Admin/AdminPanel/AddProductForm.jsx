@@ -7,16 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ImagePreview from "./ImagePreview.jsx";
 import { getInputTextsConfig } from "./inputTextsConfig";
-
-export const EMPTY_PRODUCT = {
-  id: "",
-  imageSource: "",
-  title: "",
-  price: 0,
-  quantity: 0,
-  isAvailable: true,
-  isAdvertised: false,
-};
+import { EMPTY_PRODUCT } from "../../../../../../enums/product.js";
 
 export default function AddProductForm() {
   const { handleAdd, newProduct, setNewProduct } = useContext(AdminContext);
