@@ -33,6 +33,11 @@ export default function Menu() {
     }
   };
 
+  const handleCardDelete = (event, id) => {
+    event.stopPropagation();
+    handleDelete(id);
+  };
+
   if (menu.length === 0) {
     return (
       <EmptyMenuContainer>
@@ -51,7 +56,7 @@ export default function Menu() {
             leftText={formatPrice(parseFloat(replaceFrenchCommaWithDot(price)).toFixed(1))}
             buttonLabel="Ajouter"
             hasDeleteButton={isAdminMode}
-            onDelete={() => handleDelete(id)}
+            onDelete={(e) => handleCardDelete(e, id)}
             isHoverable={isAdminMode}
             isSelected={isProductClicked(id, productToEdit.id)}
           />

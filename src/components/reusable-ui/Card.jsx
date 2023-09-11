@@ -18,14 +18,7 @@ export default function Card({
     <CardStyled onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
       <div className="card">
         {hasDeleteButton && (
-          <button
-            className="delete-button"
-            aria-label="delete-button"
-            onClick={(e) => {
-              e.stopPropagation();
-              onDelete();
-            }}
-          >
+          <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
             <TiDelete className="icon" />
           </button>
         )}
