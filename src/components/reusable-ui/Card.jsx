@@ -12,10 +12,11 @@ export default function Card({
   hasDeleteButton,
   onDelete,
   isHoverable,
+  isSelected,
 }) {
   return (
     <CardStyled onClick={onClick} isHoverable={isHoverable}>
-      <div className="card">
+      <div className="card" style={isSelected ? { background: "orange" } : {}}>
         {hasDeleteButton && (
           <button
             className="delete-button"
@@ -49,6 +50,8 @@ export default function Card({
 
 const CardStyled = styled.article`
   ${({ isHoverable }) => isHoverable && hoverableStyle}
+  border-radius: ${theme.borderRadius.extraRound};
+  height: fit-content;
 
   .card {
     display: grid;
@@ -150,7 +153,6 @@ const hoverableStyle = css`
     transform: scale(1.05);
     transition: ease-out 0.4s;
     box-shadow: ${theme.shadows.orangeHighlight};
-    border-radius: ${theme.borderRadius.extraRound};
     cursor: pointer;
   }
 `;

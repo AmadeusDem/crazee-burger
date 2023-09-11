@@ -8,12 +8,20 @@ import { OrderContext } from "../../../../../context/OrderContext.jsx";
 import { replaceFrenchCommaWithDot } from "../../../../../utils/maths";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuUser from "./EmptyMenuUser";
+import { isProductClicked } from "./helper";
 
 const PRODUCT_IMAGE_DEFAULT = "/images/coming-soon.png";
 
 export default function Menu() {
-  const { menu, handleDelete, handleReset, setIsPanelOpen, setSelectedTab, setProductToEdit } =
-    useContext(AdminContext);
+  const {
+    menu,
+    handleDelete,
+    handleReset,
+    setIsPanelOpen,
+    setSelectedTab,
+    productToEdit,
+    setProductToEdit,
+  } = useContext(AdminContext);
   const { isAdminMode } = useContext(OrderContext);
 
   const handleCardClick = (id) => {
@@ -45,6 +53,7 @@ export default function Menu() {
             hasDeleteButton={isAdminMode}
             onDelete={() => handleDelete(id)}
             isHoverable={isAdminMode}
+            isSelected={isProductClicked(id, productToEdit.id)}
           />
         ))}
       </MenuStyled>
