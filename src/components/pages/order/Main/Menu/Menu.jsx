@@ -1,11 +1,11 @@
 import { styled } from "styled-components";
-import { formatPrice } from "../../../../../../utils/maths";
+import { formatPrice } from "../../../../../utils/maths";
 
-import Card from "../../../../../reusable-ui/Card";
+import Card from "../../../../reusable-ui/Card";
 import { useContext } from "react";
-import { AdminContext } from "../../../../../../context/AdminContext";
-import { OrderContext } from "../../../../../../context/OrderContext.jsx";
-import { replaceFrenchCommaWithDot } from "../../../../../../utils/maths";
+import { AdminContext } from "../../../../../context/AdminContext";
+import { OrderContext } from "../../../../../context/OrderContext.jsx";
+import { replaceFrenchCommaWithDot } from "../../../../../utils/maths";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuUser from "./EmptyMenuUser";
 

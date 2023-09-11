@@ -3,7 +3,7 @@ import { theme } from "../../../../theme";
 import { useContext, useState } from "react";
 import { OrderContext } from "../../../../context/OrderContext";
 import { fakeMenu } from "../../../../fakeData/fakeMenu";
-import Menu from "./Admin/Menu/Menu";
+import Menu from "./Menu/Menu";
 import Admin from "./Admin/Admin";
 import { AdminContext } from "../../../../context/AdminContext";
 import { EMPTY_PRODUCT } from "./Admin/AdminPanel/AddProductForm";
