@@ -44,6 +44,7 @@ export default function Menu() {
             buttonLabel="Ajouter"
             hasDeleteButton={isAdminMode}
             onDelete={() => handleDelete(id)}
+            isHoverable={isAdminMode}
           />
         ))}
       </MenuStyled>
