@@ -45,15 +45,6 @@ export default function Main() {
     setMenu(DEFAULT_MENU);
   };
 
-  const onCardClick = (id) => {
-    if (isAdminMode) {
-      const productSelected = menu.filter((product) => product.id === id);
-      setProductToEdit(productSelected[0]);
-      setIsPanelOpen(true);
-      setSelectedTab("edit");
-    }
-  };
-
   const adminContextValue = {
     isPanelOpen,
     setIsPanelOpen,
@@ -65,7 +56,6 @@ export default function Main() {
     handleReset,
     newProduct,
     setNewProduct,
-    onCardClick,
     productToEdit,
     handleEdit,
     setProductToEdit,

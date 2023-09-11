@@ -12,8 +12,18 @@ import EmptyMenuUser from "./EmptyMenuUser";
 const PRODUCT_IMAGE_DEFAULT = "/images/coming-soon.png";
 
 export default function Menu() {
-  const { menu, handleDelete, handleReset, onCardClick } = useContext(AdminContext);
+  const { menu, handleDelete, handleReset, setIsPanelOpen, setSelectedTab, setProductToEdit } =
+    useContext(AdminContext);
   const { isAdminMode } = useContext(OrderContext);
+
+  const handleCardClick = (id) => {
+    if (isAdminMode) {
+      const productSelected = menu.find((product) => product.id === id);
+      setProductToEdit(productSelected);
+      setIsPanelOpen(true);
+      setSelectedTab("edit");
+    }
+  };
 
   if (menu.length === 0) {
     return (
@@ -27,7 +37,7 @@ export default function Menu() {
         {menu.map(({ id, imageSource, title, price }) => (
           <Card
             key={id}
-            onClick={() => onCardClick(id)}
+            onClick={() => handleCardClick(id)}
             image={imageSource ? imageSource : PRODUCT_IMAGE_DEFAULT}
             title={title}
             leftText={formatPrice(parseFloat(replaceFrenchCommaWithDot(price)).toFixed(1))}
