@@ -28,7 +28,7 @@ const ImagePreviewStyled = styled.div`
   }
 
   img {
-    width: 150px;
+    width: 100%;
     height: 150px;
     object-fit: contain;
   }
