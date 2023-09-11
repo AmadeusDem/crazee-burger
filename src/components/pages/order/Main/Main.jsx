@@ -19,7 +19,8 @@ export default function Main() {
   const [productToEdit, setProductToEdit] = useState(EMPTY_PRODUCT);
 
   const handleAdd = (newProduct) => {
-    setMenu([newProduct, ...menu]);
+    const menuCopy = JSON.parse(JSON.stringify(menu));
+    setMenu([newProduct, ...menuCopy]);
   };
 
   const handleEdit = (productEdited) => {
@@ -33,7 +34,8 @@ export default function Main() {
   };
 
   const handleDelete = (idToDelete) => {
-    if (productToEdit && idToDelete === productToEdit.id) setProductToEdit(null);
+    if (productToEdit && idToDelete === productToEdit.id) setProductToEdit(EMPTY_PRODUCT);
+
     const menuCopy = JSON.parse(JSON.stringify(menu));
 
     const filteredMenu = menuCopy.filter((product) => product.id !== idToDelete);

@@ -17,7 +17,7 @@ export default function EditProductForm() {
     setProductToEdit(productEdited);
   };
 
-  if (productToEdit) {
+  if (productToEdit.id) {
     return (
       <EditProductFormStyled>
         <ImagePreview imageSource={productToEdit.imageSource} title={productToEdit.title} />
