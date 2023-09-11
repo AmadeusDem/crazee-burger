@@ -15,8 +15,8 @@ export default function Card({
   isSelected,
 }) {
   return (
-    <CardStyled onClick={onClick} isHoverable={isHoverable}>
-      <div className="card" style={isSelected ? { background: "orange" } : {}}>
+    <CardStyled onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
+      <div className="card">
         {hasDeleteButton && (
           <button
             className="delete-button"
@@ -144,15 +144,47 @@ const CardStyled = styled.article`
         }
       }
     }
+    ${({ isHoverable, isSelected }) => isHoverable && isSelected && selectedStyle}
   }
 `;
 
 const hoverableStyle = css`
-  all: unset;
+  transition: ease-out 0.4s;
   &:hover {
     transform: scale(1.05);
-    transition: ease-out 0.4s;
+
     box-shadow: ${theme.shadows.orangeHighlight};
     cursor: pointer;
+  }
+`;
+
+const selectedStyle = css`
+  background: ${theme.colors.primary};
+  .primary-button {
+    background: ${theme.colors.white};
+    color: ${theme.colors.primary};
+
+    &:hover {
+      color: ${theme.colors.white};
+      background: ${theme.colors.primary};
+      border-color: ${theme.colors.white};
+    }
+
+    &:active {
+      color: ${theme.colors.primary};
+      background-color: ${theme.colors.white};
+    }
+  }
+
+  .delete-button {
+    color: ${theme.colors.white};
+
+    :active {
+      color: ${theme.colors.white};
+    }
+  }
+
+  .card-information .card-description .left-description {
+    color: ${theme.colors.white};
   }
 `;
