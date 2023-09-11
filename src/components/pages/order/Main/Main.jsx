@@ -16,7 +16,7 @@ export default function Main() {
   const [selectedTab, setSelectedTab] = useState("add");
   const [menu, setMenu] = useState(DEFAULT_MENU);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
-  const [productToEdit, setProductToEdit] = useState(null);
+  const [productToEdit, setProductToEdit] = useState(EMPTY_PRODUCT);
 
   const handleAdd = (newProduct) => {
     setMenu([newProduct, ...menu]);
@@ -25,12 +25,11 @@ export default function Main() {
   const handleEdit = (productEdited) => {
     const menuCopy = JSON.parse(JSON.stringify(menu));
 
-    const newMenu = menuCopy.map((product) =>
-      product.id === productEdited.id ? productEdited : product
-    );
+    const indexToEdit = menuCopy.findIndex((product) => product.id === productEdited.id);
 
-    setMenu(newMenu);
-    setProductToEdit(productEdited);
+    menuCopy[indexToEdit] = productEdited;
+
+    setMenu(menuCopy);
   };
 
   const handleDelete = (idToDelete) => {
@@ -69,6 +68,7 @@ export default function Main() {
     onCardClick,
     productToEdit,
     handleEdit,
+    setProductToEdit,
   };
 
   return (

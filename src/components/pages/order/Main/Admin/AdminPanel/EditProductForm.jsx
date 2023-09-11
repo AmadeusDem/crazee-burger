@@ -6,16 +6,18 @@ import { AdminContext } from "../../../../../../context/AdminContext";
 import ImagePreview from "./ImagePreview";
 
 export default function EditProductForm() {
-  const { productToEdit, handleEdit } = useContext(AdminContext);
+  const { productToEdit, handleEdit, setProductToEdit } = useContext(AdminContext);
+
+  const InputText = getInputTextsConfig(productToEdit);
 
   const handleChange = (e) => {
-    const eventName = e.target.name;
-    const value = e.target.value;
-    handleEdit({ ...productToEdit, [eventName]: value });
+    const { name, value } = e.target;
+    const productEdited = { ...productToEdit, [name]: value };
+    handleEdit(productEdited);
+    setProductToEdit(productEdited);
   };
 
   if (productToEdit) {
-    const InputText = getInputTextsConfig(productToEdit);
     return (
       <EditProductFormStyled>
         <ImagePreview imageSource={productToEdit.imageSource} title={productToEdit.title} />
