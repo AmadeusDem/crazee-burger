@@ -17,23 +17,19 @@ export default function EditProductForm() {
     setProductToEdit(productEdited);
   };
 
-  if (productToEdit.id) {
-    return (
-      <EditProductFormStyled>
-        <ImagePreview imageSource={productToEdit.imageSource} title={productToEdit.title} />
-        {InputText.map((input) => (
-          <Input
-            {...input}
-            key={input.id}
-            onChange={handleChange}
-            ref={input.name === "title" ? titleEditRef : null}
-          />
-        ))}
-      </EditProductFormStyled>
-    );
-  } else {
-    return <div>Cliquer sur un produit pour le modifier</div>;
-  }
+  return (
+    <EditProductFormStyled>
+      <ImagePreview imageSource={productToEdit.imageSource} title={productToEdit.title} />
+      {InputText.map((input) => (
+        <Input
+          {...input}
+          key={input.id}
+          onChange={handleChange}
+          ref={input.name === "title" ? titleEditRef : null}
+        />
+      ))}
+    </EditProductFormStyled>
+  );
 }
 
 const EditProductFormStyled = styled.form`
