@@ -25,12 +25,11 @@ export default function Menu() {
   const { isAdminMode } = useContext(OrderContext);
 
   const handleCardClick = (id) => {
-    if (isAdminMode) {
-      const productSelected = menu.find((product) => product.id === id);
-      setProductToEdit(productSelected);
-      setIsPanelOpen(true);
-      setSelectedTab("edit");
-    }
+    if (!isAdminMode) return;
+    const productSelected = menu.find((product) => product.id === id);
+    setProductToEdit(productSelected);
+    setIsPanelOpen(true);
+    setSelectedTab("edit");
   };
 
   const handleCardDelete = (event, id) => {
