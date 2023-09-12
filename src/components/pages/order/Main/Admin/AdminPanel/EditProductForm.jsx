@@ -4,6 +4,8 @@ import Input from "../../../../../reusable-ui/Input";
 import { useContext } from "react";
 import { AdminContext } from "../../../../../../context/AdminContext";
 import ImagePreview from "./ImagePreview";
+import { theme } from "../../../../../../theme";
+import EditInfoMessage from "./EditInfoMessage";
 
 export default function EditProductForm() {
   const { productToEdit, handleEdit, setProductToEdit, titleEditRef } = useContext(AdminContext);
@@ -28,6 +30,9 @@ export default function EditProductForm() {
           ref={input.name === "title" ? titleEditRef : null}
         />
       ))}
+      <div className="submit">
+        <EditInfoMessage />
+      </div>
     </EditProductFormStyled>
   );
 }
@@ -38,11 +43,12 @@ const EditProductFormStyled = styled.form`
   display: grid;
   grid-gap: 8px 20px;
   grid-template-columns: 20% 1fr 2fr;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   grid-template-areas:
     "preview name name"
     "preview image image"
-    "preview price price";
+    "preview price price"
+    ". submit submit";
 
   .name-input {
     grid-area: name;
@@ -54,5 +60,9 @@ const EditProductFormStyled = styled.form`
 
   .price-input {
     grid-area: price;
+  }
+
+  .submit {
+    grid-area: submit;
   }
 `;
