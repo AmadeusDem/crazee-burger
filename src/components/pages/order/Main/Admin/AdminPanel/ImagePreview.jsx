@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import { theme } from "../../../../../../theme";
 
-export default function ImagePreview({ imageSource, title }) {
+export default function ImagePreview({ imageSource, title = "Titre de l'article" }) {
   return (
     <ImagePreviewStyled>
       {imageSource ? (
@@ -28,7 +28,8 @@ const ImagePreviewStyled = styled.div`
   }
 
   img {
-    width: 150px;
+    width: 100%;
     height: 150px;
+    object-fit: contain;
   }
 `;

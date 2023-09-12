@@ -2,10 +2,14 @@ import { styled } from "styled-components";
 import { theme } from "../../../../../../theme";
 import { useContext } from "react";
 import { AdminContext } from "../../../../../../context/AdminContext";
-import { tabs, getSelectedTab } from "../tabsConfig";
+import { getTabsConfig, getSelectedTab } from "../tabsConfig";
+import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 
 export default function AdminPanel() {
-  const { selectedTab } = useContext(AdminContext);
+  const { selectedTab, productToEdit } = useContext(AdminContext);
+
+  const hasAlreadyBeenClicked = productToEdit !== EMPTY_PRODUCT;
+  const tabs = getTabsConfig(hasAlreadyBeenClicked);
 
   const tab = getSelectedTab(tabs, selectedTab);
 

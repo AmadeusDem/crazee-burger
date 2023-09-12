@@ -5,15 +5,18 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { useContext } from "react";
 import { AdminContext } from "../../../../../context/AdminContext";
 import { theme } from "../../../../../theme";
-import { tabs } from "./tabsConfig";
+import { getTabsConfig } from "./tabsConfig";
 
 export default function AdminTabs() {
-  const { isPanelOpen, setIsPanelOpen, selectedTab, setSelectedTab } = useContext(AdminContext);
+  const { isPanelOpen, setIsPanelOpen, productToEdit, selectedTab, setSelectedTab } =
+    useContext(AdminContext);
 
   const selectTab = (tabIndex) => {
     setIsPanelOpen(true);
     setSelectedTab(tabIndex);
   };
+
+  const tabs = getTabsConfig(productToEdit.id);
 
   return (
     <AdminTabsStyled>

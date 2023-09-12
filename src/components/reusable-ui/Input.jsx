@@ -1,23 +1,20 @@
 import styled, { css } from "styled-components";
 import { theme } from "../../theme";
-import { version } from "react";
+import { forwardRef } from "react";
 
-export default function Input({
-  value,
-  onChange,
-  Icon,
-  className,
-  type = "text",
-  version = "normal",
-  ...extraProps
-}) {
-  return (
-    <InputStyled className={className} version={version}>
-      <div className="icon">{Icon && Icon}</div>
-      <input onChange={onChange} value={value} type={type} {...extraProps} />
-    </InputStyled>
-  );
-}
+const Input = forwardRef(
+  ({ value, onChange, Icon, className, type = "text", version = "normal", ...extraProps }, ref) => {
+    return (
+      <InputStyled className={className} version={version}>
+        <div className="icon">{Icon && Icon}</div>
+        <input onChange={onChange} value={value} type={type} {...extraProps} ref={ref} />
+      </InputStyled>
+    );
+  }
+);
+Input.displayName = "Input";
+
+export default Input;
 
 const InputStyled = styled.div`
   display: flex;
