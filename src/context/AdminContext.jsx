@@ -19,4 +19,5 @@ export const AdminContext = createContext({
   onCardClick: () => {},
   productToEdit: {},
   setProductToEdit: () => {},
+  titleEditRef: () => {},
 });

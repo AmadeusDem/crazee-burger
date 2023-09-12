@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import { theme } from "../../../../theme";
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { OrderContext } from "../../../../context/OrderContext";
 import { fakeMenu } from "../../../../fakeData/fakeMenu";
 import Menu from "./Menu/Menu";
@@ -18,6 +18,7 @@ export default function Main() {
   const [menu, setMenu] = useState(DEFAULT_MENU);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productToEdit, setProductToEdit] = useState(EMPTY_PRODUCT);
+  const titleEditRef = useRef();
 
   const handleAdd = (newProduct) => {
     const menuCopy = deepClone(menu);
@@ -62,6 +63,7 @@ export default function Main() {
     productToEdit,
     handleEdit,
     setProductToEdit,
+    titleEditRef,
   };
 
   return (

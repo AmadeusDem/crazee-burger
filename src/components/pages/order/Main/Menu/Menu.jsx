@@ -21,15 +21,19 @@ export default function Menu() {
     setSelectedTab,
     productToEdit,
     setProductToEdit,
+    titleEditRef,
   } = useContext(AdminContext);
   const { isAdminMode } = useContext(OrderContext);
 
-  const handleCardClick = (id) => {
+  const handleCardClick = async (id) => {
     if (!isAdminMode) return;
+
     const productSelected = menu.find((product) => product.id === id);
-    setProductToEdit(productSelected);
-    setIsPanelOpen(true);
-    setSelectedTab("edit");
+
+    await setIsPanelOpen(true);
+    await setSelectedTab("edit");
+    await setProductToEdit(productSelected);
+    titleEditRef.current.focus();
   };
 
   const handleCardDelete = (event, id) => {

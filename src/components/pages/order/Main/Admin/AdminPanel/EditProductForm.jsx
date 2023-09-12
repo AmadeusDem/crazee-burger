@@ -6,7 +6,7 @@ import { AdminContext } from "../../../../../../context/AdminContext";
 import ImagePreview from "./ImagePreview";
 
 export default function EditProductForm() {
-  const { productToEdit, handleEdit, setProductToEdit } = useContext(AdminContext);
+  const { productToEdit, handleEdit, setProductToEdit, titleEditRef } = useContext(AdminContext);
 
   const InputText = getInputTextsConfig(productToEdit);
 
@@ -22,7 +22,12 @@ export default function EditProductForm() {
       <EditProductFormStyled>
         <ImagePreview imageSource={productToEdit.imageSource} title={productToEdit.title} />
         {InputText.map((input) => (
-          <Input {...input} key={input.id} onChange={handleChange} />
+          <Input
+            {...input}
+            key={input.id}
+            onChange={handleChange}
+            ref={input.name === "title" ? titleEditRef : null}
+          />
         ))}
       </EditProductFormStyled>
     );
