@@ -9,6 +9,7 @@ import { replaceFrenchCommaWithDot } from "../../../../../utils/maths";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuUser from "./EmptyMenuUser";
 import { isProductClicked } from "./helper";
+import { EMPTY_PRODUCT } from "../../../../../enums/product";
 
 const PRODUCT_IMAGE_DEFAULT = "/images/coming-soon.png";
 
@@ -36,9 +37,11 @@ export default function Menu() {
     titleEditRef.current.focus();
   };
 
-  const handleCardDelete = (event, id) => {
+  const handleCardDelete = (event, idToDelete) => {
     event.stopPropagation();
-    handleDelete(id);
+    handleDelete(idToDelete);
+    if (productToEdit && idToDelete === productToEdit.id) setProductToEdit(EMPTY_PRODUCT);
+    titleEditRef.current.focus();
   };
 
   if (menu.length === 0) {

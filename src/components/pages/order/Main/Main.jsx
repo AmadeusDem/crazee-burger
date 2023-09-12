@@ -36,8 +36,6 @@ export default function Main() {
   };
 
   const handleDelete = (idToDelete) => {
-    if (productToEdit && idToDelete === productToEdit.id) setProductToEdit(EMPTY_PRODUCT);
-
     const menuCopy = deepClone(menu);
 
     const filteredMenu = menuCopy.filter((product) => product.id !== idToDelete);
