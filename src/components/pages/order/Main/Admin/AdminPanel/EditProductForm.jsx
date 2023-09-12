@@ -1,16 +1,10 @@
-import { styled } from "styled-components";
-import { getInputTextsConfig } from "./inputTextsConfig";
-import Input from "../../../../../reusable-ui/Input";
 import { useContext } from "react";
 import { AdminContext } from "../../../../../../context/AdminContext";
-import ImagePreview from "./ImagePreview";
-import { theme } from "../../../../../../theme";
 import EditInfoMessage from "./EditInfoMessage";
+import Form from "./Form";
 
 export default function EditProductForm() {
   const { productToEdit, handleEdit, setProductToEdit, titleEditRef } = useContext(AdminContext);
-
-  const InputText = getInputTextsConfig(productToEdit);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,49 +14,8 @@ export default function EditProductForm() {
   };
 
   return (
-    <EditProductFormStyled>
-      <ImagePreview imageSource={productToEdit.imageSource} title={productToEdit.title} />
-      {InputText.map((input) => (
-        <Input
-          {...input}
-          key={input.id}
-          onChange={handleChange}
-          ref={input.name === "title" ? titleEditRef : null}
-        />
-      ))}
-      <div className="submit">
-        <EditInfoMessage />
-      </div>
-    </EditProductFormStyled>
+    <Form product={productToEdit} onChange={handleChange} ref={titleEditRef}>
+      <EditInfoMessage />
+    </Form>
   );
 }
-
-const EditProductFormStyled = styled.form`
-  padding: 20px 30px;
-  width: 70%;
-  display: grid;
-  grid-gap: 8px 20px;
-  grid-template-columns: 20% 1fr 2fr;
-  grid-template-rows: repeat(4, 1fr);
-  grid-template-areas:
-    "preview name name"
-    "preview image image"
-    "preview price price"
-    ". submit submit";
-
-  .name-input {
-    grid-area: name;
-  }
-
-  .image-input {
-    grid-area: image;
-  }
-
-  .price-input {
-    grid-area: price;
-  }
-
-  .submit {
-    grid-area: submit;
-  }
-`;
