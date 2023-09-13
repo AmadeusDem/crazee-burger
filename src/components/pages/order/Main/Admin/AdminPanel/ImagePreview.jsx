@@ -21,15 +21,15 @@ const ImagePreviewStyled = styled.div`
   align-items: center;
   color: ${theme.colors.greyBlue};
   border-radius: ${theme.borderRadius.round};
-  border: 1px solid ${theme.colors.greyBlue};
+  border: 1px solid ${theme.colors.greyLight};
 
   .no-image {
     text-align: center;
   }
 
   img {
-    width: 100%;
-    height: 150px;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
   }
 `;
