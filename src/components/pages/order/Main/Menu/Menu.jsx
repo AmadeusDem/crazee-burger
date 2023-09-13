@@ -88,4 +88,5 @@ const EmptyMenuContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: ${theme.shadows.strong};
 `;
