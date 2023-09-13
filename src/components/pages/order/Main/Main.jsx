@@ -84,13 +84,12 @@ const MainStyled = styled.main`
   height: calc(95vh - 5.25rem);
 
   background: ${theme.colors.background_white};
-  box-shadow: ${theme.shadows.strong};
   border-radius: 0px 0px ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
 
   .menu-and-admin {
     position: relative;
     display: grid;
-    border-radius: 0px 0px ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
+    border-radius: 0px 0px ${theme.borderRadius.extraRound} 0px;
     overflow: hidden;
   }
 `;
