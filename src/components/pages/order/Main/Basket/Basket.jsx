@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
+import BasketHeader from "./BasketHeader";
+import BasketContent from "./BasketContent";
+import BasketFooter from "./BasketFooter";
 
 export default function Basket() {
   return (
     <BasketStyled>
-      <div style={{ background: "red" }}>Basket Header</div>
-      <div style={{ background: "green" }}>Basket content</div>
-      <div style={{ background: "yellow" }}>Basket footer</div>
+      <BasketHeader />
+      <BasketContent />
+      <BasketFooter />
     </BasketStyled>
   );
 }
