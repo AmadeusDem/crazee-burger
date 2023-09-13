@@ -2,51 +2,21 @@ import { styled } from "styled-components";
 import { theme } from "../../../../theme";
 import { useContext, useRef, useState } from "react";
 import { OrderContext } from "../../../../context/OrderContext";
-import { fakeMenu } from "../../../../fakeData/fakeMenu";
 import Menu from "./Menu/Menu";
 import Admin from "./Admin/Admin";
 import { AdminContext } from "../../../../context/AdminContext";
 import { EMPTY_PRODUCT } from "../../../../enums/product";
-import { deepClone } from "../../../../utils/array";
 import Basket from "./Basket/Basket";
-
-const DEFAULT_MENU = fakeMenu.LARGE;
+import { useMenu } from "../../../../hooks/useMenu";
 
 export default function Main() {
   const { isAdminMode } = useContext(OrderContext);
   const [isPanelOpen, setIsPanelOpen] = useState(true);
   const [selectedTab, setSelectedTab] = useState("add");
-  const [menu, setMenu] = useState(DEFAULT_MENU);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productToEdit, setProductToEdit] = useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
-
-  const handleAdd = (newProduct) => {
-    const menuCopy = deepClone(menu);
-    setMenu([newProduct, ...menuCopy]);
-  };
-
-  const handleEdit = (productEdited) => {
-    const menuCopy = deepClone(menu);
-
-    const indexToEdit = menuCopy.findIndex((product) => product.id === productEdited.id);
-
-    menuCopy[indexToEdit] = productEdited;
-
-    setMenu(menuCopy);
-  };
-
-  const handleDelete = (idToDelete) => {
-    const menuCopy = deepClone(menu);
-
-    const filteredMenu = menuCopy.filter((product) => product.id !== idToDelete);
-
-    setMenu(filteredMenu);
-  };
-
-  const handleReset = () => {
-    setMenu(DEFAULT_MENU);
-  };
+  const { menu, handleAdd, handleReset, handleDelete, handleEdit } = useMenu();
 
   const adminContextValue = {
     isPanelOpen,
