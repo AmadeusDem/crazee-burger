@@ -64,4 +64,8 @@ const LoginFormStyled = styled.form`
     font-size: ${theme.fonts.P4};
     margin: 20px 10px 10px;
   }
+
+  button {
+    width: 100%;
+  }
 `;

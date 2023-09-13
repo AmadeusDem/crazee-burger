@@ -11,8 +11,6 @@ export default function Button({ className, label, Icon, onClick, version = "pri
 }
 
 const ButtonStyled = styled.button`
-  width: 100%;
-
   // Position and layout
   display: inline-flex;
   justify-content: center;
