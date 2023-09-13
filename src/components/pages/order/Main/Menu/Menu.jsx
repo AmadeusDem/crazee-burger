@@ -75,8 +75,9 @@ export default function Menu() {
 
 const MenuStyled = styled.section`
   display: grid;
+
+  grid-template-columns: repeat(auto-fill, 240px);
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, 240px);
   overflow-y: scroll;
   box-shadow: ${theme.shadows.strong};
   padding: 50px 50px 150px;
