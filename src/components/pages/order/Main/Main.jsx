@@ -8,6 +8,7 @@ import Admin from "./Admin/Admin";
 import { AdminContext } from "../../../../context/AdminContext";
 import { EMPTY_PRODUCT } from "../../../../enums/product";
 import { deepClone } from "../../../../utils/array";
+import Basket from "./Basket/Basket";
 
 const DEFAULT_MENU = fakeMenu.LARGE;
 
@@ -67,7 +68,7 @@ export default function Main() {
   return (
     <AdminContext.Provider value={adminContextValue}>
       <MainStyled>
-        {/* <div className="basket">Basket</div> */}
+        <Basket />
         <div className="menu-and-admin">
           <Menu />
           {isAdminMode && <Admin />}
@@ -79,7 +80,7 @@ export default function Main() {
 
 const MainStyled = styled.main`
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 25% 1fr;
   height: calc(95vh - 5.25rem);
 
   background: ${theme.colors.background_white};
