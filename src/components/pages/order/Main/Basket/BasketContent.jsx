@@ -12,7 +12,7 @@ export default function BasketContent({ basket }) {
             <div className="card-information">
               <div className="title-and-price">
                 <span>{product.title}</span>
-                <p>{formatPrice(product.price.toFixed(2))}</p>
+                <p>{formatPrice(parseFloat(product.price).toFixed(1))}</p>
               </div>
               <div>
                 <span className="quantity">x {product.quantity}</span>

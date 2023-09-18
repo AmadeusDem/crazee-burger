@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
+import { formatPrice } from "../../../../../utils/maths";
 
-export default function BasketHeader() {
+export default function BasketHeader({ total = 0 }) {
   return (
     <BasketHeaderStyled>
       <span>Total</span>
-      <span className="euros">0,00 €</span>
+      <span className="euros">{formatPrice(total.toFixed(2))}</span>
     </BasketHeaderStyled>
   );
 }

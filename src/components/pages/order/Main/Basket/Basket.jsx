@@ -5,9 +5,15 @@ import BasketContent from "./BasketContent";
 import BasketFooter from "./BasketFooter";
 
 export default function Basket({ basket }) {
+  const basketTotal = basket.reduce(
+    (prev, product) => (prev += product.quantity * parseFloat(product.price).toFixed(1)),
+    0
+  );
+  console.log(basketTotal);
+
   return (
     <BasketStyled>
-      <BasketHeader />
+      <BasketHeader total={basketTotal} />
       <BasketContent basket={basket} />
       <BasketFooter />
     </BasketStyled>
