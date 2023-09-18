@@ -38,7 +38,7 @@ export default function Main() {
   return (
     <AdminContext.Provider value={adminContextValue}>
       <MainStyled>
-        <Basket />
+        <Basket menu={menu} />
         <div className="menu-and-admin">
           <Menu />
           {isAdminMode && <Admin />}
