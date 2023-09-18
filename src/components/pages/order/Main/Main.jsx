@@ -36,6 +36,7 @@ export default function Main() {
     setProductToEdit,
     titleEditRef,
     handleBasketAdd,
+    handleBasketDelete,
   };
 
   return (

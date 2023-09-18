@@ -23,6 +23,7 @@ export default function Menu() {
     setProductToEdit,
     titleEditRef,
     handleBasketAdd,
+    handleBasketDelete,
   } = useContext(AdminContext);
   const { isAdminMode } = useContext(OrderContext);
 
@@ -40,6 +41,7 @@ export default function Menu() {
   const handleCardDelete = (event, idToDelete) => {
     event.stopPropagation();
     handleDelete(idToDelete);
+    handleBasketDelete(idToDelete);
     if (productToEdit && idToDelete === productToEdit.id) setProductToEdit(EMPTY_PRODUCT);
   };
 
