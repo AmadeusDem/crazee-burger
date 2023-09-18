@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import { formatPrice } from "../../../../../utils/maths";
 
-export default function BasketContent({ basket }) {
+export default function BasketContent({ basket, handleBasketDelete }) {
   return (
     <BasketContentStyled>
       {basket.length > 0 ? (
@@ -18,6 +18,9 @@ export default function BasketContent({ basket }) {
                 <span className="quantity">x {product.quantity}</span>
               </div>
             </div>
+            <button className="delete-button" onClick={() => handleBasketDelete(product.id)}>
+              Delete
+            </button>
           </div>
         ))
       ) : (
@@ -53,10 +56,23 @@ const BasketContentStyled = styled.div`
   color: ${theme.colors.greyBlue};
 
   .basket-card {
+    position: relative;
     max-height: 70px;
     display: flex;
     padding: 8px 16px;
     background: #fff;
+
+    .delete-button {
+      position: absolute;
+      right: 0;
+      display: none;
+    }
+
+    &:hover {
+      .delete-button {
+        display: block;
+      }
+    }
 
     img {
       max-width: 100%;

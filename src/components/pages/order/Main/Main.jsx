@@ -37,6 +37,14 @@ export default function Main() {
     }
   };
 
+  const handleBasketDelete = (idToDelete) => {
+    const basketCopy = deepClone(basket);
+    const basketEdited = basketCopy.filter((product) => product.id !== idToDelete);
+
+    const indexInMenu = menu.findIndex((product) => product.id === idToDelete);
+    const product = setBasket(basketEdited);
+  };
+
   const adminContextValue = {
     isPanelOpen,
     setIsPanelOpen,
@@ -58,7 +66,7 @@ export default function Main() {
   return (
     <AdminContext.Provider value={adminContextValue}>
       <MainStyled>
-        <Basket basket={basket} />
+        <Basket basket={basket} handleBasketDelete={handleBasketDelete} />
         <div className="menu-and-admin">
           <Menu />
           {isAdminMode && <Admin />}

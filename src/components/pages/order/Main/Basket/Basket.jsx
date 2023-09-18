@@ -4,17 +4,16 @@ import BasketHeader from "./BasketHeader";
 import BasketContent from "./BasketContent";
 import BasketFooter from "./BasketFooter";
 
-export default function Basket({ basket }) {
+export default function Basket({ basket, handleBasketDelete }) {
   const basketTotal = basket.reduce(
     (prev, product) => (prev += product.quantity * parseFloat(product.price).toFixed(1)),
     0
   );
-  console.log(basketTotal);
 
   return (
     <BasketStyled>
       <BasketHeader total={basketTotal} />
-      <BasketContent basket={basket} />
+      <BasketContent basket={basket} handleBasketDelete={handleBasketDelete} />
       <BasketFooter />
     </BasketStyled>
   );
