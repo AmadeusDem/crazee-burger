@@ -7,7 +7,7 @@ import { useState } from "react";
 
 export default function Basket({ menu }) {
   const filteredMenu = menu.filter((product) => product.quantity > 0);
-  const [basket, setBasket] = useState(filteredMenu);
+  const [basket, setBasket] = useState(() => filteredMenu);
 
   return (
     <BasketStyled>
@@ -24,4 +24,5 @@ const BasketStyled = styled.div`
   grid-template-rows: 70px 1fr 70px;
   border-radius: 0px 0px 0px 15px;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2) inset;
+  overflow: hidden;
 `;

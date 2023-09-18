@@ -1,19 +1,46 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
+import { formatPrice } from "../../../../../utils/maths";
 
-export default function BasketContent() {
+export default function BasketContent({ basket }) {
   return (
     <BasketContentStyled>
-      <div className="empty-basket">Votre commande est vide.</div>
+      {console.log(basket)}
+      {basket ? (
+        basket.map((product) => (
+          <div className="basket-card" key={product.id}>
+            <img src={product.imageSource} alt={`${product.title} image`} />
+            <div className="card-information">
+              <div className="title-and-price">
+                <span>{product.title}</span>
+                <p>{formatPrice(product.price.toFixed(2))}</p>
+              </div>
+              <div>
+                <span className="quantity">x {product.quantity}</span>
+              </div>
+            </div>
+          </div>
+        ))
+      ) : (
+        <div className="empty-basket">Votre commande est vide.</div>
+      )}
     </BasketContentStyled>
   );
 }
 
 const BasketContentStyled = styled.div`
   // Position and layout
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto-fill, 70px);
+  grid-row-gap: 20px;
+  padding: 20px 16px;
+
+  overflow: hidden;
+  overflow-y: auto;
 
   //Box model
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2) inset;
@@ -25,4 +52,33 @@ const BasketContentStyled = styled.div`
   font-family: Amatic SC;
   font-size: 36px;
   color: ${theme.colors.greyBlue};
+
+  .basket-card {
+    max-height: 70px;
+    display: flex;
+    padding: 8px 16px;
+    background: #fff;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .card-information {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      gap: 11px;
+
+      span {
+        font-size: 24px;
+      }
+
+      p {
+        font-size: 15px;
+      }
+    }
+  }
 `;
