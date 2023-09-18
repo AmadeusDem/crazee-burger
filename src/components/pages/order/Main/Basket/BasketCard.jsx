@@ -3,7 +3,7 @@ import { formatPrice } from "../../../../../utils/maths";
 import { theme } from "../../../../../theme";
 import { MdDeleteForever } from "react-icons/md";
 
-export default function BasketCard({ id, title, imageSource, price, quantity, onDelete }) {
+export default function BasketCard({ id, title, imageSource, price = 0, quantity, onDelete }) {
   return (
     <BasketCardStyled>
       <div className="delete-button">
@@ -95,5 +95,39 @@ const BasketCardStyled = styled.div`
 
   .delete-button {
     display: none;
+  }
+
+  &:hover {
+    .delete-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0px 5px 5px 0px;
+
+      position: absolute;
+      right: 0;
+      background: ${theme.colors.red};
+      height: 100%;
+      width: 25%;
+      cursor: pointer;
+
+      .icon {
+        width: 24px;
+        height: 24px;
+        color: ${theme.colors.white};
+      }
+
+      &:hover {
+        .icon {
+          color: ${theme.colors.dark};
+        }
+      }
+
+      &:active {
+        .icon {
+          color: ${theme.colors.white};
+        }
+      }
+    }
   }
 `;
