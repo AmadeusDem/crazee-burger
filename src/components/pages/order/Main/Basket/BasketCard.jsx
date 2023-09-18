@@ -7,7 +7,7 @@ export default function BasketCard({
   id,
   title,
   imageSource,
-  price = 0,
+  price,
   quantity,
   onDelete,
   isHoverable,
@@ -25,7 +25,7 @@ export default function BasketCard({
           <div className="title">
             <span>{title}</span>
           </div>
-          <span className="price">{formatPrice(parseFloat(price.toFixed(1)))}</span>
+          <span className="price">{formatPrice(price.toFixed(1))}</span>
         </div>
         <div className="quantity">
           <span>x {quantity}</span>
