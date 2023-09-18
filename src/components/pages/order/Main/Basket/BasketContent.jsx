@@ -5,7 +5,7 @@ import { formatPrice } from "../../../../../utils/maths";
 export default function BasketContent({ basket }) {
   return (
     <BasketContentStyled>
-      {basket ? (
+      {basket.length > 0 ? (
         basket.map((product) => (
           <div className="basket-card" key={product.id}>
             <img src={product.imageSource} alt={`${product.title} image`} />
