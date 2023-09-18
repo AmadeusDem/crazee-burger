@@ -41,7 +41,12 @@ export default function Menu() {
     event.stopPropagation();
     handleDelete(idToDelete);
     if (productToEdit && idToDelete === productToEdit.id) setProductToEdit(EMPTY_PRODUCT);
-    titleEditRef.current.focus();
+  };
+
+  const handleAddButton = (e, idProduct) => {
+    e.stopPropagation();
+    const product = menu.find((product) => product.id === idProduct);
+    handleBasketAdd(product);
   };
 
   if (menu.length === 0) {
@@ -65,7 +70,7 @@ export default function Menu() {
             onDelete={(e) => handleCardDelete(e, id)}
             isHoverable={isAdminMode}
             isSelected={isProductClicked(id, productToEdit.id)}
-            action={() => handleBasketAdd(id)}
+            onAdd={(e) => handleAddButton(e, id)}
           />
         ))}
       </MenuStyled>

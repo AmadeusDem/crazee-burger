@@ -8,7 +8,7 @@ import { AdminContext } from "../../../../context/AdminContext";
 import { EMPTY_PRODUCT } from "../../../../enums/product";
 import Basket from "./Basket/Basket";
 import { useMenu } from "../../../../hooks/useMenu";
-import { deepClone } from "../../../../utils/array";
+import { useBasket } from "../../../../hooks/useBasket";
 
 export default function Main() {
   const { isAdminMode } = useContext(OrderContext);
@@ -18,32 +18,7 @@ export default function Main() {
   const [productToEdit, setProductToEdit] = useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
   const { menu, handleAdd, handleReset, handleDelete, handleEdit } = useMenu();
-  const [basket, setBasket] = useState(menu.filter((product) => product.quantity > 0));
-
-  const handleBasketAdd = (idToAdd) => {
-    const basketCopy = deepClone(basket);
-    const indexInMenu = menu.findIndex((product) => product.id === idToAdd);
-    const productToAdd = menu[indexInMenu];
-    productToAdd.quantity++;
-
-    const productInBasket = basket.findIndex((product) => product.id === idToAdd);
-
-    if (productInBasket > -1) {
-      basketCopy[productInBasket].quantity++;
-      setBasket(basketCopy);
-    } else {
-      basketCopy.unshift(productToAdd);
-      setBasket(basketCopy);
-    }
-  };
-
-  const handleBasketDelete = (idToDelete) => {
-    const basketCopy = deepClone(basket);
-    const basketEdited = basketCopy.filter((product) => product.id !== idToDelete);
-
-    const indexInMenu = menu.findIndex((product) => product.id === idToDelete);
-    const product = setBasket(basketEdited);
-  };
+  const { basket, handleBasketAdd } = useBasket();
 
   const adminContextValue = {
     isPanelOpen,
@@ -66,7 +41,7 @@ export default function Main() {
   return (
     <AdminContext.Provider value={adminContextValue}>
       <MainStyled>
-        <Basket basket={basket} handleBasketDelete={handleBasketDelete} />
+        <Basket basket={basket} handleBasketDelete={() => handleEdit()} />
         <div className="menu-and-admin">
           <Menu />
           {isAdminMode && <Admin />}

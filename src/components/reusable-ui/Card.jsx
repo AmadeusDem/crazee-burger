@@ -13,7 +13,7 @@ export default function Card({
   onDelete,
   isHoverable,
   isSelected,
-  action,
+  onAdd,
 }) {
   return (
     <CardStyled onClick={onClick} $isHoverable={isHoverable} $isSelected={isSelected}>
@@ -33,14 +33,7 @@ export default function Card({
               <p>{leftText}</p>
             </div>
             <div className="right-description">
-              <Button
-                label={buttonLabel}
-                className="primary-button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  action();
-                }}
-              />
+              <Button label={buttonLabel} className="primary-button" onClick={onAdd} />
             </div>
           </div>
         </div>
