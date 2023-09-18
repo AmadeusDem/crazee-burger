@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import BasketHeader from "./BasketHeader";
-import BasketContent from "./BasketContent";
+import BasketProducts from "./BasketProducts";
 import BasketFooter from "./BasketFooter";
 
 export default function Basket({ basket, handleBasketDelete }) {
@@ -13,7 +13,7 @@ export default function Basket({ basket, handleBasketDelete }) {
   return (
     <BasketStyled>
       <BasketHeader total={basketTotal} />
-      <BasketContent basket={basket} handleBasketDelete={handleBasketDelete} />
+      <BasketProducts basket={basket} handleBasketDelete={handleBasketDelete} />
       <BasketFooter />
     </BasketStyled>
   );
