@@ -23,8 +23,6 @@ export const useBasket = () => {
       quantity: 1,
     };
 
-    console.log(newProduct);
-
     const newBasket = [newProduct, ...basketCopy];
     setBasket(newBasket);
   };

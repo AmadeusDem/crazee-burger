@@ -2,8 +2,12 @@ import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import BasketCard from "./BasketCard";
 import { PRODUCT_IMAGE_DEFAULT } from "../../../../../enums/product";
+import { useContext } from "react";
+import { OrderContext } from "../../../../../context/OrderContext.jsx";
 
 export default function BasketProducts({ basket, handleBasketDelete }) {
+  const { isAdminMode } = useContext(OrderContext);
+
   return (
     <BasketProductsStyled>
       {basket.map((product) => (
@@ -14,6 +18,7 @@ export default function BasketProducts({ basket, handleBasketDelete }) {
           price={product.price}
           quantity={product.quantity}
           onDelete={() => handleBasketDelete(product.id)}
+          isHoverable={isAdminMode}
         />
       ))}
     </BasketProductsStyled>
