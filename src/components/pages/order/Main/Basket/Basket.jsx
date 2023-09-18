@@ -3,8 +3,10 @@ import { theme } from "../../../../../theme";
 import BasketHeader from "./BasketHeader";
 import BasketProducts from "./BasketProducts";
 import BasketFooter from "./BasketFooter";
+import EmptyBasket from "./EmptyBasket";
 
 export default function Basket({ basket, handleBasketDelete }) {
+  const isBasketEmpty = basket.length === 0;
   const basketTotal = basket.reduce(
     (prev, product) => (prev += product.quantity * parseFloat(product.price).toFixed(1)),
     0
@@ -13,7 +15,11 @@ export default function Basket({ basket, handleBasketDelete }) {
   return (
     <BasketStyled>
       <BasketHeader total={basketTotal} />
-      <BasketProducts basket={basket} handleBasketDelete={handleBasketDelete} />
+      {isBasketEmpty ? (
+        <EmptyBasket />
+      ) : (
+        <BasketProducts basket={basket} handleBasketDelete={handleBasketDelete} />
+      )}
       <BasketFooter />
     </BasketStyled>
   );
