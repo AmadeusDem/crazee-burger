@@ -18,7 +18,7 @@ export default function Main() {
   const [productToEdit, setProductToEdit] = useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
   const { menu, handleAdd, handleReset, handleDelete, handleEdit } = useMenu();
-  const { basket, handleBasketAdd } = useBasket();
+  const { basket, handleBasketAdd, handleBasketDelete } = useBasket();
 
   const adminContextValue = {
     isPanelOpen,
@@ -41,7 +41,7 @@ export default function Main() {
   return (
     <AdminContext.Provider value={adminContextValue}>
       <MainStyled>
-        <Basket basket={basket} handleBasketDelete={() => handleEdit()} />
+        <Basket basket={basket} handleBasketDelete={handleBasketDelete} />
         <div className="menu-and-admin">
           <Menu />
           {isAdminMode && <Admin />}

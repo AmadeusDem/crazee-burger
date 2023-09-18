@@ -13,7 +13,7 @@ export default function BasketProducts({ basket, handleBasketDelete }) {
           imageSource={product.imageSource ? product.imageSource : PRODUCT_IMAGE_DEFAULT}
           price={product.price}
           quantity={product.quantity}
-          onDelete={handleBasketDelete}
+          onDelete={() => handleBasketDelete(product.id)}
         />
       ))}
     </BasketProductsStyled>
@@ -24,6 +24,7 @@ const BasketProductsStyled = styled.div`
   // Position and layout
   display: flex;
   flex-direction: column;
+  justify-content: start;
 
   gap: 20px;
   padding: 20px 16px;

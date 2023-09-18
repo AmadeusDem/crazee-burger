@@ -3,7 +3,7 @@ import { fakeBasket } from "../fakeData/fakeBasket";
 import { deepClone } from "../utils/array";
 
 export const useBasket = () => {
-  const [basket, setBasket] = useState(fakeBasket.LARGE_WEIRD);
+  const [basket, setBasket] = useState(fakeBasket.EMPTY);
 
   const handleBasketAdd = (productToAdd) => {
     const copyBasket = deepClone(basket);
@@ -35,5 +35,11 @@ export const useBasket = () => {
     setBasket(copyBasket);
   };
 
-  return { basket, handleBasketAdd };
+  const handleBasketDelete = (idProductToDelete) => {
+    const basketCopy = deepClone(basket);
+    const newBasket = basketCopy.filter((product) => product.id !== idProductToDelete);
+    setBasket(newBasket);
+  };
+
+  return { basket, handleBasketAdd, handleBasketDelete };
 };

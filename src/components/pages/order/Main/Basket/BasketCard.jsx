@@ -6,7 +6,7 @@ import { MdDeleteForever } from "react-icons/md";
 export default function BasketCard({ id, title, imageSource, price = 0, quantity, onDelete }) {
   return (
     <BasketCardStyled>
-      <div className="delete-button">
+      <div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />
       </div>
       <div className="image">
@@ -41,15 +41,13 @@ const BasketCardStyled = styled.div`
   box-shadow: -4px 4px 15px 0px rgba(0, 0, 0, 0.2);
 
   .image {
-    max-height: 70px;
-    display: flex;
-    justify-content: center;
+    height: 70px;
 
     img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
       padding: 5px;
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
     }
   }
 
@@ -57,7 +55,7 @@ const BasketCardStyled = styled.div`
     display: grid;
     grid-template-columns: 70% 30%;
     color: ${theme.colors.primary};
-    font-size: 15px;
+    font-size: ${theme.fonts.P2};
     font-weight: 700;
     font-style: normal;
     grid-column-gap: 20px;
@@ -89,7 +87,7 @@ const BasketCardStyled = styled.div`
       align-items: center;
       justify-content: center;
       margin-right: 20px;
-      font-size: ${theme.fonts.SM};
+      font-size: ${theme.fonts.P3};
     }
   }
 
