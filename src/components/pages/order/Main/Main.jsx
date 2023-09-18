@@ -8,6 +8,7 @@ import { AdminContext } from "../../../../context/AdminContext";
 import { EMPTY_PRODUCT } from "../../../../enums/product";
 import Basket from "./Basket/Basket";
 import { useMenu } from "../../../../hooks/useMenu";
+import { deepClone } from "../../../../utils/array";
 
 export default function Main() {
   const { isAdminMode } = useContext(OrderContext);
@@ -17,6 +18,24 @@ export default function Main() {
   const [productToEdit, setProductToEdit] = useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
   const { menu, handleAdd, handleReset, handleDelete, handleEdit } = useMenu();
+  const [basket, setBasket] = useState(menu.filter((product) => product.quantity > 0));
+
+  const handleBasketAdd = (idToAdd) => {
+    const basketCopy = deepClone(basket);
+    const indexInMenu = menu.findIndex((product) => product.id === idToAdd);
+    const productToAdd = menu[indexInMenu];
+    productToAdd.quantity++;
+
+    const productInBasket = basket.findIndex((product) => product.id === idToAdd);
+
+    if (productInBasket > -1) {
+      basketCopy[productInBasket].quantity++;
+      setBasket(basketCopy);
+    } else {
+      basketCopy.unshift(productToAdd);
+      setBasket(basketCopy);
+    }
+  };
 
   const adminContextValue = {
     isPanelOpen,
@@ -33,12 +52,13 @@ export default function Main() {
     handleEdit,
     setProductToEdit,
     titleEditRef,
+    handleBasketAdd,
   };
 
   return (
     <AdminContext.Provider value={adminContextValue}>
       <MainStyled>
-        <Basket menu={menu} />
+        <Basket basket={basket} />
         <div className="menu-and-admin">
           <Menu />
           {isAdminMode && <Admin />}

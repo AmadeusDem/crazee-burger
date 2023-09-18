@@ -24,6 +24,7 @@ export default function Menu() {
     productToEdit,
     setProductToEdit,
     titleEditRef,
+    handleBasketAdd,
   } = useContext(AdminContext);
   const { isAdminMode } = useContext(OrderContext);
 
@@ -66,6 +67,7 @@ export default function Menu() {
             onDelete={(e) => handleCardDelete(e, id)}
             isHoverable={isAdminMode}
             isSelected={isProductClicked(id, productToEdit.id)}
+            action={() => handleBasketAdd(id)}
           />
         ))}
       </MenuStyled>

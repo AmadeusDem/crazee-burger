@@ -3,12 +3,8 @@ import { theme } from "../../../../../theme";
 import BasketHeader from "./BasketHeader";
 import BasketContent from "./BasketContent";
 import BasketFooter from "./BasketFooter";
-import { useState } from "react";
 
-export default function Basket({ menu }) {
-  const filteredMenu = menu.filter((product) => product.quantity > 0);
-  const [basket, setBasket] = useState(() => filteredMenu);
-
+export default function Basket({ basket }) {
   return (
     <BasketStyled>
       <BasketHeader />

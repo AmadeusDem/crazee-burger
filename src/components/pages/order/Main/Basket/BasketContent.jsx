@@ -5,7 +5,6 @@ import { formatPrice } from "../../../../../utils/maths";
 export default function BasketContent({ basket }) {
   return (
     <BasketContentStyled>
-      {console.log(basket)}
       {basket ? (
         basket.map((product) => (
           <div className="basket-card" key={product.id}>
