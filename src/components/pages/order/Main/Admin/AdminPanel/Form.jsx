@@ -28,16 +28,17 @@ export default Form;
 
 const FormStyled = styled.form`
   padding: 20px 30px;
-  width: 70%;
+  width: 80%;
+  max-height: 180px;
   display: grid;
   grid-gap: 8px 20px;
-  grid-template-columns: 20% 1fr 2fr 1fr;
+  grid-template-columns: 20% 1fr 1fr 1fr;
   grid-template-rows: repeat(4, 1fr);
   grid-template-areas:
     "preview name name name"
     "preview image image image"
     "preview price price price"
-    ". submit submit .";
+    ". submit submit submit";
 
   .name-input {
     grid-area: name;

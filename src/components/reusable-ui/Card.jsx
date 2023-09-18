@@ -135,6 +135,7 @@ const CardStyled = styled.article`
           align-items: center;
 
           .primary-button {
+            width: 100%;
             font-size: ${theme.fonts.XS};
             padding: 0.75rem;
           }
@@ -158,6 +159,7 @@ const hoverableStyle = css`
 const selectedStyle = css`
   background: ${theme.colors.primary};
   .primary-button {
+    width: 100%;
     background: ${theme.colors.white};
     color: ${theme.colors.primary};
 

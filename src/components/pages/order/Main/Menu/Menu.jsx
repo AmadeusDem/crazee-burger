@@ -10,6 +10,7 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuUser from "./EmptyMenuUser";
 import { isProductClicked } from "./helper";
 import { EMPTY_PRODUCT } from "../../../../../enums/product";
+import { theme } from "../../../../../theme";
 
 const PRODUCT_IMAGE_DEFAULT = "/images/coming-soon.png";
 
@@ -74,10 +75,11 @@ export default function Menu() {
 
 const MenuStyled = styled.section`
   display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fit, 240px);
-  overflow-y: scroll;
 
+  grid-template-columns: repeat(auto-fill, 240px);
+  justify-content: center;
+  overflow-y: scroll;
+  box-shadow: ${theme.shadows.strong};
   padding: 50px 50px 150px;
   grid-gap: 3.75rem 5.3125rem;
 `;
@@ -86,4 +88,5 @@ const EmptyMenuContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: ${theme.shadows.strong};
 `;
