@@ -11,9 +11,9 @@ export const useBasket = () => {
 
     if (isProductInBasket) {
       editExistingProduct(productToAdd, copyBasket, setBasket);
-    } else {
-      createNewProduct(productToAdd, copyBasket, setBasket);
+      return;
     }
+    createNewProduct(productToAdd, copyBasket, setBasket);
   };
 
   const createNewProduct = (productToAdd, basketCopy, setBasket) => {
