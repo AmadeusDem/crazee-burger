@@ -24,12 +24,12 @@ const BasketHeaderStyled = styled.div`
   background: ${theme.colors.background_dark};
 
   // Typography
-  font-family: Amatic SC;
-  font-size: 36px;
+  font-size: ${theme.fonts.P4};
   letter-spacing: 2px;
+  font-family: ${theme.fonts.family.stylish};
   color: ${theme.colors.primary};
 
   .euros {
-    font-weight: 700;
+    font-weight: ${theme.weights.bold};
   }
 `;

@@ -23,17 +23,25 @@ export default function OrderPage() {
 }
 
 const OrderPageStyled = styled.div`
-  background-color: ${theme.colors.primary};
-  height: 100vh;
+  // Position and layout
   display: flex;
   justify-content: center;
   align-items: center;
 
+  // Box model
+  height: 100vh;
+
+  // Background
+  background-color: ${theme.colors.primary};
+
   .container {
-    height: 95vh;
-    max-width: 1400px;
-    width: 100%;
+    // Position and layout
     display: flex;
     flex-direction: column;
+
+    // Box model
+    width: 100%;
+    max-width: 1400px;
+    height: 95vh;
   }
 `;

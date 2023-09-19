@@ -11,6 +11,7 @@ export default function EditInfoMessage() {
 }
 
 const EditInfoMessageStyled = styled.span`
+  // Typography
   color: ${theme.colors.primary};
   font-size: ${theme.fonts.SM};
 

@@ -57,6 +57,7 @@ const shadows = {
   medium: "-8px 8px 20px 0px rgb(0 0 0 / 20%)",
   strong: "0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset",
   orangeHighlight: "0px 0px 8px 0px rgb(255 154 35 / 100%)",
+  basketCard: "-4px 4px 15px 0px rgba(0, 0, 0, 0.2)",
 };
 const weights = {
   light: 300,

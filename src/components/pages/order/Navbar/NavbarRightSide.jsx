@@ -40,12 +40,17 @@ export default function NavbarRightSide() {
 }
 
 const NavbarRightSideStyled = styled.div`
-  color: ${theme.colors.greyBlue};
+  // Position and layout
   display: flex;
   gap: 1.875rem;
   justify-content: center;
   align-items: center;
-  padding: 10px 20px;
+
+  // Box model
+  padding: 10px ${theme.spacing.md};
+
+  // Typographys
+  color: ${theme.colors.greyBlue};
 
   .toaster {
     max-width: 300px;

@@ -12,9 +12,12 @@ export default function HintMessage() {
 }
 
 const HintMessageStyled = styled.div`
-  font-family: Amatic SC, cursive;
-  color: ${theme.colors.greyBlue};
-  font-size: 24px;
+  // Position and layout
   display: flex;
   gap: ${theme.spacing.xs};
+
+  // Typography
+  font-size: ${theme.fonts.P3};
+  color: ${theme.colors.greyBlue};
+  font-family: ${theme.fonts.family.stylish};
 `;

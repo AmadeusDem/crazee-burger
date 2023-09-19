@@ -40,8 +40,8 @@ const BasketProductsStyled = styled.div`
   background: ${theme.colors.background_white};
 
   // Typography
-  font-family: Amatic SC;
-  font-size: 36px;
+  font-size: ${theme.fonts.P4};
+  font-family: ${theme.fonts.family.stylish};
   color: ${theme.colors.greyBlue};
 
   .empty-basket {

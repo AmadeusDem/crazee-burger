@@ -53,17 +53,25 @@ export default function Main() {
 }
 
 const MainStyled = styled.main`
+  // Position and layout
   display: grid;
   grid-template-columns: 25% 1fr;
+
+  // Box model (from outside in)
+  border-radius: 0px 0px ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
   height: calc(95vh - 5.25rem);
 
   background: ${theme.colors.background_white};
-  border-radius: 0px 0px ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
 
   .menu-and-admin {
+    // Position and layout
     position: relative;
     display: grid;
-    border-radius: 0px 0px ${theme.borderRadius.extraRound} 0px;
+
+    // Clipping
     overflow: hidden;
+
+    // Box model
+    border-radius: 0px 0px ${theme.borderRadius.extraRound} 0px;
   }
 `;

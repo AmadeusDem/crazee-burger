@@ -82,19 +82,26 @@ export default function Menu() {
 }
 
 const MenuStyled = styled.section`
+  // Position and layout
   display: grid;
-
   grid-template-columns: repeat(auto-fill, 240px);
+  grid-gap: 3.75rem 5.3125rem;
   justify-content: center;
+
+  // Clipping
   overflow-y: scroll;
+
+  // Box model (from outside in)
   box-shadow: ${theme.shadows.strong};
   padding: 50px 50px 150px;
-  grid-gap: 3.75rem 5.3125rem;
 `;
 
 const EmptyMenuContainer = styled.div`
+  // Position and layout
   display: flex;
   justify-content: center;
   align-items: center;
+
+  // Box model (from outside in)
   box-shadow: ${theme.shadows.strong};
 `;

@@ -26,10 +26,17 @@ export default function Basket({ basket, handleBasketDelete }) {
 }
 
 const BasketStyled = styled.div`
-  background: ${theme.colors.background_white};
+  // Position and layout
   display: grid;
   grid-template-rows: 70px 1fr 70px;
-  border-radius: 0px 0px 0px 15px;
-  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2) inset;
+
+  // Clipping
   overflow: hidden;
+
+  // Box model (from outside in)
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2) inset;
+  border-radius: 0px 0px 0px 15px;
+
+  // Background
+  background: ${theme.colors.background_white};
 `;

@@ -17,14 +17,17 @@ export default function AdminPanel() {
 }
 
 const AdminPanelStyled = styled.div`
-  height: 240px;
-
-  width: 100%;
+  // Position and layout
   display: flex;
   align-items: center;
 
-  padding: 30px 5%;
-  background: ${theme.colors.white};
-  border: 1px solid ${theme.colors.greyLight};
+  // Box model (from outside in)
   box-shadow: ${theme.shadows.medium};
+  border: 1px solid ${theme.colors.greyLight};
+  width: 100%;
+  height: 240px;
+  padding: 30px 5%;
+
+  // Background
+  background: ${theme.colors.white};
 `;
