@@ -11,6 +11,7 @@ import EmptyMenuUser from "./EmptyMenuUser";
 import { isProductClicked } from "./helper";
 import { EMPTY_PRODUCT, PRODUCT_IMAGE_DEFAULT } from "../../../../../enums/product";
 import { theme } from "../../../../../theme";
+import { find } from "../../../../../utils/array";
 
 export default function Menu() {
   const {
@@ -30,7 +31,7 @@ export default function Menu() {
   const handleCardClick = async (id) => {
     if (!isAdminMode) return;
 
-    const productSelected = menu.find((product) => product.id === id);
+    const productSelected = find(id, menu);
 
     await setIsPanelOpen(true);
     await setSelectedTab("edit");
@@ -47,7 +48,7 @@ export default function Menu() {
 
   const handleAddButton = (e, idProduct) => {
     e.stopPropagation();
-    const product = menu.find((product) => product.id === idProduct);
+    const product = find(idProduct, menu);
     handleBasketAdd(product);
   };
 
