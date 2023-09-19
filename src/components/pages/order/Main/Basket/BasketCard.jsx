@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { formatPrice } from "../../../../../utils/maths";
+import { PRODUCT_IMAGE_DEFAULT } from "../../../../../enums/product";
 import { theme } from "../../../../../theme";
 import { MdDeleteForever } from "react-icons/md";
 
@@ -18,7 +19,7 @@ export default function BasketCard({
         <MdDeleteForever className="icon" />
       </div>
       <div className="image">
-        <img src={imageSource} alt={title} />
+        <img src={imageSource ? imageSource : PRODUCT_IMAGE_DEFAULT} alt={title} />
       </div>
       <div className="text-info">
         <div className="left-info">
