@@ -26,7 +26,9 @@ export default function BasketCard({
           <div className="title">
             <span>{title}</span>
           </div>
-          <span className="price">{formatPrice(price.toFixed(1))}</span>
+          <span className="price">
+            {isNaN(price) ? formatPrice(price) : formatPrice(price.toFixed(1))}
+          </span>
         </div>
         <div className="quantity">
           <span>x {quantity}</span>
@@ -49,6 +51,8 @@ const BasketCardStyled = styled.div`
 
   background: ${theme.colors.white};
   box-shadow: -4px 4px 15px 0px rgba(0, 0, 0, 0.2);
+
+  user-select: none;
 
   .image {
     height: 70px;
@@ -107,6 +111,7 @@ const BasketCardStyled = styled.div`
 `;
 
 const hoverableStyle = css`
+  cursor: pointer;
   &:hover {
     .delete-button {
       display: flex;
