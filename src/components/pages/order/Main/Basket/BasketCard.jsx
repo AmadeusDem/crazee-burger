@@ -12,10 +12,11 @@ export default function BasketCard({
   quantity,
   onDelete,
   isHoverable,
+  isSelected,
   onClick,
 }) {
   return (
-    <BasketCardStyled $isHoverable={isHoverable} onClick={onClick}>
+    <BasketCardStyled $isHoverable={isHoverable} $isSelected={isSelected} onClick={onClick}>
       <div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />
       </div>
@@ -53,12 +54,28 @@ const BasketCardStyled = styled.div`
       height: 100%;
       padding: 5px;
 
+      font-size: ${theme.fonts.P3};
+
       object-fit: contain;
     }
   }
 
   .delete-button {
     display: none;
+  }
+
+  ${({ $isHoverable, $isSelected }) => $isHoverable && $isSelected && selectedStyle}
+`;
+
+const selectedStyle = css`
+  background: ${theme.colors.primary};
+
+  .left-info {
+    color: ${theme.colors.white};
+  }
+
+  .quantity {
+    color: ${theme.colors.white};
   }
 `;
 

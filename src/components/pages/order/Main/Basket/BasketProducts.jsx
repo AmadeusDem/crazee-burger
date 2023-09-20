@@ -6,10 +6,11 @@ import { useContext } from "react";
 import { OrderContext } from "../../../../../context/OrderContext.jsx";
 import { AdminContext } from "../../../../../context/AdminContext";
 import { find } from "../../../../../utils/array";
+import { isProductClicked } from "../helper";
 
 export default function BasketProducts({ basket, handleBasketDelete }) {
   const { isAdminMode } = useContext(OrderContext);
-  const { setProductToEdit, setSelectedTab, setIsPanelOpen, menu, titleEditRef } =
+  const { productToEdit, setProductToEdit, setSelectedTab, setIsPanelOpen, menu, titleEditRef } =
     useContext(AdminContext);
 
   const handleCardClick = async (id) => {
@@ -32,6 +33,7 @@ export default function BasketProducts({ basket, handleBasketDelete }) {
           onDelete={() => handleBasketDelete(product.id)}
           isHoverable={isAdminMode}
           onClick={() => handleCardClick(product.id)}
+          isSelected={isProductClicked(product.id, productToEdit.id)}
         />
       ))}
     </BasketProductsStyled>

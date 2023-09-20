@@ -8,7 +8,7 @@ import { OrderContext } from "../../../../../context/OrderContext.jsx";
 import { replaceFrenchCommaWithDot } from "../../../../../utils/maths";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuUser from "./EmptyMenuUser";
-import { isProductClicked } from "./helper";
+import { isProductClicked } from "../helper";
 import { EMPTY_PRODUCT, PRODUCT_IMAGE_DEFAULT } from "../../../../../enums/product";
 import { theme } from "../../../../../theme";
 import { find } from "../../../../../utils/array";
