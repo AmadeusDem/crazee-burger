@@ -11,11 +11,7 @@ export default function BasketCardInfo({ title, price, quantity }) {
         <div className="title">
           <span>{title}</span>
         </div>
-        <span className="price">
-          {isNaN(parsedPrice)
-            ? formatPrice(price)
-            : formatPrice(parseFloat(replaceFrenchCommaWithDot(price)).toFixed(1))}
-        </span>
+        <span className="price">{price}</span>
       </div>
       <div className="quantity">
         <span>x {quantity}</span>

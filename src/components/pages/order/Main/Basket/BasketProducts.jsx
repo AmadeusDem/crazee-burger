@@ -7,11 +7,20 @@ import { OrderContext } from "../../../../../context/OrderContext.jsx";
 import { AdminContext } from "../../../../../context/AdminContext";
 import { find } from "../../../../../utils/array";
 import { isProductClicked } from "../helper";
+import { formatPrice, replaceFrenchCommaWithDot } from "../../../../../utils/maths";
 
-export default function BasketProducts({ basket, handleBasketDelete }) {
+export default function BasketProducts() {
   const { isAdminMode } = useContext(OrderContext);
-  const { productToEdit, setProductToEdit, setSelectedTab, setIsPanelOpen, menu, titleEditRef } =
-    useContext(AdminContext);
+  const {
+    productToEdit,
+    setProductToEdit,
+    setSelectedTab,
+    setIsPanelOpen,
+    menu,
+    titleEditRef,
+    basket,
+    handleBasketDelete,
+  } = useContext(AdminContext);
 
   const handleCardClick = async (id) => {
     if (!isAdminMode) return;
@@ -26,16 +35,22 @@ export default function BasketProducts({ basket, handleBasketDelete }) {
 
   return (
     <BasketProductsStyled>
-      {basket.map((product) => (
-        <BasketCard
-          key={product.id}
-          {...product}
-          onDelete={(e) => handleBasketDelete(e, product.id)}
-          isHoverable={isAdminMode}
-          onClick={() => handleCardClick(product.id)}
-          isSelected={isProductClicked(product.id, productToEdit.id)}
-        />
-      ))}
+      {basket.map(({ id, quantity }) => {
+        const menuProduct = find(id, menu);
+        return (
+          <BasketCard
+            key={id}
+            title={menuProduct.title}
+            imageSource={menuProduct.imageSource}
+            price={formatPrice(parseFloat(replaceFrenchCommaWithDot(menuProduct.price)).toFixed(1))}
+            quantity={quantity}
+            onDelete={(e) => handleBasketDelete(e, id)}
+            isHoverable={isAdminMode}
+            onClick={() => handleCardClick(id)}
+            isSelected={isProductClicked(id, productToEdit.id)}
+          />
+        );
+      })}
     </BasketProductsStyled>
   );
 }

@@ -1,47 +1,25 @@
 import { useState } from "react";
-import { fakeBasket } from "../fakeData/fakeBasket";
+
 import { deepClone, find, findIndex } from "../utils/array";
 
 export const useBasket = () => {
-  const [basket, setBasket] = useState(fakeBasket.EMPTY);
+  const [basket, setBasket] = useState([]);
 
-  const handleBasketAdd = (productToAdd) => {
-    const copyBasket = deepClone(basket);
-    const isProductInBasket = find(productToAdd.id, copyBasket) !== undefined;
+  const handleBasketAdd = (idProductToAdd) => {
+    const basketCopy = deepClone(basket);
+
+    const isProductInBasket = find(idProductToAdd, basketCopy) !== undefined;
 
     if (isProductInBasket) {
-      editExistingProduct(productToAdd, copyBasket, setBasket);
+      const indexProductInBasket = findIndex(idProductToAdd, basketCopy);
+      basketCopy[indexProductInBasket].quantity++;
+      setBasket(basketCopy);
       return;
     }
-    createNewProduct(productToAdd, copyBasket, setBasket);
-  };
 
-  const createNewProduct = (productToAdd, basketCopy, setBasket) => {
-    const newProduct = {
-      ...productToAdd,
-      quantity: 1,
-    };
-
+    const newProduct = { id: idProductToAdd, quantity: 1 };
     const newBasket = [newProduct, ...basketCopy];
     setBasket(newBasket);
-  };
-
-  const editExistingProduct = (productToEdit, copyBasket, setBasket) => {
-    const indexProductInBasket = findIndex(productToEdit.id, copyBasket);
-    copyBasket[indexProductInBasket].quantity++;
-    setBasket(copyBasket);
-  };
-
-  const handleBasketEdit = (productEdited) => {
-    const productInBasket = find(productEdited.id, basket);
-    if (productInBasket) {
-      const basketCopy = deepClone(basket);
-      const productWithQuantity = { ...productEdited, quantity: productInBasket.quantity };
-      const newBasket = basketCopy.map((product) =>
-        product.id === productWithQuantity.id ? productWithQuantity : product
-      );
-      setBasket(newBasket);
-    }
   };
 
   const handleBasketDelete = (event, idProductToDelete) => {
@@ -51,5 +29,5 @@ export const useBasket = () => {
     setBasket(newBasket);
   };
 
-  return { basket, handleBasketAdd, handleBasketDelete, handleBasketEdit };
+  return { basket, handleBasketAdd, handleBasketDelete };
 };
