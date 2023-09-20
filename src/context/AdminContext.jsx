@@ -21,6 +21,8 @@ export const AdminContext = createContext({
   setProductToEdit: () => {},
   titleEditRef: () => {},
 
+  handleProductSelected: () => {},
+
   basket: [],
   handleBasketAdd: () => {},
   handleBasketDelete: () => {},

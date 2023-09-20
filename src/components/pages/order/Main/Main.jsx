@@ -9,6 +9,7 @@ import { EMPTY_PRODUCT } from "../../../../enums/product";
 import Basket from "./Basket/Basket";
 import { useMenu } from "../../../../hooks/useMenu";
 import { useBasket } from "../../../../hooks/useBasket";
+import { find } from "../../../../utils/array";
 
 export default function Main() {
   const { isAdminMode } = useContext(OrderContext);
@@ -19,6 +20,17 @@ export default function Main() {
   const titleEditRef = useRef();
   const { menu, handleAdd, handleReset, handleDelete, handleEdit } = useMenu();
   const { basket, handleBasketAdd, handleBasketDelete, handleBasketEdit } = useBasket();
+
+  const handleProductSelected = async (idProduct) => {
+    if (!isAdminMode) return;
+
+    const productSelected = find(idProduct, menu);
+
+    await setIsPanelOpen(true);
+    await setSelectedTab("edit");
+    await setProductToEdit(productSelected);
+    titleEditRef.current.focus();
+  };
 
   const adminContextValue = {
     isPanelOpen,
@@ -39,6 +51,7 @@ export default function Main() {
     handleBasketDelete,
     handleBasketEdit,
     basket,
+    handleProductSelected,
   };
 
   return (

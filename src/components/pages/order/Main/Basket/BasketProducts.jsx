@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import BasketCard from "./BasketCard";
-
 import { useContext } from "react";
 import { OrderContext } from "../../../../../context/OrderContext.jsx";
 import { AdminContext } from "../../../../../context/AdminContext";
@@ -11,27 +10,8 @@ import { formatPrice, replaceFrenchCommaWithDot } from "../../../../../utils/mat
 
 export default function BasketProducts() {
   const { isAdminMode } = useContext(OrderContext);
-  const {
-    productToEdit,
-    setProductToEdit,
-    setSelectedTab,
-    setIsPanelOpen,
-    menu,
-    titleEditRef,
-    basket,
-    handleBasketDelete,
-  } = useContext(AdminContext);
-
-  const handleCardClick = async (id) => {
-    if (!isAdminMode) return;
-
-    const productSelected = find(id, menu);
-
-    await setIsPanelOpen(true);
-    await setSelectedTab("edit");
-    await setProductToEdit(productSelected);
-    titleEditRef.current.focus();
-  };
+  const { productToEdit, menu, basket, handleBasketDelete, handleProductSelected } =
+    useContext(AdminContext);
 
   return (
     <BasketProductsStyled>
@@ -46,7 +26,7 @@ export default function BasketProducts() {
             quantity={quantity}
             onDelete={(e) => handleBasketDelete(e, id)}
             isHoverable={isAdminMode}
-            onClick={() => handleCardClick(id)}
+            onClick={() => handleProductSelected(id)}
             isSelected={isProductClicked(id, productToEdit.id)}
           />
         );
