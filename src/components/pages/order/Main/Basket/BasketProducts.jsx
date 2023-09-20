@@ -4,9 +4,24 @@ import BasketCard from "./BasketCard";
 
 import { useContext } from "react";
 import { OrderContext } from "../../../../../context/OrderContext.jsx";
+import { AdminContext } from "../../../../../context/AdminContext";
+import { find } from "../../../../../utils/array";
 
 export default function BasketProducts({ basket, handleBasketDelete }) {
   const { isAdminMode } = useContext(OrderContext);
+  const { setProductToEdit, setSelectedTab, setIsPanelOpen, menu, titleEditRef } =
+    useContext(AdminContext);
+
+  const handleCardClick = async (id) => {
+    if (!isAdminMode) return;
+
+    const productSelected = find(id, menu);
+
+    await setIsPanelOpen(true);
+    await setSelectedTab("edit");
+    await setProductToEdit(productSelected);
+    titleEditRef.current.focus();
+  };
 
   return (
     <BasketProductsStyled>
@@ -16,6 +31,7 @@ export default function BasketProducts({ basket, handleBasketDelete }) {
           {...product}
           onDelete={() => handleBasketDelete(product.id)}
           isHoverable={isAdminMode}
+          onClick={() => handleCardClick(product.id)}
         />
       ))}
     </BasketProductsStyled>

@@ -12,9 +12,10 @@ export default function BasketCard({
   quantity,
   onDelete,
   isHoverable,
+  onClick,
 }) {
   return (
-    <BasketCardStyled $isHoverable={isHoverable}>
+    <BasketCardStyled $isHoverable={isHoverable} onClick={onClick}>
       <div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />
       </div>
