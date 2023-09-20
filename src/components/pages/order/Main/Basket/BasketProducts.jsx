@@ -30,7 +30,7 @@ export default function BasketProducts({ basket, handleBasketDelete }) {
         <BasketCard
           key={product.id}
           {...product}
-          onDelete={() => handleBasketDelete(product.id)}
+          onDelete={(e) => handleBasketDelete(e, product.id)}
           isHoverable={isAdminMode}
           onClick={() => handleCardClick(product.id)}
           isSelected={isProductClicked(product.id, productToEdit.id)}

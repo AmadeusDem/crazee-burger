@@ -44,7 +44,8 @@ export const useBasket = () => {
     }
   };
 
-  const handleBasketDelete = (idProductToDelete) => {
+  const handleBasketDelete = (event, idProductToDelete) => {
+    event.stopPropagation();
     const basketCopy = deepClone(basket);
     const newBasket = basketCopy.filter((product) => product.id !== idProductToDelete);
     setBasket(newBasket);
