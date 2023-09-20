@@ -20,4 +20,7 @@ export const AdminContext = createContext({
   productToEdit: {},
   setProductToEdit: () => {},
   titleEditRef: () => {},
+
+  handleBasketAdd: () => {},
+  handleBasketDelete: () => {},
 });

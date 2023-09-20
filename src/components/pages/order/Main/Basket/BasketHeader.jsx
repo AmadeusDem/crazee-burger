@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
+import { formatPrice } from "../../../../../utils/maths";
 
-export default function BasketHeader() {
+export default function BasketHeader({ total = 0 }) {
   return (
     <BasketHeaderStyled>
       <span>Total</span>
-      <span className="euros">0,00 €</span>
+      <span className="euros">{formatPrice(total.toFixed(2))}</span>
     </BasketHeaderStyled>
   );
 }
@@ -23,12 +24,12 @@ const BasketHeaderStyled = styled.div`
   background: ${theme.colors.background_dark};
 
   // Typography
-  font-family: Amatic SC;
-  font-size: 36px;
+  font-size: ${theme.fonts.P4};
   letter-spacing: 2px;
+  font-family: ${theme.fonts.family.stylish};
   color: ${theme.colors.primary};
 
   .euros {
-    font-weight: 700;
+    font-weight: ${theme.weights.bold};
   }
 `;

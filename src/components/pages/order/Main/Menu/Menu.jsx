@@ -9,10 +9,9 @@ import { replaceFrenchCommaWithDot } from "../../../../../utils/maths";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuUser from "./EmptyMenuUser";
 import { isProductClicked } from "./helper";
-import { EMPTY_PRODUCT } from "../../../../../enums/product";
+import { EMPTY_PRODUCT, PRODUCT_IMAGE_DEFAULT } from "../../../../../enums/product";
 import { theme } from "../../../../../theme";
-
-const PRODUCT_IMAGE_DEFAULT = "/images/coming-soon.png";
+import { find } from "../../../../../utils/array";
 
 export default function Menu() {
   const {
@@ -24,13 +23,15 @@ export default function Menu() {
     productToEdit,
     setProductToEdit,
     titleEditRef,
+    handleBasketAdd,
+    handleBasketDelete,
   } = useContext(AdminContext);
   const { isAdminMode } = useContext(OrderContext);
 
   const handleCardClick = async (id) => {
     if (!isAdminMode) return;
 
-    const productSelected = menu.find((product) => product.id === id);
+    const productSelected = find(id, menu);
 
     await setIsPanelOpen(true);
     await setSelectedTab("edit");
@@ -41,8 +42,14 @@ export default function Menu() {
   const handleCardDelete = (event, idToDelete) => {
     event.stopPropagation();
     handleDelete(idToDelete);
+    handleBasketDelete(idToDelete);
     if (productToEdit && idToDelete === productToEdit.id) setProductToEdit(EMPTY_PRODUCT);
-    titleEditRef.current.focus();
+  };
+
+  const handleAddButton = (e, idProduct) => {
+    e.stopPropagation();
+    const product = find(idProduct, menu);
+    handleBasketAdd(product);
   };
 
   if (menu.length === 0) {
@@ -66,6 +73,7 @@ export default function Menu() {
             onDelete={(e) => handleCardDelete(e, id)}
             isHoverable={isAdminMode}
             isSelected={isProductClicked(id, productToEdit.id)}
+            onAdd={(e) => handleAddButton(e, id)}
           />
         ))}
       </MenuStyled>
@@ -74,19 +82,26 @@ export default function Menu() {
 }
 
 const MenuStyled = styled.section`
+  // Position and layout
   display: grid;
-
   grid-template-columns: repeat(auto-fill, 240px);
+  grid-gap: 3.75rem 5.3125rem;
   justify-content: center;
+
+  // Clipping
   overflow-y: scroll;
+
+  // Box model (from outside in)
   box-shadow: ${theme.shadows.strong};
   padding: 50px 50px 150px;
-  grid-gap: 3.75rem 5.3125rem;
 `;
 
 const EmptyMenuContainer = styled.div`
+  // Position and layout
   display: flex;
   justify-content: center;
   align-items: center;
+
+  // Box model (from outside in)
   box-shadow: ${theme.shadows.strong};
 `;

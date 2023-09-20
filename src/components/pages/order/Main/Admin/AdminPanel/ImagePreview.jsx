@@ -14,14 +14,18 @@ export default function ImagePreview({ imageSource, title = "Titre de l'article"
 }
 
 const ImagePreviewStyled = styled.div`
+  // Position and layout
   grid-area: preview;
-
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${theme.colors.greyBlue};
-  border-radius: ${theme.borderRadius.round};
+
+  // Box model (from outside in)
   border: 1px solid ${theme.colors.greyLight};
+  border-radius: ${theme.borderRadius.round};
+
+  // Typography
+  color: ${theme.colors.greyBlue};
 
   .no-image {
     text-align: center;

@@ -12,23 +12,26 @@ export default function EmptyMenuUser() {
 }
 
 const EmptyMenuUserStyled = styled.div`
+  // Position and layout
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   h1 {
-    color: ${theme.colors.greyBlue};
+    // Typography
+    font-size: ${theme.fonts.P4};
+    font-family: ${theme.fonts.family.stylish};
     text-align: center;
-    font-family: Amatic SC;
-    font-size: 2.25rem;
+    color: ${theme.colors.greyBlue};
   }
 
   p {
-    color: ${theme.colors.greyBlue};
+    // Typography
+    font-size: ${theme.fonts.P4};
+    font-family: ${theme.fonts.family.stylish};
     text-align: center;
-    font-size: 36px;
-    font-family: Amatic SC;
+    color: ${theme.colors.greyBlue};
   }
 
   .main-description {

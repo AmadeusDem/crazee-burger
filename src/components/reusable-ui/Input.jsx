@@ -17,23 +17,31 @@ Input.displayName = "Input";
 export default Input;
 
 const InputStyled = styled.div`
+  // Position and layout
   display: flex;
   align-items: center;
-
-  border-radius: ${theme.borderRadius.round};
   gap: 0.9375rem;
 
+  // Box model (from outside in)
+  border-radius: ${theme.borderRadius.round};
+
   .icon {
+    // Position and layout
     display: flex;
     justify-content: center;
     align-items: center;
+
+    // Typography
     font-size: ${theme.fonts.SM};
   }
 
   input {
-    font-size: ${theme.fonts.SM};
+    // Box model (from outside in)
     border: none;
     width: 100%;
+
+    // Typography
+    font-size: ${theme.fonts.SM};
 
     &::placeholder {
       color: ${theme.colors.greyMedium};

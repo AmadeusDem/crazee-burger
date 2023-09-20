@@ -21,24 +21,27 @@ export default function Profile() {
 }
 
 const ProfileStyled = styled.div`
+  // Position and layout
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 6.25rem;
   gap: 0.625rem;
+
+  // Box models
+  min-width: 6.25rem;
 
   .user-info {
     text-align: right;
 
     span {
-      color: ${theme.colors.primary};
       font-weight: ${theme.weights.bold};
+      color: ${theme.colors.primary};
     }
 
     .disconnect-link {
+      font-size: ${theme.fonts.XXS};
       text-decoration: none;
       color: inherit;
-      font-size: ${theme.fonts.XXS};
 
       &:hover {
         text-decoration: underline;
@@ -47,7 +50,7 @@ const ProfileStyled = styled.div`
   }
 
   .picture {
+    font-size: ${theme.fonts.P4};
     color: ${theme.colors.greyBlue};
-    font-size: 2.25rem;
   }
 `;

@@ -17,25 +17,32 @@ export default function EmptyMenuAdmin({ handleReset }) {
 }
 
 const EmptyMenuAdminStyled = styled.div`
+  // Position and layout
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   h1 {
-    text-align: center;
-    font-family: Amatic SC;
-    font-size: 36px;
+    // Box model
     margin-bottom: 1.3125rem;
+
+    // Typography
+    font-size: ${theme.fonts.P4};
+    font-family: ${theme.fonts.family.stylish};
+    text-align: center;
     color: ${theme.colors.greyBlue};
   }
 
   p {
-    text-align: center;
-    font-family: Amatic SC;
-    font-size: 36px;
-    color: ${theme.colors.greyBlue};
+    // Box model
     margin-bottom: 1.9375rem;
+
+    // Typography
+    font-size: ${theme.fonts.P4};
+    font-family: ${theme.fonts.family.stylish};
+    text-align: center;
+    color: ${theme.colors.greyBlue};
   }
 
   .generate-button {

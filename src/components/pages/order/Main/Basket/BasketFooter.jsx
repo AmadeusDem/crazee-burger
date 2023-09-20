@@ -22,8 +22,8 @@ const BasketFooterStyled = styled.div`
   background: ${theme.colors.background_dark};
 
   // Typography
-  font-family: Amatic SC;
   font-size: 20px;
-  font-weight: 700;
+  font-family: ${theme.fonts.family.stylish};
+  font-weight: ${theme.weights.bold};
   color: ${theme.colors.white};
 `;

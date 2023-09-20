@@ -39,13 +39,18 @@ export default function AdminTabs() {
 }
 
 const AdminTabsStyled = styled.div`
+  // Position and layout
   display: flex;
   gap: 0.0625rem;
+
+  // Box model (from outside in)
   margin-left: 5%;
 
   .is-active {
-    color: ${theme.colors.white};
-    background: ${theme.colors.background_dark};
     border-color: ${theme.colors.background_dark};
+
+    background: ${theme.colors.background_dark};
+
+    color: ${theme.colors.white};
   }
 `;

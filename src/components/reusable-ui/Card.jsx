@@ -13,6 +13,7 @@ export default function Card({
   onDelete,
   isHoverable,
   isSelected,
+  onAdd,
 }) {
   return (
     <CardStyled onClick={onClick} $isHoverable={isHoverable} $isSelected={isSelected}>
@@ -32,11 +33,7 @@ export default function Card({
               <p>{leftText}</p>
             </div>
             <div className="right-description">
-              <Button
-                label={buttonLabel}
-                className="primary-button"
-                onClick={(e) => e.stopPropagation()}
-              />
+              <Button label={buttonLabel} className="primary-button" onClick={onAdd} />
             </div>
           </div>
         </div>
@@ -51,28 +48,40 @@ const CardStyled = styled.article`
   height: fit-content;
 
   .card {
+    // Position and layout
+    position: relative;
     display: grid;
     grid-template-rows: 65% 1fr;
+
+    // Box model (from outside in)
+    box-shadow: ${theme.shadows.strong};
+    border-radius: ${theme.borderRadius.extraRound};
     width: 240px;
     height: 330px;
-    padding: 20px;
+    padding: ${theme.spacing.md};
     padding-bottom: 10px;
-    box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
-    border-radius: ${theme.borderRadius.extraRound};
+
+    // Background
     background: ${theme.colors.white};
-    position: relative;
 
     .delete-button {
+      // Position and layout
       position: absolute;
       top: 15px;
       right: 15px;
-      color: ${theme.colors.primary};
+
+      // Box model (from outside in)
       border: none;
-      background: none;
-      height: 30px;
       width: 30px;
-      cursor: pointer;
+      height: 30px;
       padding: 0;
+
+      // Background
+      background: none;
+      cursor: pointer;
+
+      // Typography
+      color: ${theme.colors.primary};
 
       .icon {
         height: 100%;
@@ -89,10 +98,11 @@ const CardStyled = styled.article`
     }
 
     .image {
-      width: 100%;
-      height: auto;
+      // Box model
       margin-top: 30px;
       margin-bottom: 20px;
+      width: 100%;
+      height: auto;
 
       img {
         width: 100%;
@@ -102,31 +112,47 @@ const CardStyled = styled.article`
     }
 
     .card-information {
+      // Position and layout
       display: grid;
       grid-template-rows: 30% 70%;
+
+      // Box models
       padding: 5px;
 
       h2 {
-        margin: auto 0;
-        font-size: ${theme.fonts.P4};
+        // Position and layout
         position: relative;
         bottom: 10px;
-        font-family: "Amatic SC", cursive;
+
+        // Clipping
         overflow: hidden;
+
+        // Box model
+        margin: auto 0;
+
+        // Typography
+        font-size: ${theme.fonts.P4};
+        font-family: ${theme.fonts.family.stylish};
         text-overflow: ellipsis;
         white-space: nowrap;
       }
 
       .card-description {
+        // Position and layout
         display: grid;
         grid-template-columns: 1fr 1fr;
 
         .left-description {
+          // Position and layout
           display: flex;
           align-items: center;
-          color: ${theme.colors.primary};
-          white-space: nowrap;
+
+          // Clipping
           overflow: hidden;
+
+          // Typography
+          white-space: nowrap;
+          color: ${theme.colors.primary};
           text-overflow: ellipsis;
         }
 

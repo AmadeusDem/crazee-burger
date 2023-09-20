@@ -13,26 +13,30 @@ export default function Logo({ className, onClick }) {
 }
 
 const LogoStyled = styled.div`
+  // Position and layout
   display: flex;
   align-items: center;
 
   h1 {
+    // Position and layout
     display: inline;
-    text-align: center;
-    color: ${theme.colors.primary};
+
+    // Typography
     font-size: ${theme.fonts.P4};
     line-height: 1em;
+    font-family: ${theme.fonts.family.stylish};
     font-weight: ${theme.weights.bold};
+    text-align: center;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    font-family: "Amatic SC", cursive;
+    color: ${theme.colors.primary};
   }
 
   img {
     object-fit: contain;
     object-position: center;
-    height: 60px;
-    width: 80px;
     margin: 0 ${theme.gridUnit / 2}px;
+    width: 80px;
+    height: 60px;
   }
 `;

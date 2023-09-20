@@ -8,6 +8,7 @@ import { AdminContext } from "../../../../context/AdminContext";
 import { EMPTY_PRODUCT } from "../../../../enums/product";
 import Basket from "./Basket/Basket";
 import { useMenu } from "../../../../hooks/useMenu";
+import { useBasket } from "../../../../hooks/useBasket";
 
 export default function Main() {
   const { isAdminMode } = useContext(OrderContext);
@@ -17,6 +18,7 @@ export default function Main() {
   const [productToEdit, setProductToEdit] = useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
   const { menu, handleAdd, handleReset, handleDelete, handleEdit } = useMenu();
+  const { basket, handleBasketAdd, handleBasketDelete } = useBasket();
 
   const adminContextValue = {
     isPanelOpen,
@@ -33,12 +35,14 @@ export default function Main() {
     handleEdit,
     setProductToEdit,
     titleEditRef,
+    handleBasketAdd,
+    handleBasketDelete,
   };
 
   return (
     <AdminContext.Provider value={adminContextValue}>
       <MainStyled>
-        <Basket />
+        <Basket basket={basket} handleBasketDelete={handleBasketDelete} />
         <div className="menu-and-admin">
           <Menu />
           {isAdminMode && <Admin />}
@@ -49,17 +53,25 @@ export default function Main() {
 }
 
 const MainStyled = styled.main`
+  // Position and layout
   display: grid;
   grid-template-columns: 25% 1fr;
+
+  // Box model (from outside in)
+  border-radius: 0px 0px ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
   height: calc(95vh - 5.25rem);
 
   background: ${theme.colors.background_white};
-  border-radius: 0px 0px ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
 
   .menu-and-admin {
+    // Position and layout
     position: relative;
     display: grid;
-    border-radius: 0px 0px ${theme.borderRadius.extraRound} 0px;
+
+    // Clipping
     overflow: hidden;
+
+    // Box model
+    border-radius: 0px 0px ${theme.borderRadius.extraRound} 0px;
   }
 `;
