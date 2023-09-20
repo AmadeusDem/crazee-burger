@@ -10,7 +10,7 @@ export default function BasketCardInfo({ title, price, quantity }) {
           <span>{title}</span>
         </div>
         <span className="price">
-          {isNaN(price) ? formatPrice(price) : formatPrice(price.toFixed(1))}
+          {isNaN(price) ? formatPrice(price) : formatPrice(parseFloat(price).toFixed(1))}
         </span>
       </div>
       <div className="quantity">

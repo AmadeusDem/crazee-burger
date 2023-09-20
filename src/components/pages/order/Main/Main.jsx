@@ -18,7 +18,7 @@ export default function Main() {
   const [productToEdit, setProductToEdit] = useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
   const { menu, handleAdd, handleReset, handleDelete, handleEdit } = useMenu();
-  const { basket, handleBasketAdd, handleBasketDelete } = useBasket();
+  const { basket, handleBasketAdd, handleBasketDelete, handleBasketEdit } = useBasket();
 
   const adminContextValue = {
     isPanelOpen,
@@ -37,6 +37,7 @@ export default function Main() {
     titleEditRef,
     handleBasketAdd,
     handleBasketDelete,
+    handleBasketEdit,
   };
 
   return (

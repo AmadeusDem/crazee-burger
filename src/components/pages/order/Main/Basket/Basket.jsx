@@ -14,7 +14,7 @@ export default function Basket({ basket, handleBasketDelete }) {
 
   return (
     <BasketStyled>
-      <BasketHeader total={basketTotal} />
+      <BasketHeader total={isNaN(basketTotal) ? 0 : basketTotal} />
       {isBasketEmpty ? (
         <EmptyBasket />
       ) : (

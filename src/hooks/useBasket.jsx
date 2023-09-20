@@ -32,11 +32,23 @@ export const useBasket = () => {
     setBasket(copyBasket);
   };
 
+  const handleBasketEdit = (productEdited) => {
+    const productInBasket = find(productEdited.id, basket);
+    if (productInBasket) {
+      const basketCopy = deepClone(basket);
+      const productWithQuantity = { ...productEdited, quantity: productInBasket.quantity };
+      const newBasket = basketCopy.map((product) =>
+        product.id === productWithQuantity.id ? productWithQuantity : product
+      );
+      setBasket(newBasket);
+    }
+  };
+
   const handleBasketDelete = (idProductToDelete) => {
     const basketCopy = deepClone(basket);
     const newBasket = basketCopy.filter((product) => product.id !== idProductToDelete);
     setBasket(newBasket);
   };
 
-  return { basket, handleBasketAdd, handleBasketDelete };
+  return { basket, handleBasketAdd, handleBasketDelete, handleBasketEdit };
 };
