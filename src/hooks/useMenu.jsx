@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { fakeMenu } from "../fakeData/fakeMenu";
-import { deepClone, findIndex } from "../utils/array";
+import { deepClone, findIndexById } from "../utils/array";
 
 export const useMenu = () => {
   const DEFAULT_MENU = fakeMenu.LARGE;
@@ -14,7 +14,7 @@ export const useMenu = () => {
   const handleEdit = (productEdited) => {
     const menuCopy = deepClone(menu);
 
-    const indexToEdit = findIndex(productEdited.id, menuCopy);
+    const indexToEdit = findIndexById(productEdited.id, menuCopy);
 
     menuCopy[indexToEdit] = productEdited;
 

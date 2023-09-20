@@ -4,7 +4,7 @@ import BasketCard from "./BasketCard";
 import { useContext } from "react";
 import { OrderContext } from "../../../../../context/OrderContext.jsx";
 import { AdminContext } from "../../../../../context/AdminContext";
-import { find } from "../../../../../utils/array";
+import { findObjectById } from "../../../../../utils/array";
 import { isProductClicked } from "../helper";
 import { formatPrice, replaceFrenchCommaWithDot } from "../../../../../utils/maths";
 
@@ -16,7 +16,7 @@ export default function BasketProducts() {
   return (
     <BasketProductsStyled>
       {basket.map(({ id, quantity }) => {
-        const menuProduct = find(id, menu);
+        const menuProduct = findObjectById(id, menu);
         return (
           <BasketCard
             key={id}

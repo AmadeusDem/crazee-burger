@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { deepClone, find, findIndex } from "../utils/array";
+import { deepClone, findObjectById, findIndexById } from "../utils/array";
 
 export const useBasket = () => {
   const [basket, setBasket] = useState([]);
@@ -8,10 +8,10 @@ export const useBasket = () => {
   const handleBasketAdd = (idProductToAdd) => {
     const basketCopy = deepClone(basket);
 
-    const isProductInBasket = find(idProductToAdd, basketCopy) !== undefined;
+    const isProductInBasket = findObjectById(idProductToAdd, basketCopy) !== undefined;
 
     if (isProductInBasket) {
-      const indexProductInBasket = findIndex(idProductToAdd, basketCopy);
+      const indexProductInBasket = findIndexById(idProductToAdd, basketCopy);
       basketCopy[indexProductInBasket].quantity++;
       setBasket(basketCopy);
       return;

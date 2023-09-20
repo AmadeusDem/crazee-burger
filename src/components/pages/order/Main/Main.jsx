@@ -9,7 +9,7 @@ import { EMPTY_PRODUCT } from "../../../../enums/product";
 import Basket from "./Basket/Basket";
 import { useMenu } from "../../../../hooks/useMenu";
 import { useBasket } from "../../../../hooks/useBasket";
-import { find } from "../../../../utils/array";
+import { findObjectById } from "../../../../utils/array";
 
 export default function Main() {
   const { isAdminMode } = useContext(OrderContext);
@@ -24,7 +24,7 @@ export default function Main() {
   const handleProductSelected = async (idProduct) => {
     if (!isAdminMode) return;
 
-    const productSelected = find(idProduct, menu);
+    const productSelected = findObjectById(idProduct, menu);
 
     await setIsPanelOpen(true);
     await setSelectedTab("edit");

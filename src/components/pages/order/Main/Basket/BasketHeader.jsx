@@ -3,13 +3,13 @@ import { theme } from "../../../../../theme";
 import { formatPrice } from "../../../../../utils/maths";
 import { useContext } from "react";
 import { AdminContext } from "../../../../../context/AdminContext";
-import { find } from "../../../../../utils/array";
+import { findObjectById } from "../../../../../utils/array";
 
 export default function BasketHeader() {
   const { basket, menu } = useContext(AdminContext);
 
   const basketTotal = basket.reduce((total, product) => {
-    const price = parseFloat(find(product.id, menu).price);
+    const price = parseFloat(findObjectById(product.id, menu).price);
 
     if (isNaN(price)) return total;
     return (total += product.quantity * price.toFixed(1));
