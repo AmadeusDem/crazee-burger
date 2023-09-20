@@ -3,8 +3,6 @@ import { formatPrice, replaceFrenchCommaWithDot } from "../../../../../utils/mat
 import { theme } from "../../../../../theme";
 
 export default function BasketCardInfo({ title, price, quantity }) {
-  const parsedPrice = parseFloat(price);
-
   return (
     <BasketCardInfoStyled>
       <div className="left-info">

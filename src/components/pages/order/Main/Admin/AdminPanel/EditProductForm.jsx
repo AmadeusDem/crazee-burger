@@ -4,8 +4,7 @@ import EditInfoMessage from "./EditInfoMessage";
 import Form from "./Form";
 
 export default function EditProductForm() {
-  const { productToEdit, handleEdit, setProductToEdit, titleEditRef, handleBasketEdit } =
-    useContext(AdminContext);
+  const { productToEdit, handleEdit, setProductToEdit, titleEditRef } = useContext(AdminContext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -18,7 +18,7 @@ export default function BasketHeader() {
   return (
     <BasketHeaderStyled>
       <span>Total</span>
-      <span className="euros">{formatPrice(basketTotal.toFixed(2))}</span>
+      <span className="price">{formatPrice(basketTotal.toFixed(2))}</span>
     </BasketHeaderStyled>
   );
 }
@@ -41,7 +41,7 @@ const BasketHeaderStyled = styled.div`
   font-family: ${theme.fonts.family.stylish};
   color: ${theme.colors.primary};
 
-  .euros {
+  .price {
     font-weight: ${theme.weights.bold};
   }
 `;

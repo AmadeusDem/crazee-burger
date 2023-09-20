@@ -11,15 +11,11 @@ export const useBasket = () => {
     const isProductInBasket = findObjectById(idProductToAdd, basketCopy) !== undefined;
 
     if (isProductInBasket) {
-      const indexProductInBasket = findIndexById(idProductToAdd, basketCopy);
-      basketCopy[indexProductInBasket].quantity++;
-      setBasket(basketCopy);
+      incrementExistingProduct(idProductToAdd, basketCopy, setBasket);
       return;
     }
 
-    const newProduct = { id: idProductToAdd, quantity: 1 };
-    const newBasket = [newProduct, ...basketCopy];
-    setBasket(newBasket);
+    addNewProduct(idProductToAdd, basketCopy, setBasket);
   };
 
   const handleBasketDelete = (event, idProductToDelete) => {
@@ -31,3 +27,14 @@ export const useBasket = () => {
 
   return { basket, handleBasketAdd, handleBasketDelete };
 };
+function addNewProduct(idProductToAdd, basketCopy, setBasket) {
+  const newProduct = { id: idProductToAdd, quantity: 1 };
+  const newBasket = [newProduct, ...basketCopy];
+  setBasket(newBasket);
+}
+
+function incrementExistingProduct(idProductToAdd, basketCopy, setBasket) {
+  const indexProductInBasket = findIndexById(idProductToAdd, basketCopy);
+  basketCopy[indexProductInBasket].quantity++;
+  setBasket(basketCopy);
+}
