@@ -11,7 +11,6 @@ export default function EditProductForm() {
     const { name, value } = e.target;
     const productEdited = { ...productToEdit, [name]: value };
     handleEdit(productEdited);
-    handleBasketEdit(productEdited);
     setProductToEdit(productEdited);
   };
 

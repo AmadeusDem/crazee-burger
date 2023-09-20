@@ -42,14 +42,13 @@ export default function Menu() {
   const handleCardDelete = (event, idToDelete) => {
     event.stopPropagation();
     handleDelete(idToDelete);
-    handleBasketDelete(idToDelete);
+    handleBasketDelete(event, idToDelete);
     if (productToEdit && idToDelete === productToEdit.id) setProductToEdit(EMPTY_PRODUCT);
   };
 
   const handleAddButton = (e, idProduct) => {
     e.stopPropagation();
-    const product = find(idProduct, menu);
-    handleBasketAdd(product);
+    handleBasketAdd(idProduct);
   };
 
   if (menu.length === 0) {
