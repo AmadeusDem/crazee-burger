@@ -1,8 +1,10 @@
 import styled from "styled-components";
-import { formatPrice } from "../../../../../utils/maths";
+import { formatPrice, replaceFrenchCommaWithDot } from "../../../../../utils/maths";
 import { theme } from "../../../../../theme";
 
 export default function BasketCardInfo({ title, price, quantity }) {
+  const parsedPrice = parseFloat(price);
+
   return (
     <BasketCardInfoStyled>
       <div className="left-info">
@@ -10,7 +12,9 @@ export default function BasketCardInfo({ title, price, quantity }) {
           <span>{title}</span>
         </div>
         <span className="price">
-          {isNaN(price) ? formatPrice(price) : formatPrice(parseFloat(price).toFixed(1))}
+          {isNaN(parsedPrice)
+            ? formatPrice(price)
+            : formatPrice(parseFloat(replaceFrenchCommaWithDot(price)).toFixed(1))}
         </span>
       </div>
       <div className="quantity">

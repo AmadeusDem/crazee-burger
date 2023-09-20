@@ -8,8 +8,9 @@ import EmptyBasket from "./EmptyBasket";
 export default function Basket({ basket, handleBasketDelete }) {
   const isBasketEmpty = basket.length === 0;
   const basketTotal = basket.reduce((total, product) => {
-    if (isNaN(product.price)) return total;
-    return (total += product.quantity * parseFloat(product.price).toFixed(1));
+    const price = parseFloat(product.price);
+    if (isNaN(price)) return total;
+    return (total += product.quantity * price.toFixed(1));
   }, 0);
 
   return (
