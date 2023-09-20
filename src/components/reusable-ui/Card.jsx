@@ -54,7 +54,7 @@ const CardStyled = styled.article`
     grid-template-rows: 65% 1fr;
 
     // Box model (from outside in)
-    box-shadow: ${theme.shadows.strong};
+    box-shadow: ${theme.shadows.card};
     border-radius: ${theme.borderRadius.extraRound};
     width: 240px;
     height: 330px;
