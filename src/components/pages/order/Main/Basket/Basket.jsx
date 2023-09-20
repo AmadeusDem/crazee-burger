@@ -4,23 +4,17 @@ import BasketHeader from "./BasketHeader";
 import BasketProducts from "./BasketProducts";
 import BasketFooter from "./BasketFooter";
 import EmptyBasket from "./EmptyBasket";
+import { useContext } from "react";
+import { AdminContext } from "../../../../../context/AdminContext";
 
-export default function Basket({ basket, handleBasketDelete }) {
+export default function Basket() {
+  const { basket } = useContext(AdminContext);
   const isBasketEmpty = basket.length === 0;
-  const basketTotal = basket.reduce((total, product) => {
-    const price = parseFloat(product.price);
-    if (isNaN(price)) return total;
-    return (total += product.quantity * price.toFixed(1));
-  }, 0);
 
   return (
     <BasketStyled>
-      <BasketHeader total={isNaN(basketTotal) ? 0 : basketTotal} />
-      {isBasketEmpty ? (
-        <EmptyBasket />
-      ) : (
-        <BasketProducts basket={basket} handleBasketDelete={handleBasketDelete} />
-      )}
+      <BasketHeader />
+      {isBasketEmpty ? <EmptyBasket /> : <BasketProducts />}
       <BasketFooter />
     </BasketStyled>
   );

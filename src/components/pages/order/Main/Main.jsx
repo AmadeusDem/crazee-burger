@@ -38,12 +38,13 @@ export default function Main() {
     handleBasketAdd,
     handleBasketDelete,
     handleBasketEdit,
+    basket,
   };
 
   return (
     <AdminContext.Provider value={adminContextValue}>
       <MainStyled>
-        <Basket basket={basket} handleBasketDelete={handleBasketDelete} />
+        <Basket />
         <div className="menu-and-admin">
           <Menu />
           {isAdminMode && <Admin />}
