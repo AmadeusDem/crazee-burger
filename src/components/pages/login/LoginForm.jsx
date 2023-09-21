@@ -6,6 +6,7 @@ import { IoChevronForward } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs";
 import Input from "../../reusable-ui/Input";
 import Button from "../../reusable-ui/Button";
+import { getUser } from "../../../api/user";
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
@@ -13,6 +14,7 @@ export default function LoginForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    getUser(username);
     navigate(`order/${username}`);
   };
 
