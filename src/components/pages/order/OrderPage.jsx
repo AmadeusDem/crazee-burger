@@ -4,11 +4,12 @@ import { theme } from "../../../theme";
 import Navbar from "./Navbar/Navbar";
 import { useState } from "react";
 import { OrderContext } from "../../../context/OrderContext";
+import { useParams } from "react-router-dom";
 
 export default function OrderPage() {
   const [isAdminMode, setIsAdminMode] = useState(false);
-
-  const orderContextValue = { isAdminMode, setIsAdminMode };
+  const { username } = useParams();
+  const orderContextValue = { isAdminMode, setIsAdminMode, username };
 
   return (
     <OrderContext.Provider value={orderContextValue}>
