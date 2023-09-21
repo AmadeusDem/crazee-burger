@@ -1,12 +1,24 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
-import { formatPrice } from "../../../../../utils/maths";
+import { formatPrice, replaceFrenchCommaWithDot } from "../../../../../utils/maths";
+import { useContext } from "react";
+import { AdminContext } from "../../../../../context/AdminContext";
+import { findObjectById } from "../../../../../utils/array";
 
-export default function BasketHeader({ total = 0 }) {
+export default function BasketHeader() {
+  const { basket, menu } = useContext(AdminContext);
+
+  const basketTotal = basket.reduce((total, product) => {
+    const price = replaceFrenchCommaWithDot(findObjectById(product.id, menu).price);
+
+    if (isNaN(price)) return total;
+    return (total += product.quantity * price.toFixed(1));
+  }, 0);
+
   return (
     <BasketHeaderStyled>
       <span>Total</span>
-      <span className="euros">{formatPrice(total.toFixed(2))}</span>
+      <span className="price">{formatPrice(basketTotal.toFixed(2))}</span>
     </BasketHeaderStyled>
   );
 }
@@ -29,7 +41,7 @@ const BasketHeaderStyled = styled.div`
   font-family: ${theme.fonts.family.stylish};
   color: ${theme.colors.primary};
 
-  .euros {
+  .price {
     font-weight: ${theme.weights.bold};
   }
 `;

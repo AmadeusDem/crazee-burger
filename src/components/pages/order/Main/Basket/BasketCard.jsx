@@ -12,9 +12,11 @@ export default function BasketCard({
   quantity,
   onDelete,
   isHoverable,
+  isSelected,
+  onClick,
 }) {
   return (
-    <BasketCardStyled $isHoverable={isHoverable}>
+    <BasketCardStyled $isHoverable={isHoverable} $isSelected={isSelected} onClick={onClick}>
       <div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />
       </div>
@@ -46,11 +48,14 @@ const BasketCardStyled = styled.div`
 
   .image {
     height: 70px;
+    overflow: hidden;
 
     img {
       width: 100%;
       height: 100%;
       padding: 5px;
+
+      font-size: ${theme.fonts.P3};
 
       object-fit: contain;
     }
@@ -59,10 +64,7 @@ const BasketCardStyled = styled.div`
   .delete-button {
     display: none;
   }
-`;
 
-const hoverableStyle = css`
-  cursor: pointer;
   &:hover {
     .delete-button {
       // Position and layout
@@ -100,4 +102,22 @@ const hoverableStyle = css`
       }
     }
   }
+
+  ${({ $isHoverable, $isSelected }) => $isHoverable && $isSelected && selectedStyle}
+`;
+
+const selectedStyle = css`
+  background: ${theme.colors.primary};
+
+  .left-info {
+    color: ${theme.colors.white};
+  }
+
+  .quantity {
+    color: ${theme.colors.white};
+  }
+`;
+
+const hoverableStyle = css`
+  cursor: pointer;
 `;

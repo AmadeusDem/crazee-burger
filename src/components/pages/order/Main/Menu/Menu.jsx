@@ -1,6 +1,5 @@
 import { styled } from "styled-components";
 import { formatPrice } from "../../../../../utils/maths";
-
 import Card from "../../../../reusable-ui/Card";
 import { useContext } from "react";
 import { AdminContext } from "../../../../../context/AdminContext";
@@ -8,48 +7,33 @@ import { OrderContext } from "../../../../../context/OrderContext.jsx";
 import { replaceFrenchCommaWithDot } from "../../../../../utils/maths";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuUser from "./EmptyMenuUser";
-import { isProductClicked } from "./helper";
+import { isProductClicked } from "../helper";
 import { EMPTY_PRODUCT, PRODUCT_IMAGE_DEFAULT } from "../../../../../enums/product";
 import { theme } from "../../../../../theme";
-import { find } from "../../../../../utils/array";
 
 export default function Menu() {
   const {
     menu,
     handleDelete,
     handleReset,
-    setIsPanelOpen,
-    setSelectedTab,
     productToEdit,
     setProductToEdit,
-    titleEditRef,
     handleBasketAdd,
     handleBasketDelete,
+    handleProductSelected,
   } = useContext(AdminContext);
   const { isAdminMode } = useContext(OrderContext);
-
-  const handleCardClick = async (id) => {
-    if (!isAdminMode) return;
-
-    const productSelected = find(id, menu);
-
-    await setIsPanelOpen(true);
-    await setSelectedTab("edit");
-    await setProductToEdit(productSelected);
-    titleEditRef.current.focus();
-  };
 
   const handleCardDelete = (event, idToDelete) => {
     event.stopPropagation();
     handleDelete(idToDelete);
-    handleBasketDelete(idToDelete);
+    handleBasketDelete(event, idToDelete);
     if (productToEdit && idToDelete === productToEdit.id) setProductToEdit(EMPTY_PRODUCT);
   };
 
   const handleAddButton = (e, idProduct) => {
     e.stopPropagation();
-    const product = find(idProduct, menu);
-    handleBasketAdd(product);
+    handleBasketAdd(idProduct);
   };
 
   if (menu.length === 0) {
@@ -64,7 +48,7 @@ export default function Menu() {
         {menu.map(({ id, imageSource, title, price }) => (
           <Card
             key={id}
-            onClick={() => handleCardClick(id)}
+            onClick={() => handleProductSelected(id)}
             image={imageSource ? imageSource : PRODUCT_IMAGE_DEFAULT}
             title={title}
             leftText={formatPrice(parseFloat(replaceFrenchCommaWithDot(price)).toFixed(1))}

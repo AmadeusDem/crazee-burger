@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { formatPrice } from "../../../../../utils/maths";
 import { theme } from "../../../../../theme";
 
 export default function BasketCardInfo({ title, price, quantity }) {
@@ -9,9 +8,7 @@ export default function BasketCardInfo({ title, price, quantity }) {
         <div className="title">
           <span>{title}</span>
         </div>
-        <span className="price">
-          {isNaN(price) ? formatPrice(price) : formatPrice(price.toFixed(1))}
-        </span>
+        <span className="price">{price}</span>
       </div>
       <div className="quantity">
         <span>x {quantity}</span>

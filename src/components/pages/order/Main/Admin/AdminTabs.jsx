@@ -11,7 +11,7 @@ export default function AdminTabs() {
   const { isPanelOpen, setIsPanelOpen, productToEdit, selectedTab, setSelectedTab } =
     useContext(AdminContext);
 
-  const selectTab = (tabIndex) => {
+  const handleTabSelection = (tabIndex) => {
     setIsPanelOpen(true);
     setSelectedTab(tabIndex);
   };
@@ -31,7 +31,7 @@ export default function AdminTabs() {
           Icon={tab.icon}
           label={tab.label}
           className={selectedTab === tab.index && "is-active"}
-          onClick={() => selectTab(tab.index)}
+          onClick={() => handleTabSelection(tab.index)}
         />
       ))}
     </AdminTabsStyled>
