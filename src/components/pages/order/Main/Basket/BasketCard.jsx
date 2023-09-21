@@ -48,6 +48,7 @@ const BasketCardStyled = styled.div`
 
   .image {
     height: 70px;
+    overflow: hidden;
 
     img {
       width: 100%;
@@ -64,23 +65,6 @@ const BasketCardStyled = styled.div`
     display: none;
   }
 
-  ${({ $isHoverable, $isSelected }) => $isHoverable && $isSelected && selectedStyle}
-`;
-
-const selectedStyle = css`
-  background: ${theme.colors.primary};
-
-  .left-info {
-    color: ${theme.colors.white};
-  }
-
-  .quantity {
-    color: ${theme.colors.white};
-  }
-`;
-
-const hoverableStyle = css`
-  cursor: pointer;
   &:hover {
     .delete-button {
       // Position and layout
@@ -118,4 +102,22 @@ const hoverableStyle = css`
       }
     }
   }
+
+  ${({ $isHoverable, $isSelected }) => $isHoverable && $isSelected && selectedStyle}
+`;
+
+const selectedStyle = css`
+  background: ${theme.colors.primary};
+
+  .left-info {
+    color: ${theme.colors.white};
+  }
+
+  .quantity {
+    color: ${theme.colors.white};
+  }
+`;
+
+const hoverableStyle = css`
+  cursor: pointer;
 `;

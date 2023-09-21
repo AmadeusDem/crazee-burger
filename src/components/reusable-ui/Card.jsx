@@ -24,7 +24,7 @@ export default function Card({
           </button>
         )}
         <div className="image">
-          <img src={image} alt="Titre de l'article" />
+          <img src={image} alt={title} />
         </div>
         <div className="card-information">
           <h2>{title}</h2>
@@ -101,13 +101,19 @@ const CardStyled = styled.article`
       // Box model
       margin-top: 30px;
       margin-bottom: 20px;
-      width: 100%;
-      height: auto;
+      max-width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
 
       img {
-        width: 100%;
-        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
         object-fit: contain;
+
+        font-family: ${theme.fonts.family.stylish};
+        font-size: ${theme.fonts.P3};
       }
     }
 

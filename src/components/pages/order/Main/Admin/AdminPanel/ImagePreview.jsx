@@ -35,5 +35,7 @@ const ImagePreviewStyled = styled.div`
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+    font-family: ${theme.fonts.family.stylish};
+    font-size: ${theme.fonts.P3};
   }
 `;
