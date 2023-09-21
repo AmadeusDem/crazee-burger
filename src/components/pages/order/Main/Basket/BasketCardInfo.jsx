@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { formatPrice, replaceFrenchCommaWithDot } from "../../../../../utils/maths";
 import { theme } from "../../../../../theme";
 
 export default function BasketCardInfo({ title, price, quantity }) {
