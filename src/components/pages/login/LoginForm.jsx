@@ -6,15 +6,18 @@ import { IoChevronForward } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs";
 import Input from "../../reusable-ui/Input";
 import Button from "../../reusable-ui/Button";
-import { getUser } from "../../../api/user";
+import { authenticateUser } from "../../../api/user";
+import Welcome from "./Welcome";
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    getUser(username);
+
+    authenticateUser(username);
+
     navigate(`order/${username}`);
   };
 
@@ -24,9 +27,7 @@ export default function LoginForm() {
 
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-      <h1>Bienvenue chez nous !</h1>
-      <hr />
-      <h2>Connectez-vous</h2>
+      <Welcome />
       <Input
         value={username}
         onChange={handleChange}
@@ -50,22 +51,6 @@ const LoginFormStyled = styled.form`
   color: ${theme.colors.white};
 
   text-transform: uppercase;
-
-  h1 {
-    font-size: ${theme.fonts.P5};
-    font-weight: ${theme.weights.bold};
-    margin: ${theme.spacing.lg} 0;
-  }
-
-  hr {
-    border: 1.5px solid ${theme.colors.loginLine};
-    margin-bottom: ${theme.gridUnit * 5}px;
-  }
-
-  h2 {
-    font-size: ${theme.fonts.P4};
-    margin: 20px 10px 10px;
-  }
 
   button {
     width: 100%;
