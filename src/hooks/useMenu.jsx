@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { deepClone, findIndexById } from "../utils/array";
 import { syncMenu } from "../api/menu";
+import { fakeMenu } from "../fakeData/fakeMenu";
 
 export const useMenu = (userMenu) => {
-  // const DEFAULT_MENU = fakeMenu.LARGE;
   const [menu, setMenu] = useState(userMenu);
 
   const handleAdd = (newProduct, username) => {
@@ -32,8 +32,10 @@ export const useMenu = (userMenu) => {
     syncMenu(username, filteredMenu);
   };
 
-  const handleReset = () => {
-    setMenu(DEFAULT_MENU);
+  const handleReset = (username) => {
+    const resetMenu = fakeMenu.DEFAULT_MENU;
+    setMenu(resetMenu);
+    syncMenu(username, resetMenu);
   };
 
   return { menu, setMenu, handleAdd, handleEdit, handleDelete, handleReset };

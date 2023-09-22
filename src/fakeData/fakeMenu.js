@@ -162,9 +162,12 @@ const LARGE = [
   },
 ];
 
+const DEFAULT_MENU = SMALL;
+
 export const fakeMenu = {
   EMPTY,
   SMALL,
   MEDIUM,
   LARGE,
+  DEFAULT_MENU,
 };
