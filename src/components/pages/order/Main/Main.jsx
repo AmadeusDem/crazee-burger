@@ -20,7 +20,7 @@ export default function Main() {
   const [productToEdit, setProductToEdit] = useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
 
-  const { menu, setMenu, handleAdd, handleReset, handleDelete, handleEdit } = useMenu([]);
+  const { menu, setMenu, handleAdd, handleReset, handleDelete, handleEdit } = useMenu();
   const { basket, handleBasketAdd, handleBasketDelete, handleBasketEdit } = useBasket();
 
   const initializeMenu = async () => {

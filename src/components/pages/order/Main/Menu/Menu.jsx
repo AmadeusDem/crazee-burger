@@ -5,11 +5,11 @@ import { useContext } from "react";
 import { AdminContext } from "../../../../../context/AdminContext";
 import { OrderContext } from "../../../../../context/OrderContext.jsx";
 import { replaceFrenchCommaWithDot } from "../../../../../utils/maths";
-import EmptyMenuAdmin from "./EmptyMenuAdmin";
-import EmptyMenuUser from "./EmptyMenuUser";
 import { isProductClicked } from "../helper";
 import { EMPTY_PRODUCT, PRODUCT_IMAGE_DEFAULT } from "../../../../../enums/product";
 import { theme } from "../../../../../theme";
+import EmptyMenu from "./EmptyMenu";
+import Loading from "../../../../reusable-ui/Loading";
 
 export default function Menu() {
   const {
@@ -36,33 +36,31 @@ export default function Menu() {
     handleBasketAdd(idProduct);
   };
 
+  if (!menu) return <Loading text="Chargement en cours..." />;
+
   if (menu.length === 0) {
-    return (
-      <EmptyMenuContainer>
-        {isAdminMode ? <EmptyMenuAdmin handleReset={handleReset} /> : <EmptyMenuUser />}
-      </EmptyMenuContainer>
-    );
-  } else {
-    return (
-      <MenuStyled>
-        {menu.map(({ id, imageSource, title, price }) => (
-          <Card
-            key={id}
-            onClick={() => handleProductSelected(id)}
-            image={imageSource ? imageSource : PRODUCT_IMAGE_DEFAULT}
-            title={title}
-            leftText={formatPrice(parseFloat(replaceFrenchCommaWithDot(price)).toFixed(1))}
-            buttonLabel="Ajouter"
-            hasDeleteButton={isAdminMode}
-            onDelete={(e) => handleCardDelete(e, id)}
-            isHoverable={isAdminMode}
-            isSelected={isProductClicked(id, productToEdit.id)}
-            onAdd={(e) => handleAddButton(e, id)}
-          />
-        ))}
-      </MenuStyled>
-    );
+    return <EmptyMenu isAdminMode={isAdminMode} handleReset={handleReset} />;
   }
+
+  return (
+    <MenuStyled>
+      {menu.map(({ id, imageSource, title, price }) => (
+        <Card
+          key={id}
+          onClick={() => handleProductSelected(id)}
+          image={imageSource ? imageSource : PRODUCT_IMAGE_DEFAULT}
+          title={title}
+          leftText={formatPrice(parseFloat(replaceFrenchCommaWithDot(price)).toFixed(1))}
+          buttonLabel="Ajouter"
+          hasDeleteButton={isAdminMode}
+          onDelete={(e) => handleCardDelete(e, id)}
+          isHoverable={isAdminMode}
+          isSelected={isProductClicked(id, productToEdit.id)}
+          onAdd={(e) => handleAddButton(e, id)}
+        />
+      ))}
+    </MenuStyled>
+  );
 }
 
 const MenuStyled = styled.section`
@@ -78,14 +76,4 @@ const MenuStyled = styled.section`
   // Box model (from outside in)
   box-shadow: ${theme.shadows.strong};
   padding: 50px 50px 150px;
-`;
-
-const EmptyMenuContainer = styled.div`
-  // Position and layout
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  // Box model (from outside in)
-  box-shadow: ${theme.shadows.strong};
 `;
