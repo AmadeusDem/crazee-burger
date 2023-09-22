@@ -23,12 +23,13 @@ export const useMenu = (userMenu) => {
     setMenu(menuCopy);
   };
 
-  const handleDelete = (idToDelete) => {
+  const handleDelete = (idToDelete, username) => {
     const menuCopy = deepClone(menu);
 
     const filteredMenu = menuCopy.filter((product) => product.id !== idToDelete);
 
     setMenu(filteredMenu);
+    syncMenu(username, filteredMenu);
   };
 
   const handleReset = () => {

@@ -22,11 +22,11 @@ export default function Menu() {
     handleBasketDelete,
     handleProductSelected,
   } = useContext(AdminContext);
-  const { isAdminMode } = useContext(OrderContext);
+  const { isAdminMode, username } = useContext(OrderContext);
 
   const handleCardDelete = (event, idToDelete) => {
     event.stopPropagation();
-    handleDelete(idToDelete);
+    handleDelete(idToDelete, username);
     handleBasketDelete(event, idToDelete);
     if (productToEdit && idToDelete === productToEdit.id) setProductToEdit(EMPTY_PRODUCT);
   };
