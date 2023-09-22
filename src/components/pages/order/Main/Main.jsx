@@ -24,8 +24,12 @@ export default function Main() {
   const { basket, handleBasketAdd, handleBasketDelete, handleBasketEdit } = useBasket();
 
   const initializeMenu = async () => {
-    const menuToDisplay = await getMenu(username);
-    setMenu(menuToDisplay);
+    try {
+      const menuToDisplay = await getMenu(username);
+      setMenu(menuToDisplay);
+    } catch (error) {
+      console.error("Error: ", error);
+    }
   };
 
   useEffect(() => {
