@@ -31,9 +31,9 @@ export default function Menu() {
     if (productToEdit && idToDelete === productToEdit.id) setProductToEdit(EMPTY_PRODUCT);
   };
 
-  const handleAddButton = (e, idProduct) => {
+  const handleAddButton = (e, idProduct, username) => {
     e.stopPropagation();
-    handleBasketAdd(idProduct);
+    handleBasketAdd(idProduct, username);
   };
 
   if (!menu) return <Loading text="Chargement en cours..." />;
@@ -56,7 +56,7 @@ export default function Menu() {
           onDelete={(e) => handleCardDelete(e, id)}
           isHoverable={isAdminMode}
           isSelected={isProductClicked(id, productToEdit.id)}
-          onAdd={(e) => handleAddButton(e, id)}
+          onAdd={(e) => handleAddButton(e, id, username)}
         />
       ))}
     </MenuStyled>
