@@ -19,6 +19,6 @@ export const getUser = async (userId) => {
 };
 
 export const createUser = (userId) => {
-  const docData = { username: userId, menu: fakeMenu.SMALL };
+  const docData = { username: userId, menu: fakeMenu.LARGE };
   setDoc(doc(db, "users", userId), docData);
 };
