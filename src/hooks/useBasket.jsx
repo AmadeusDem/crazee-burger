@@ -19,11 +19,12 @@ export const useBasket = () => {
     addNewProduct(idProductToAdd, basketCopy, setBasket, username);
   };
 
-  const handleBasketDelete = (event, idProductToDelete) => {
+  const handleBasketDelete = (event, idProductToDelete, username) => {
     event.stopPropagation();
     const basketCopy = deepClone(basket);
     const newBasket = basketCopy.filter((product) => product.id !== idProductToDelete);
     setBasket(newBasket);
+    setLocalStorage(username, newBasket);
   };
 
   function addNewProduct(idProductToAdd, basketCopy, setBasket, username) {

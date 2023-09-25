@@ -24,10 +24,10 @@ export default function Menu() {
   } = useContext(AdminContext);
   const { isAdminMode, username } = useContext(OrderContext);
 
-  const handleCardDelete = (event, idToDelete) => {
+  const handleCardDelete = (event, idToDelete, username) => {
     event.stopPropagation();
     handleDelete(idToDelete, username);
-    handleBasketDelete(event, idToDelete);
+    handleBasketDelete(event, idToDelete, username);
     if (productToEdit && idToDelete === productToEdit.id) setProductToEdit(EMPTY_PRODUCT);
   };
 
@@ -53,7 +53,7 @@ export default function Menu() {
           leftText={formatPrice(parseFloat(replaceFrenchCommaWithDot(price)).toFixed(1))}
           buttonLabel="Ajouter"
           hasDeleteButton={isAdminMode}
-          onDelete={(e) => handleCardDelete(e, id)}
+          onDelete={(e) => handleCardDelete(e, id, username)}
           isHoverable={isAdminMode}
           isSelected={isProductClicked(id, productToEdit.id)}
           onAdd={(e) => handleAddButton(e, id, username)}

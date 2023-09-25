@@ -9,7 +9,7 @@ import { isProductClicked } from "../helper";
 import { formatPrice, replaceFrenchCommaWithDot } from "../../../../../utils/maths";
 
 export default function BasketProducts() {
-  const { isAdminMode } = useContext(OrderContext);
+  const { isAdminMode, username } = useContext(OrderContext);
   const { productToEdit, menu, basket, handleBasketDelete, handleProductSelected } =
     useContext(AdminContext);
 
@@ -24,7 +24,7 @@ export default function BasketProducts() {
             imageSource={menuProduct.imageSource}
             price={formatPrice(parseFloat(replaceFrenchCommaWithDot(menuProduct.price)).toFixed(1))}
             quantity={quantity}
-            onDelete={(e) => handleBasketDelete(e, id)}
+            onDelete={(e) => handleBasketDelete(e, id, username)}
             isHoverable={isAdminMode}
             onClick={() => handleProductSelected(id)}
             isSelected={isProductClicked(id, productToEdit.id)}
