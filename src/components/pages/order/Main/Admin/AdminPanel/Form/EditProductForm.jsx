@@ -3,6 +3,7 @@ import { AdminContext } from "../../../../../../../context/AdminContext";
 import { OrderContext } from "../../../../../../../context/OrderContext.jsx";
 import EditInfoMessage from "./EditInfoMessage";
 import Form from "./Form";
+import SaveMessage from "./SaveMessage";
 
 export default function EditProductForm() {
   const { productToEdit, handleEdit, setProductToEdit, titleEditRef } = useContext(AdminContext);
@@ -40,7 +41,7 @@ export default function EditProductForm() {
       onBlur={handleOnBlur}
       onFocus={handleOnFocus}
     >
-      {savingModification ? <span>Modification sauvegardée</span> : <EditInfoMessage />}
+      {savingModification ? <SaveMessage /> : <EditInfoMessage />}
     </Form>
   );
 }
