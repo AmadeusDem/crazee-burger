@@ -25,13 +25,7 @@ export default function Basket() {
   return (
     <BasketStyled>
       <BasketHeader total={basketTotal} />
-      {isEmpty(basket) ? (
-        <EmptyBasket />
-      ) : menu ? (
-        <BasketProducts />
-      ) : (
-        <Loading text="Chargement en cours..." />
-      )}
+      {isEmpty(basket) ? <EmptyBasket isLoading={menu === undefined} /> : <BasketProducts />}
       <BasketFooter />
     </BasketStyled>
   );

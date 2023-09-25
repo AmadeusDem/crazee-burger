@@ -38,9 +38,13 @@ export default function Main() {
     if (basketReceived) setBasket(basketReceived);
   };
 
-  useEffect(() => {
-    initializeMenu();
+  const initializeUserSession = async () => {
+    await initializeMenu();
     initializeBasket();
+  };
+
+  useEffect(() => {
+    initializeUserSession();
   }, []);
 
   const handleProductSelected = async (idProduct) => {
