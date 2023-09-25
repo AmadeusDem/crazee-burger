@@ -11,6 +11,7 @@ import { useMenu } from "../../../../hooks/useMenu";
 import { useBasket } from "../../../../hooks/useBasket";
 import { findObjectById } from "../../../../utils/array";
 import { getMenu } from "../../../../api/menu";
+import { getLocalStorage } from "../../../../utils/window";
 
 export default function Main() {
   const { isAdminMode, username } = useContext(OrderContext);
@@ -21,7 +22,7 @@ export default function Main() {
   const titleEditRef = useRef();
 
   const { menu, setMenu, handleAdd, handleReset, handleDelete, handleEdit } = useMenu();
-  const { basket, handleBasketAdd, handleBasketDelete, handleBasketEdit } = useBasket();
+  const { basket, setBasket, handleBasketAdd, handleBasketDelete, handleBasketEdit } = useBasket();
 
   const initializeMenu = async () => {
     try {
@@ -32,8 +33,14 @@ export default function Main() {
     }
   };
 
+  const initializeBasket = () => {
+    const basketReceived = getLocalStorage(username);
+    if (basketReceived) setBasket(basketReceived);
+  };
+
   useEffect(() => {
     initializeMenu();
+    initializeBasket();
   }, []);
 
   const handleProductSelected = async (idProduct) => {

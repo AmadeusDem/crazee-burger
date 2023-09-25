@@ -39,5 +39,5 @@ export const useBasket = () => {
     setBasket(basketCopy);
     setLocalStorage(username, basketCopy);
   }
-  return { basket, handleBasketAdd, handleBasketDelete };
+  return { basket, setBasket, handleBasketAdd, handleBasketDelete };
 };
