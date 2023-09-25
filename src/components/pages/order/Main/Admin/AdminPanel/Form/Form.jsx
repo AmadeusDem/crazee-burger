@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
-import Input from "../../../../../reusable-ui/Input";
-import { getInputTextsConfig } from "./inputTextsConfig";
+import Input from "../../../../../../reusable-ui/Input";
+import { getInputTextsConfig } from "../inputTextsConfig";
 import { forwardRef } from "react";
-import { theme } from "../../../../../../theme";
+import { theme } from "../../../../../../../theme";
 
-const Form = forwardRef(({ product, onChange, onSubmit, children }, ref) => {
+const Form = forwardRef(({ product, onChange, onSubmit, children, onBlur, onFocus }, ref) => {
   const InputText = getInputTextsConfig(product);
 
   return (
@@ -17,6 +17,8 @@ const Form = forwardRef(({ product, onChange, onSubmit, children }, ref) => {
           key={input.id}
           onChange={onChange}
           ref={ref && input.name === "title" ? ref : null}
+          onBlur={onBlur}
+          onFocus={onFocus}
         />
       ))}
       <div className="submit">{children}</div>
