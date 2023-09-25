@@ -71,7 +71,7 @@ const MenuStyled = styled.section`
   justify-content: center;
 
   // Clipping
-  overflow-y: scroll;
+  overflow-y: auto;
 
   // Box model (from outside in)
   box-shadow: ${theme.shadows.strong};

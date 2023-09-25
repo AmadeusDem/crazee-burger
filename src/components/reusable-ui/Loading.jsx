@@ -14,6 +14,8 @@ const LoadingStyled = styled.div`
   justify-content: center;
   align-items: center;
 
+  box-shadow: ${theme.shadows.strong};
+
   font-size: ${theme.fonts.P4};
   font-family: ${theme.fonts.family.stylish};
   font-weight: ${theme.weights.regular};
