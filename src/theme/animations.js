@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css, keyframes } from "styled-components";
 
 export const adminAnimation = css`
   .panel-animated-appear {
@@ -40,5 +40,19 @@ export const basketProductsAnimation = css`
     transform: translateX(0px);
     transition: 0.5s;
     opacity: 1;
+  }
+`;
+
+export const fadeInFromRight = keyframes`
+  0% {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 `;
