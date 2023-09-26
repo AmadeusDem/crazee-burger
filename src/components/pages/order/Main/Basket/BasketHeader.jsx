@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import { formatPrice } from "../../../../../utils/maths";
+import CasinoEffect from "../../../../reusable-ui/CasinoEffect";
 
 export default function BasketHeader({ total = 0 }) {
   return (
     <BasketHeaderStyled>
       <span>Total</span>
-      <span className="price">{formatPrice(total.toFixed(2))}</span>
+      <CasinoEffect count={formatPrice(total.toFixed(2))} className="price" />
     </BasketHeaderStyled>
   );
 }
