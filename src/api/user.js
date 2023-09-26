@@ -1,6 +1,6 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "./firebase-config";
-import { fakeMenu } from "../fakeData/fakeMenu";
+import { menu } from "../data/menu";
 
 export const authenticateUser = async (userId) => {
   const existingUser = await getUser(userId);
@@ -19,6 +19,6 @@ export const getUser = async (userId) => {
 };
 
 export const createUser = (userId) => {
-  const docData = { username: userId, menu: fakeMenu.LARGE };
+  const docData = { username: userId, menu: menu.LARGE };
   setDoc(doc(db, "users", userId), docData);
 };

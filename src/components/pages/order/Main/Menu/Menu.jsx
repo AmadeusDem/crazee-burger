@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { AdminContext } from "../../../../../context/AdminContext";
 import { OrderContext } from "../../../../../context/OrderContext.jsx";
 import { replaceFrenchCommaWithDot } from "../../../../../utils/maths";
-import { isProductClicked } from "../helper";
+import { isProductClicked } from "../../helpers/helper";
 import { EMPTY_PRODUCT, PRODUCT_IMAGE_DEFAULT } from "../../../../../enums/product";
 import { theme } from "../../../../../theme";
 import EmptyMenu from "./EmptyMenu";

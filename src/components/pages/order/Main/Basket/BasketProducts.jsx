@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { OrderContext } from "../../../../../context/OrderContext.jsx";
 import { AdminContext } from "../../../../../context/AdminContext";
 import { findObjectById } from "../../../../../utils/array";
-import { isProductClicked } from "../helper";
+import { isProductClicked } from "../../helpers/helper";
 import { formatPrice, replaceFrenchCommaWithDot } from "../../../../../utils/maths";
 
 export default function BasketProducts() {

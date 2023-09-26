@@ -164,7 +164,7 @@ const LARGE = [
 
 const DEFAULT_MENU = LARGE;
 
-export const fakeMenu = {
+export const menu = {
   EMPTY,
   SMALL,
   MEDIUM,
