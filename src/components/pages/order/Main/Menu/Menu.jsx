@@ -10,6 +10,8 @@ import { EMPTY_PRODUCT, PRODUCT_IMAGE_DEFAULT } from "../../../../../enums/produ
 import { theme } from "../../../../../theme";
 import EmptyMenu from "./EmptyMenu";
 import Loading from "../../../../reusable-ui/Loading";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { menuCardAnimation } from "../../../../../theme/animations";
 
 export default function Menu() {
   const {
@@ -43,23 +45,24 @@ export default function Menu() {
   }
 
   return (
-    <MenuStyled>
+    <TransitionGroup component={MenuStyled}>
       {menu.map(({ id, imageSource, title, price }) => (
-        <Card
-          key={id}
-          onClick={() => handleProductSelected(id)}
-          image={imageSource ? imageSource : PRODUCT_IMAGE_DEFAULT}
-          title={title}
-          leftText={formatPrice(parseFloat(replaceFrenchCommaWithDot(price)).toFixed(1))}
-          buttonLabel="Ajouter"
-          hasDeleteButton={isAdminMode}
-          onDelete={(e) => handleCardDelete(e, id, username)}
-          isHoverable={isAdminMode}
-          isSelected={isProductClicked(id, productToEdit.id)}
-          onAdd={(e) => handleAddButton(e, id, username)}
-        />
+        <CSSTransition key={id} classNames="card-animated" timeout={500}>
+          <Card
+            onClick={() => handleProductSelected(id)}
+            image={imageSource ? imageSource : PRODUCT_IMAGE_DEFAULT}
+            title={title}
+            leftText={formatPrice(parseFloat(replaceFrenchCommaWithDot(price)).toFixed(1))}
+            buttonLabel="Ajouter"
+            hasDeleteButton={isAdminMode}
+            onDelete={(e) => handleCardDelete(e, id, username)}
+            isHoverable={isAdminMode}
+            isSelected={isProductClicked(id, productToEdit.id)}
+            onAdd={(e) => handleAddButton(e, id, username)}
+          />
+        </CSSTransition>
       ))}
-    </MenuStyled>
+    </TransitionGroup>
   );
 }
 
@@ -76,4 +79,6 @@ const MenuStyled = styled.section`
   // Box model (from outside in)
   box-shadow: ${theme.shadows.strong};
   padding: 50px 50px 150px;
+
+  ${menuCardAnimation};
 `;

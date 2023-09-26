@@ -43,6 +43,28 @@ export const basketProductsAnimation = css`
   }
 `;
 
+export const menuCardAnimation = css`
+  .card-animated-enter {
+    opacity: 0;
+    transform: translateX(-100%);
+
+    &.card-animated-enter-active {
+      opacity: 1;
+      transform: translateX(0%);
+      transition: 500ms;
+    }
+  }
+
+  .card-animated-exit {
+    opacity: 1;
+
+    &.card-animated-exit-active {
+      opacity: 0;
+      transition: 500ms;
+    }
+  }
+`;
+
 export const fadeInFromRight = keyframes`
   0% {
     position: absolute;
