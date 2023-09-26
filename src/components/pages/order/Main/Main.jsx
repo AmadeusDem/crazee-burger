@@ -11,6 +11,8 @@ import { useMenu } from "../../../../hooks/useMenu";
 import { useBasket } from "../../../../hooks/useBasket";
 import { findObjectById } from "../../../../utils/array";
 import { initializeUserSession } from "../helpers/initializeUserSession";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { adminAnimation } from "../../../../theme/animations";
 
 export default function Main() {
   const { isAdminMode, username } = useContext(OrderContext);
@@ -66,7 +68,13 @@ export default function Main() {
         <Basket />
         <div className="menu-and-admin">
           <Menu />
-          {isAdminMode && <Admin />}
+          {isAdminMode && (
+            <TransitionGroup component={null} appear={true}>
+              <CSSTransition classNames="panel-animated" timeout={500}>
+                <Admin />
+              </CSSTransition>
+            </TransitionGroup>
+          )}
         </div>
       </MainStyled>
     </AdminContext.Provider>
@@ -95,4 +103,6 @@ const MainStyled = styled.main`
     // Box model
     border-radius: 0px 0px ${theme.borderRadius.extraRound} 0px;
   }
+
+  ${adminAnimation};
 `;

@@ -9,8 +9,10 @@ export default function Admin() {
 
   return (
     <AdminStyled>
-      <AdminTabs />
-      {isPanelOpen && <AdminPanel />}
+      <div>
+        <AdminTabs />
+        {isPanelOpen && <AdminPanel />}
+      </div>
     </AdminStyled>
   );
 }
