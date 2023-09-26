@@ -1,4 +1,4 @@
-export const EMPTY = []
+export const EMPTY = [];
 
 export const SMALL = [
   {
@@ -7,7 +7,7 @@ export const SMALL = [
     imageSource: "images/burger1.png",
     quantity: 1,
   },
-]
+];
 
 export const MEDIUM = [
   {
@@ -38,7 +38,7 @@ export const MEDIUM = [
     price: 5,
     quantity: 4,
   },
-]
+];
 
 export const LARGE = [
   {
@@ -131,7 +131,7 @@ export const LARGE = [
     isAvailable: true,
     isAdvertised: false,
   },
-]
+];
 
 export const LARGE_WEIRD = [
   {
@@ -224,12 +224,12 @@ export const LARGE_WEIRD = [
     isAvailable: true,
     isAdvertised: false,
   },
-]
+];
 
-export const fakeBasket = {
+export const basket = {
   EMPTY,
   SMALL,
   MEDIUM,
   LARGE,
   LARGE_WEIRD,
-}
+};

@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import { theme } from "../../../../theme";
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { OrderContext } from "../../../../context/OrderContext";
 import Menu from "./Menu/Menu";
 import Admin from "./Admin/Admin";
@@ -10,16 +10,22 @@ import Basket from "./Basket/Basket";
 import { useMenu } from "../../../../hooks/useMenu";
 import { useBasket } from "../../../../hooks/useBasket";
 import { findObjectById } from "../../../../utils/array";
+import { initializeUserSession } from "../helpers/initializeUserSession";
 
 export default function Main() {
-  const { isAdminMode } = useContext(OrderContext);
+  const { isAdminMode, username } = useContext(OrderContext);
   const [isPanelOpen, setIsPanelOpen] = useState(true);
   const [selectedTab, setSelectedTab] = useState("add");
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productToEdit, setProductToEdit] = useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
-  const { menu, handleAdd, handleReset, handleDelete, handleEdit } = useMenu();
-  const { basket, handleBasketAdd, handleBasketDelete, handleBasketEdit } = useBasket();
+
+  const { menu, setMenu, handleAdd, handleReset, handleDelete, handleEdit } = useMenu();
+  const { basket, setBasket, handleBasketAdd, handleBasketDelete, handleBasketEdit } = useBasket();
+
+  useEffect(() => {
+    initializeUserSession(username, setMenu, setBasket);
+  }, []);
 
   const handleProductSelected = async (idProduct) => {
     if (!isAdminMode) return;

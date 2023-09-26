@@ -1,13 +1,15 @@
 import { useContext } from "react";
-import { AdminContext } from "../../../../../../context/AdminContext.jsx";
+import { AdminContext } from "../../../../../../../context/AdminContext.jsx";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { EMPTY_PRODUCT } from "../../../../../../enums/product.js";
+import { EMPTY_PRODUCT } from "../../../../../../../enums/product.js";
 import Form from "./Form.jsx";
-import Button from "../../../../../reusable-ui/Button.jsx";
+import Button from "../../../../../../reusable-ui/Button.jsx";
+import { OrderContext } from "../../../../../../../context/OrderContext.jsx";
 
 export default function AddProductForm() {
   const { handleAdd, newProduct, setNewProduct } = useContext(AdminContext);
+  const { username } = useContext(OrderContext);
 
   const displaySuccessToast = () => {
     toast.success("Produit ajouté avec succès !", {
@@ -39,7 +41,7 @@ export default function AddProductForm() {
       id: crypto.randomUUID(),
     };
 
-    handleAdd(productToAdd);
+    handleAdd(productToAdd, username);
     displaySuccessToast();
     setNewProduct(EMPTY_PRODUCT);
   };

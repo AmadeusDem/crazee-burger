@@ -1,8 +1,12 @@
 import { styled } from "styled-components";
 import Button from "../../../../reusable-ui/Button";
 import { theme } from "../../../../../theme";
+import { useContext } from "react";
+import { OrderContext } from "../../../../../context/OrderContext";
 
 export default function EmptyMenuAdmin({ handleReset }) {
+  const { username } = useContext(OrderContext);
+
   return (
     <EmptyMenuAdminStyled>
       <h1>Le menu est vide ?</h1>
@@ -10,7 +14,7 @@ export default function EmptyMenuAdmin({ handleReset }) {
       <Button
         className="generate-button"
         label="Générer de nouveaux produits"
-        onClick={handleReset}
+        onClick={() => handleReset(username)}
       />
     </EmptyMenuAdminStyled>
   );

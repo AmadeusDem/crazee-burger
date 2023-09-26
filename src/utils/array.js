@@ -7,3 +7,7 @@ export const findObjectById = (id, array) => {
 export const findIndexById = (id, array) => {
   return array.findIndex((item) => item.id === id);
 };
+
+export const isEmpty = (array) => {
+  return array.length === 0;
+};
