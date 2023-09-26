@@ -14,9 +14,15 @@ export default function BasketCard({
   isHoverable,
   isSelected,
   onClick,
+  ...extraProps
 }) {
   return (
-    <BasketCardStyled $isHoverable={isHoverable} $isSelected={isSelected} onClick={onClick}>
+    <BasketCardStyled
+      $isHoverable={isHoverable}
+      $isSelected={isSelected}
+      onClick={onClick}
+      {...extraProps}
+    >
       <div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />
       </div>
