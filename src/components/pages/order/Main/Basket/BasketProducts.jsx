@@ -8,6 +8,7 @@ import { findObjectById } from "../../../../../utils/array";
 import { isProductClicked } from "../../helpers/helper";
 import { formatPrice, replaceFrenchCommaWithDot } from "../../../../../utils/maths";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { basketProductsAnimation } from "../../../../../theme/animations";
 
 export default function BasketProducts() {
   const { isAdminMode, username } = useContext(OrderContext);
@@ -43,34 +44,6 @@ export default function BasketProducts() {
 }
 
 const BasketProductsStyled = styled.div`
-  .card-enter {
-    transform: translateX(100px);
-    opacity: 0;
-  }
-
-  .card-enter-active {
-    transform: translateX(0px);
-    transition: 0.5s;
-    opacity: 1;
-  }
-
-  .card-exit-active {
-    transform: translateX(-100px);
-    transition: 0.5s;
-    opacity: 0;
-  }
-
-  .card-appear {
-    transform: translateX(100px);
-    opacity: 0;
-  }
-
-  .card-appear-active {
-    transform: translateX(0px);
-    transition: 0.5s;
-    opacity: 1;
-  }
-
   // Position and layout
   display: flex;
   flex-direction: column;
@@ -96,4 +69,6 @@ const BasketProductsStyled = styled.div`
   .empty-basket {
     text-align: center;
   }
+
+  ${basketProductsAnimation}
 `;

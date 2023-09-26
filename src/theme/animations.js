@@ -12,3 +12,33 @@ export const adminAnimation = css`
     }
   }
 `;
+
+export const basketProductsAnimation = css`
+  .card-enter {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+
+  .card-enter-active {
+    transform: translateX(0px);
+    transition: 0.5s;
+    opacity: 1;
+  }
+
+  .card-exit-active {
+    transform: translateX(-100px);
+    transition: 0.5s;
+    opacity: 0;
+  }
+
+  .card-appear {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+
+  .card-appear-active {
+    transform: translateX(0px);
+    transition: 0.5s;
+    opacity: 1;
+  }
+`;
