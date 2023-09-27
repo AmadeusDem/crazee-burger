@@ -74,6 +74,7 @@ const BasketCardStyled = styled.div`
   &:hover {
     .delete-button {
       // Position and layout
+      z-index: 1;
       position: absolute;
       right: 0;
       display: flex;

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
+import CasinoEffect from "../../../../reusable-ui/CasinoEffect";
 
 export default function BasketCardInfo({ title, price, quantity }) {
   return (
@@ -11,7 +12,7 @@ export default function BasketCardInfo({ title, price, quantity }) {
         <span className="price">{price}</span>
       </div>
       <div className="quantity">
-        <span>x {quantity}</span>
+        <CasinoEffect count={`x ${quantity}`} className="quantity-span" />
       </div>
     </BasketCardInfoStyled>
   );
@@ -61,7 +62,7 @@ const BasketCardInfoStyled = styled.div`
     // Position and layout
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
 
     // Box model (from outside in)
     margin-right: 20px;
@@ -69,5 +70,9 @@ const BasketCardInfoStyled = styled.div`
     // Typography
     font-size: ${theme.fonts.P3};
     font-weight: ${theme.weights.medium};
+
+    .quantity-span {
+      z-index: -1;
+    }
   }
 `;
