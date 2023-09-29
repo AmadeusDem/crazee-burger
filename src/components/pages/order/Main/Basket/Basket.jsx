@@ -1,14 +1,12 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import BasketHeader from "./BasketHeader";
-import BasketProducts from "./BasketProducts";
 import BasketFooter from "./BasketFooter";
-import EmptyBasket from "./EmptyBasket";
 import { useContext } from "react";
 import { AdminContext } from "../../../../../context/AdminContext";
-import Loading from "../../../../reusable-ui/Loading";
 import { replaceFrenchCommaWithDot } from "../../../../../utils/maths";
-import { findObjectById, isEmpty } from "../../../../../utils/array";
+import { findObjectById } from "../../../../../utils/array";
+import BasketBody from "./BasketBody/BasketBody";
 
 export default function Basket() {
   const { basket, menu } = useContext(AdminContext);
@@ -25,7 +23,7 @@ export default function Basket() {
   return (
     <BasketStyled>
       <BasketHeader total={basketTotal} />
-      {isEmpty(basket) ? <EmptyBasket isLoading={menu === undefined} /> : <BasketProducts />}
+      <BasketBody />
       <BasketFooter />
     </BasketStyled>
   );

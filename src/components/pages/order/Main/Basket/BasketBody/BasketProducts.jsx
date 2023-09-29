@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import { theme } from "../../../../../theme";
-import BasketCard from "./BasketCard";
+import { theme } from "../../../../../../theme";
+import BasketCard from "./BasketCard/BasketCard";
 import { useContext } from "react";
-import { OrderContext } from "../../../../../context/OrderContext.jsx";
-import { AdminContext } from "../../../../../context/AdminContext";
-import { findObjectById } from "../../../../../utils/array";
-import { isProductClicked } from "../../helpers/helper";
-import { formatPrice, replaceFrenchCommaWithDot } from "../../../../../utils/maths";
+import { OrderContext } from "../../../../../../context/OrderContext.jsx";
+import { AdminContext } from "../../../../../../context/AdminContext";
+import { findObjectById } from "../../../../../../utils/array";
+import { isProductClicked } from "../../../helpers/helper";
+import { formatPrice, replaceFrenchCommaWithDot } from "../../../../../../utils/maths";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { basketProductsAnimation } from "../../../../../theme/animations";
+import { basketProductsAnimation } from "../../../../../../theme/animations";
 
 export default function BasketProducts() {
   const { isAdminMode, username } = useContext(OrderContext);

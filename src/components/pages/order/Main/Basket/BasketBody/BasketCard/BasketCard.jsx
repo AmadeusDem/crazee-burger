@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
-import { PRODUCT_IMAGE_DEFAULT } from "../../../../../enums/product";
-import { theme } from "../../../../../theme";
+import { PRODUCT_IMAGE_DEFAULT } from "../../../../../../../enums/product";
+import { theme } from "../../../../../../../theme";
 import { MdDeleteForever } from "react-icons/md";
 import BasketCardInfo from "./BasketCardInfo";
 

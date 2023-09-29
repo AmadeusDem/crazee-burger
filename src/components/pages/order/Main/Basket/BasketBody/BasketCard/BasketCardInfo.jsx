@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { theme } from "../../../../../theme";
-import CasinoEffect from "../../../../reusable-ui/CasinoEffect";
+import { theme } from "../../../../../../../theme";
+import CasinoEffect from "../../../../../../reusable-ui/CasinoEffect";
 
 export default function BasketCardInfo({ title, price, quantity }) {
   return (
