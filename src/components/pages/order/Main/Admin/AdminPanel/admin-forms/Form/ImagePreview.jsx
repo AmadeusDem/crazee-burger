@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
-import { theme } from "../../../../../../../theme";
+import { theme } from "../../../../../../../../theme";
+import { fadeIn } from "../../../../../../../../theme/animations";
 
 export default function ImagePreview({ imageSource, title = "Titre de l'article" }) {
   return (
@@ -29,9 +30,11 @@ const ImagePreviewStyled = styled.div`
 
   .no-image {
     text-align: center;
+    animation: ${fadeIn} 500ms;
   }
 
   img {
+    animation: ${fadeIn} 500ms;
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;

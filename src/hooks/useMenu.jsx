@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { deepClone, findIndexById } from "../utils/array";
 import { syncMenu } from "../api/menu";
-import { menu } from "../data/menu";
+import { menuData } from "../data/menu";
 
 export const useMenu = (userMenu) => {
   const [menu, setMenu] = useState(userMenu);
@@ -34,7 +34,7 @@ export const useMenu = (userMenu) => {
   };
 
   const handleReset = (username) => {
-    const resetMenu = menu.DEFAULT_MENU;
+    const resetMenu = menuData.DEFAULT_MENU;
     setMenu(resetMenu);
     syncMenu(username, resetMenu);
   };

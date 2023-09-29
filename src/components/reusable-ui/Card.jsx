@@ -2,6 +2,7 @@ import { css, styled } from "styled-components";
 import Button from "./Button.jsx";
 import { theme } from "../../theme/index.js";
 import { TiDelete } from "react-icons/ti";
+import { fadeInFromRight } from "../../theme/animations.js";
 
 export default function Card({
   title,
@@ -82,6 +83,8 @@ const CardStyled = styled.article`
 
       // Typography
       color: ${theme.colors.primary};
+
+      animation: ${fadeInFromRight} 500ms ease-out;
 
       .icon {
         height: 100%;

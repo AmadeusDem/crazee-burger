@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
-import Input from "../../../../../../reusable-ui/Input";
-import { getInputTextsConfig } from "../inputTextsConfig";
+import Input from "../../../../../../../reusable-ui/Input";
+import { getInputTextsConfig } from "../../inputTextsConfig";
 import { forwardRef } from "react";
-import { theme } from "../../../../../../../theme";
+import { theme } from "../../../../../../../../theme";
 
 const Form = forwardRef(({ product, onChange, onSubmit, children, onBlur, onFocus }, ref) => {
   const InputText = getInputTextsConfig(product);

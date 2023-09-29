@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
-import { PRODUCT_IMAGE_DEFAULT } from "../../../../../enums/product";
-import { theme } from "../../../../../theme";
+import { PRODUCT_IMAGE_DEFAULT } from "../../../../../../../enums/product";
+import { theme } from "../../../../../../../theme";
 import { MdDeleteForever } from "react-icons/md";
 import BasketCardInfo from "./BasketCardInfo";
 
@@ -14,9 +14,15 @@ export default function BasketCard({
   isHoverable,
   isSelected,
   onClick,
+  ...extraProps
 }) {
   return (
-    <BasketCardStyled $isHoverable={isHoverable} $isSelected={isSelected} onClick={onClick}>
+    <BasketCardStyled
+      $isHoverable={isHoverable}
+      $isSelected={isSelected}
+      onClick={onClick}
+      {...extraProps}
+    >
       <div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />
       </div>
@@ -68,6 +74,7 @@ const BasketCardStyled = styled.div`
   &:hover {
     .delete-button {
       // Position and layout
+      z-index: 1;
       position: absolute;
       right: 0;
       display: flex;
