@@ -5,8 +5,9 @@ import { menuData } from "../data/menu";
 export const authenticateUser = async (userId) => {
   const existingUser = await getUser(userId);
   if (!existingUser) {
-    createUser(userId);
+    return createUser(userId);
   }
+  return existingUser;
 };
 
 export const getUser = async (userId) => {
@@ -18,7 +19,8 @@ export const getUser = async (userId) => {
   }
 };
 
-export const createUser = (userId) => {
+export const createUser = async (userId) => {
   const docData = { username: userId, menu: menuData.DEFAULT_MENU };
-  setDoc(doc(db, "users", userId), docData);
+  await setDoc(doc(db, "users", userId), docData);
+  return docData;
 };
