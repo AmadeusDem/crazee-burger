@@ -7,9 +7,10 @@ export const getSelectConfig = (newProduct) => [
     name: "isAvailable",
     className: "availability-select",
     Icon: <FiPackage />,
+    value: newProduct.isAvailable ? "true" : "false",
     options: [
-      { name: "En stock", value: "true", selected: newProduct.isAvailable },
-      { name: "En rupture", value: "false", selected: !newProduct.isAvailable },
+      { name: "En stock", value: "true" },
+      { name: "En rupture", value: "false" },
     ],
   },
   {
@@ -17,9 +18,10 @@ export const getSelectConfig = (newProduct) => [
     name: "isAdvertised",
     className: "advertising-select",
     Icon: <GoMegaphone />,
+    value: newProduct.isAdvertised ? "true" : "false",
     options: [
-      { name: "Sans pub", value: "false", selected: !newProduct.isAdvertised },
-      { name: "Avec pub", value: "true", selected: newProduct.isAdvertised },
+      { name: "Sans pub", value: "false" },
+      { name: "Avec pub", value: "true" },
     ],
   },
 ];
