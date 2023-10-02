@@ -27,6 +27,12 @@ export default function Card({
         )}
         <div className="image">
           <img src={image} alt={title} />
+          {!isAvailable && (
+            <div className="overlap">
+              <div className="transparent-layer"></div>
+              <img className="overlap-image" src="/images/stock-epuise.png" alt="overlap" />
+            </div>
+          )}
         </div>
         <div className="card-information">
           <h2>{title}</h2>
@@ -124,6 +130,31 @@ const CardStyled = styled.article`
         font-family: ${theme.fonts.family.stylish};
         font-size: ${theme.fonts.P3};
       }
+
+      .overlap {
+        .overlap-image {
+          position: absolute;
+          top: 0px;
+          bottom: 0px;
+          left: 10%;
+          width: 80%;
+          height: 100%;
+          z-index: 1;
+          border-radius: 15px;
+        }
+
+        .transparent-layer {
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          opacity: 0.7;
+          background: snow;
+          z-index: 1;
+          border-radius: 15px;
+        }
+      }
     }
 
     .card-information {
@@ -182,6 +213,8 @@ const CardStyled = styled.article`
 
             &:disabled {
               cursor: not-allowed;
+              z-index: 1;
+              opacity: 0.5;
             }
           }
         }
