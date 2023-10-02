@@ -82,6 +82,7 @@ const CardStyled = styled.article`
       position: absolute;
       top: 15px;
       right: 15px;
+      z-index: 2;
 
       // Box model (from outside in)
       border: none;
