@@ -15,6 +15,7 @@ export default function Card({
   isHoverable,
   isSelected,
   onAdd,
+  isAvailable,
 }) {
   return (
     <CardStyled onClick={onClick} $isHoverable={isHoverable} $isSelected={isSelected}>
@@ -34,7 +35,12 @@ export default function Card({
               <p>{leftText}</p>
             </div>
             <div className="right-description">
-              <Button label={buttonLabel} className="primary-button" onClick={onAdd} />
+              <Button
+                disabled={!isAvailable}
+                label={buttonLabel}
+                className="primary-button"
+                onClick={onAdd}
+              />
             </div>
           </div>
         </div>
@@ -173,6 +179,10 @@ const CardStyled = styled.article`
             width: 100%;
             font-size: ${theme.fonts.XS};
             padding: 0.75rem;
+
+            &:disabled {
+              cursor: not-allowed;
+            }
           }
         }
       }
@@ -207,6 +217,10 @@ const selectedStyle = css`
     &:active {
       color: ${theme.colors.primary};
       background-color: ${theme.colors.white};
+    }
+
+    &:disabled {
+      cursor: not-allowed;
     }
   }
 

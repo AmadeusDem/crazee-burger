@@ -46,7 +46,7 @@ export default function Menu() {
 
   return (
     <TransitionGroup component={MenuStyled}>
-      {menu.map(({ id, imageSource, title, price }) => (
+      {menu.map(({ id, imageSource, title, price, isAvailable }) => (
         <CSSTransition key={id} classNames="card-animated" timeout={500}>
           <Card
             onClick={() => handleProductSelected(id)}
@@ -59,6 +59,7 @@ export default function Menu() {
             isHoverable={isAdminMode}
             isSelected={isProductClicked(id, productToEdit.id)}
             onAdd={(e) => handleAddButton(e, id, username)}
+            isAvailable={isAvailable}
           />
         </CSSTransition>
       ))}
