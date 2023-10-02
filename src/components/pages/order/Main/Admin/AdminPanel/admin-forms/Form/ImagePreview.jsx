@@ -22,6 +22,7 @@ const ImagePreviewStyled = styled.div`
   align-items: center;
 
   // Box model (from outside in)
+  margin-right: 12px;
   border: 1px solid ${theme.colors.greyLight};
   border-radius: ${theme.borderRadius.round};
 
