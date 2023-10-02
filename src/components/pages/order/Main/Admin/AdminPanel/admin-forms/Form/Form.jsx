@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
 import Input from "../../../../../../../reusable-ui/Input";
-import { getInputConfig } from "../../inputConfig";
+import { getInputConfig } from "../inputConfig";
 import { forwardRef } from "react";
 import { theme } from "../../../../../../../../theme";
-import BooleanSelect from "../../../../../../../reusable-ui/BooleanSelect";
-import { FiPackage } from "react-icons/fi";
-import { GoMegaphone } from "react-icons/go";
+import Select from "../../../../../../../reusable-ui/Select.jsx";
+import { getSelectConfig } from "../selectConfig";
 
 const Form = forwardRef(({ product, onChange, onSubmit, children, onBlur, onFocus }, ref) => {
   const inputs = getInputConfig(product);
+  const selects = getSelectConfig(product);
 
   return (
     <FormStyled onSubmit={onSubmit}>
@@ -24,24 +24,9 @@ const Form = forwardRef(({ product, onChange, onSubmit, children, onBlur, onFocu
           onFocus={onFocus}
         />
       ))}
-      {/* <select name="isAvailable" className="availability-select">
-        <option value="true">En stock</option>
-        <option value="false">En rupture</option>
-      </select> */}
-      <BooleanSelect
-        className="availability-select"
-        Icon={<FiPackage />}
-        trueText="En stock"
-        falseText="En rupture"
-        name="isAvailable"
-      />
-      <BooleanSelect
-        className="advertising-select"
-        Icon={<GoMegaphone />}
-        trueText="Sans pub"
-        falseText="Avec pub"
-        name="isAdvertised"
-      />
+      {selects.map((select) => (
+        <Select key={select.id} {...select} />
+      ))}
       <div className="submit">{children}</div>
     </FormStyled>
   );
