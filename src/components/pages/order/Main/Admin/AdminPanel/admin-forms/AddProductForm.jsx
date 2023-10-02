@@ -6,6 +6,7 @@ import { EMPTY_PRODUCT } from "../../../../../../../enums/product.js";
 import Form from "./Form/Form.jsx";
 import Button from "../../../../../../reusable-ui/Button.jsx";
 import { OrderContext } from "../../../../../../../context/OrderContext.jsx";
+import { convertStringToBoolean } from "../../../../../../../utils/string";
 
 export default function AddProductForm() {
   const { handleAdd, newProduct, setNewProduct } = useContext(AdminContext);
@@ -26,7 +27,10 @@ export default function AddProductForm() {
 
   const handleChange = (e) => {
     const eventName = e.target.name;
-    const value = e.target.value;
+    let value = e.target.value;
+    if (eventName === "isAvailable" || eventName === "isAdvertised") {
+      value = convertStringToBoolean(value);
+    }
     setNewProduct({
       ...newProduct,
       [eventName]: value,
