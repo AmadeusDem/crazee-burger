@@ -25,7 +25,7 @@ const Form = forwardRef(({ product, onChange, onSubmit, children, onBlur, onFocu
         />
       ))}
       {selects.map((select) => (
-        <Select key={select.id} {...select} onChange={onChange} />
+        <Select key={select.id} {...select} onChange={onChange} onBlur={onBlur} onFocus={onFocus} />
       ))}
       <div className="submit">{children}</div>
     </FormStyled>
