@@ -13,9 +13,11 @@ export default function Basket() {
   let basketTotal = 0;
   if (menu) {
     basketTotal = basket.reduce((total, product) => {
-      const price = replaceFrenchCommaWithDot(findObjectById(product.id, menu).price);
+      const productInMenu = findObjectById(product.id, menu);
+      const price = replaceFrenchCommaWithDot(productInMenu.price);
+      const isAvailable = productInMenu.isAvailable;
 
-      if (isNaN(price)) return total;
+      if (isNaN(price) || !isAvailable) return total;
       return (total += product.quantity * price.toFixed(1));
     }, 0);
   }

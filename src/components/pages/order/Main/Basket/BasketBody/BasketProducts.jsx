@@ -34,6 +34,7 @@ export default function BasketProducts() {
                 isHoverable={isAdminMode}
                 onClick={() => handleProductSelected(id)}
                 isSelected={isProductClicked(id, productToEdit.id)}
+                isAvailable={menuProduct.isAvailable}
               />
             </CSSTransition>
           );

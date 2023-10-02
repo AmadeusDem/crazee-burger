@@ -14,6 +14,7 @@ export default function BasketCard({
   isHoverable,
   isSelected,
   onClick,
+  isAvailable,
   ...extraProps
 }) {
   return (
@@ -29,7 +30,7 @@ export default function BasketCard({
       <div className="image">
         <img src={imageSource ? imageSource : PRODUCT_IMAGE_DEFAULT} alt={title} />
       </div>
-      <BasketCardInfo title={title} price={price} quantity={quantity} />
+      <BasketCardInfo title={title} isAvailable={isAvailable} price={price} quantity={quantity} />
     </BasketCardStyled>
   );
 }
