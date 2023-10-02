@@ -26,14 +26,13 @@ export default function AddProductForm() {
   };
 
   const handleChange = (e) => {
-    const eventName = e.target.name;
-    let value = e.target.value;
-    if (eventName === "isAvailable" || eventName === "isAdvertised") {
+    let { name, value } = e.target;
+    if (name === "isAvailable" || name === "isAdvertised") {
       value = convertStringToBoolean(value);
     }
     setNewProduct({
       ...newProduct,
-      [eventName]: value,
+      [name]: value,
     });
   };
 

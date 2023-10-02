@@ -4,6 +4,7 @@ import { OrderContext } from "../../../../../../../context/OrderContext.jsx";
 import EditInfoMessage from "./EditInfoMessage.jsx";
 import Form from "./Form/Form.jsx";
 import SaveMessage from "./SaveMessage.jsx";
+import { convertStringToBoolean } from "../../../../../../../utils/string";
 
 export default function EditProductForm() {
   const { productToEdit, handleEdit, setProductToEdit, titleEditRef } = useContext(AdminContext);
@@ -12,8 +13,12 @@ export default function EditProductForm() {
   const [valueOnFocus, setValueOnFocus] = useState("");
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    let { name, value } = e.target;
+    if (name === "isAvailable" || name === "isAdvertised") {
+      value = convertStringToBoolean(value);
+    }
     const productEdited = { ...productToEdit, [name]: value };
+
     handleEdit(productEdited, username);
     setProductToEdit(productEdited);
   };
