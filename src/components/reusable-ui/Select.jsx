@@ -1,19 +1,22 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export default function BooleanSelect({ trueText, falseText, name, Icon, className }) {
+export default function Select({ options, name, Icon, className }) {
   return (
-    <BooleanSelectStyled className={className}>
+    <SelectStyled className={className}>
       <div className="icon">{Icon && Icon}</div>
       <select name={name}>
-        <option value="true">{trueText}</option>
-        <option value="false">{falseText}</option>
+        {options.map((option) => (
+          <option selected={option.selected} key={option.value} value={option.value}>
+            {option.name}
+          </option>
+        ))}
       </select>
-    </BooleanSelectStyled>
+    </SelectStyled>
   );
 }
 
-const BooleanSelectStyled = styled.div`
+const SelectStyled = styled.div`
   display: flex;
   align-items: center;
   gap: 0.9375rem;
