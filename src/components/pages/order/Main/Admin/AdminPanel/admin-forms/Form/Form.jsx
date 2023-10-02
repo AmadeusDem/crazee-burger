@@ -1,17 +1,17 @@
 import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
 import Input from "../../../../../../../reusable-ui/Input";
-import { getInputTextsConfig } from "../../inputTextsConfig";
+import { getInputConfig } from "../../inputConfig";
 import { forwardRef } from "react";
 import { theme } from "../../../../../../../../theme";
 
 const Form = forwardRef(({ product, onChange, onSubmit, children, onBlur, onFocus }, ref) => {
-  const InputText = getInputTextsConfig(product);
+  const inputs = getInputConfig(product);
 
   return (
     <FormStyled onSubmit={onSubmit}>
       <ImagePreview imageSource={product.imageSource} title={product.title} />
-      {InputText.map((input) => (
+      {inputs.map((input) => (
         <Input
           {...input}
           key={input.id}
@@ -21,6 +21,10 @@ const Form = forwardRef(({ product, onChange, onSubmit, children, onBlur, onFocu
           onFocus={onFocus}
         />
       ))}
+      <select name="isAvailable" className="availability-select">
+        <option value="true">En stock</option>
+        <option value="false">En rupture</option>
+      </select>
       <div className="submit">{children}</div>
     </FormStyled>
   );
@@ -38,7 +42,7 @@ const FormStyled = styled.form`
   grid-template-areas:
     "preview name name name"
     "preview image image image"
-    "preview price price price"
+    "preview price availability ."
     ". submit submit submit";
 
   // Box model (from outside in)
@@ -60,5 +64,9 @@ const FormStyled = styled.form`
 
   .submit {
     grid-area: submit;
+  }
+
+  .availability-select {
+    grid-area: availability;
   }
 `;
