@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export default function Select({ options, name, Icon, className }) {
+export default function Select({ options, onChange, name, Icon, className }) {
   return (
-    <SelectStyled className={className}>
+    <SelectStyled className={className} onChange={onChange}>
       <div className="icon">{Icon && Icon}</div>
       <select name={name}>
         {options.map((option) => (
@@ -46,5 +46,6 @@ const SelectStyled = styled.div`
 
     // Typography
     font-size: ${theme.fonts.SM};
+    outline: none;
   }
 `;
