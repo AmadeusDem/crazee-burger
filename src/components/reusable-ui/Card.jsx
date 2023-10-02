@@ -3,6 +3,7 @@ import Button from "./Button.jsx";
 import { theme } from "../../theme/index.js";
 import { TiDelete } from "react-icons/ti";
 import { fadeInFromRight } from "../../theme/animations.js";
+import Ribbon from "../pages/order/Main/Menu/Ribbon.jsx";
 
 export default function Card({
   title,
@@ -16,9 +17,11 @@ export default function Card({
   isSelected,
   onAdd,
   isAvailable,
+  isAdvertised,
 }) {
   return (
     <CardStyled onClick={onClick} $isHoverable={isHoverable} $isSelected={isSelected}>
+      {isAdvertised && <Ribbon label="Nouveau" />}
       <div className="card">
         {hasDeleteButton && (
           <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
@@ -59,6 +62,7 @@ const CardStyled = styled.article`
   ${({ $isHoverable }) => $isHoverable && hoverableStyle}
   border-radius: ${theme.borderRadius.extraRound};
   height: fit-content;
+  position: relative;
 
   .card {
     // Position and layout
