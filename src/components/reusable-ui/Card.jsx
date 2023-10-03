@@ -3,7 +3,7 @@ import Button from "./Button.jsx";
 import { theme } from "../../theme/index.js";
 import { TiDelete } from "react-icons/ti";
 import { fadeInFromRight } from "../../theme/animations.js";
-import Ribbon from "../pages/order/Main/Menu/Ribbon.jsx";
+import Ribbon from "./Ribbon.jsx";
 
 export default function Card({
   title,
