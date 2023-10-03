@@ -20,7 +20,6 @@ export const getInputConfig = (newProduct) => [
     placeholder: "Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)",
     value: newProduct.imageSource,
     version: "minimalist",
-    type: "url",
   },
   {
     id: "2",
