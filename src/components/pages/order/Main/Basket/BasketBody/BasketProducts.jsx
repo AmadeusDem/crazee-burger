@@ -35,6 +35,7 @@ export default function BasketProducts() {
                 onClick={() => handleProductSelected(id)}
                 isSelected={isProductClicked(id, productToEdit.id)}
                 isAvailable={menuProduct.isAvailable}
+                isAdvertised={menuProduct.isAdvertised}
               />
             </CSSTransition>
           );

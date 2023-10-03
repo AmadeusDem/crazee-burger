@@ -3,6 +3,7 @@ import { PRODUCT_IMAGE_DEFAULT } from "../../../../../../../enums/product";
 import { theme } from "../../../../../../../theme";
 import { MdDeleteForever } from "react-icons/md";
 import BasketCardInfo from "./BasketCardInfo";
+import Sticker from "../../../../../../reusable-ui/Sticker";
 
 export default function BasketCard({
   id,
@@ -15,6 +16,7 @@ export default function BasketCard({
   isSelected,
   onClick,
   isAvailable,
+  isAdvertised,
   ...extraProps
 }) {
   return (
@@ -28,6 +30,7 @@ export default function BasketCard({
         <MdDeleteForever className="icon" />
       </div>
       <div className="image">
+        {isAdvertised && <Sticker className="advertised-sticker" />}
         <img src={imageSource ? imageSource : PRODUCT_IMAGE_DEFAULT} alt={title} />
       </div>
       <BasketCardInfo title={title} isAvailable={isAvailable} price={price} quantity={quantity} />
@@ -56,6 +59,7 @@ const BasketCardStyled = styled.div`
   .image {
     height: 70px;
     overflow: hidden;
+    position: relative;
 
     img {
       width: 100%;
@@ -65,6 +69,15 @@ const BasketCardStyled = styled.div`
       font-size: ${theme.fonts.P3};
 
       object-fit: contain;
+    }
+
+    .advertised-sticker {
+      position: absolute;
+      right: 10%;
+      bottom: 0;
+      width: 31px;
+      height: 31px;
+      font-family: Open Sans;
     }
   }
 
