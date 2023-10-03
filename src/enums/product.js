@@ -14,3 +14,5 @@ export const BASKET_MESSAGE = {
   EMPTY: "Votre commande est vide.",
   LOADING: "Chargement en cours...",
 };
+
+export const IMAGE_NO_STOCK = "/images/stock-epuise.png";
