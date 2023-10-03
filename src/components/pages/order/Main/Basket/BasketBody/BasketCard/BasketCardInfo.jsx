@@ -10,7 +10,7 @@ export default function BasketCardInfo({ title, price, quantity, isAvailable }) 
           <span>{title}</span>
         </div>
 
-        <span className="price">{isAvailable ? price : "Non disponible"}</span>
+        <span className="price">{price}</span>
       </div>
       <div className="quantity">
         {isAvailable && <CasinoEffect count={`x ${quantity}`} className="quantity-span" />}
