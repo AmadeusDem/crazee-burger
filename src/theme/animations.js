@@ -87,3 +87,16 @@ export const fadeIn = keyframes`
     opacity: 1;
   }
 `;
+
+export const notAvailableImageAnimation = keyframes`
+  0% {
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+`;

@@ -2,7 +2,7 @@ import { css, styled } from "styled-components";
 import Button from "./Button.jsx";
 import { theme } from "../../theme/index.js";
 import { TiDelete } from "react-icons/ti";
-import { fadeInFromRight } from "../../theme/animations.js";
+import { fadeInFromRight, notAvailableImageAnimation } from "../../theme/animations.js";
 import Ribbon from "./Ribbon.jsx";
 
 export default function Card({
@@ -146,6 +146,7 @@ const CardStyled = styled.article`
           height: 100%;
           z-index: 1;
           border-radius: 15px;
+          animation: ${notAvailableImageAnimation} 500ms ease-out;
         }
 
         .transparent-layer {
