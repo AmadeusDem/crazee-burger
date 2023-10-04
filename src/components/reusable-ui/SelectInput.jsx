@@ -1,9 +1,17 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export default function Select({ options, value, onChange, name, Icon, className, ...extraProps }) {
+export default function SelectInput({
+  options,
+  value,
+  onChange,
+  name,
+  Icon,
+  className,
+  ...extraProps
+}) {
   return (
-    <SelectStyled className={className}>
+    <SelectInputStyled className={className}>
       <div className="icon">{Icon && Icon}</div>
       <select name={name} onChange={onChange} value={value} {...extraProps}>
         {options.map((option) => (
@@ -12,11 +20,11 @@ export default function Select({ options, value, onChange, name, Icon, className
           </option>
         ))}
       </select>
-    </SelectStyled>
+    </SelectInputStyled>
   );
 }
 
-const SelectStyled = styled.div`
+const SelectInputStyled = styled.div`
   display: flex;
   align-items: center;
   gap: 0.9375rem;

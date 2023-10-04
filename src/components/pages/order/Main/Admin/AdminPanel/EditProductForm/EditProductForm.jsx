@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { AdminContext } from "../../../../../../../context/AdminContext";
 import { OrderContext } from "../../../../../../../context/OrderContext.jsx";
 import EditInfoMessage from "./EditInfoMessage.jsx";
-import Form from "./Form/Form.jsx";
+import Form from "../Form/Form.jsx";
 import SaveMessage from "./SaveMessage.jsx";
 import { convertStringToBoolean } from "../../../../../../../utils/string";
 

@@ -1,8 +1,10 @@
 import { BsCameraFill } from "react-icons/bs";
 import { FaHamburger } from "react-icons/fa";
 import { MdOutlineEuro } from "react-icons/md";
+import { FiPackage } from "react-icons/fi";
+import { GoMegaphone } from "react-icons/go";
 
-export const getInputConfig = (newProduct) => [
+export const getInputTextConfig = (newProduct) => [
   {
     id: "0",
     name: "title",
@@ -29,5 +31,30 @@ export const getInputConfig = (newProduct) => [
     placeholder: "Prix",
     value: newProduct.price ? newProduct.price : "",
     version: "minimalist",
+  },
+];
+
+export const getSelectInputConfig = (newProduct) => [
+  {
+    id: "0",
+    name: "isAvailable",
+    className: "availability-select",
+    Icon: <FiPackage />,
+    value: newProduct.isAvailable ? "true" : "false",
+    options: [
+      { name: "En stock", value: "true" },
+      { name: "En rupture", value: "false" },
+    ],
+  },
+  {
+    id: "1",
+    name: "isAdvertised",
+    className: "advertising-select",
+    Icon: <GoMegaphone />,
+    value: newProduct.isAdvertised ? "true" : "false",
+    options: [
+      { name: "Sans pub", value: "false" },
+      { name: "Avec pub", value: "true" },
+    ],
   },
 ];

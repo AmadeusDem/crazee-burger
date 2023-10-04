@@ -1,8 +1,8 @@
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";
-import AddProductForm from "./AdminPanel/admin-forms/AddProductForm.jsx";
-import EditProductForm from "./AdminPanel/admin-forms/EditProductForm.jsx";
-import HintMessage from "./AdminPanel/admin-forms/HintMessage.jsx";
+import AddProductForm from "./AdminPanel/AddProductForm/AddProductForm.jsx";
+import EditProductForm from "./AdminPanel/EditProductForm/EditProductForm.jsx";
+import HintMessage from "./AdminPanel/Form/HintMessage.jsx";
 
 export const getTabsConfig = (hasAlreadyBeenClicked) => [
   {

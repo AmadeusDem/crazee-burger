@@ -1,32 +1,14 @@
 import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
-import Input from "../../../../../../../reusable-ui/Input";
-import { getInputConfig } from "../inputConfig";
 import { forwardRef } from "react";
-import { theme } from "../../../../../../../../theme";
-import Select from "../../../../../../../reusable-ui/Select.jsx";
-import { getSelectConfig } from "../selectConfig";
+import { theme } from "../../../../../../../theme";
+import Inputs from "./Inputs";
 
 const Form = forwardRef(({ product, onChange, onSubmit, children, onBlur, onFocus }, ref) => {
-  const inputs = getInputConfig(product);
-  const selects = getSelectConfig(product);
-
   return (
     <FormStyled onSubmit={onSubmit}>
       <ImagePreview imageSource={product.imageSource} title={product.title} />
-      {inputs.map((input) => (
-        <Input
-          {...input}
-          key={input.id}
-          onChange={onChange}
-          ref={ref && input.name === "title" ? ref : null}
-          onBlur={onBlur}
-          onFocus={onFocus}
-        />
-      ))}
-      {selects.map((select) => (
-        <Select key={select.id} {...select} onChange={onChange} onBlur={onBlur} onFocus={onFocus} />
-      ))}
+      <Inputs product={product} onChange={onChange} onBlur={onBlur} onFocus={onFocus} ref={ref} />
       <div className="submit">{children}</div>
     </FormStyled>
   );
