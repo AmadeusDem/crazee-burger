@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function CasinoEffect({ count, className }) {
   return (
     <CasinoEffectStyled>
-      <TransitionGroup component={null}>
+      <TransitionGroup component={null} appear>
         <CSSTransition key={count} classNames="casino" timeout={300}>
           <span className={className}>{count}</span>
         </CSSTransition>
@@ -42,5 +42,16 @@ const CasinoEffectStyled = styled.div`
     transform: translateY(-100%);
     transition: 300ms;
     opacity: 0;
+  }
+
+  .casino-appear {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  .casino-appear-active {
+    transform: translateY(0%);
+    transition: 300ms;
+    opacity: 1;
   }
 `;

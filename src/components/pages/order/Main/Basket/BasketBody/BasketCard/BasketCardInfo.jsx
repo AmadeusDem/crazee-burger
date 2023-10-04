@@ -10,7 +10,9 @@ export default function BasketCardInfo({ title, price, quantity, isAvailable }) 
           <span>{title}</span>
         </div>
 
-        <span className="price">{price}</span>
+        <span className="price">
+          <CasinoEffect count={price} className="price-span" />
+        </span>
       </div>
       <div className="quantity">
         {isAvailable && <CasinoEffect count={`x ${quantity}`} className="quantity-span" />}
@@ -59,6 +61,11 @@ const BasketCardInfoStyled = styled.div`
       }
     }
   }
+
+  .price-span {
+    z-index: -1;
+  }
+
   .quantity {
     // Position and layout
     display: flex;
