@@ -3,9 +3,10 @@ import { AdminContext } from "../../../../../../../context/AdminContext.jsx";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { EMPTY_PRODUCT } from "../../../../../../../enums/product.js";
-import Form from "./Form/Form.jsx";
+import Form from "../Form/Form.jsx";
 import Button from "../../../../../../reusable-ui/Button.jsx";
 import { OrderContext } from "../../../../../../../context/OrderContext.jsx";
+import { convertStringToBoolean } from "../../../../../../../utils/string.js";
 
 export default function AddProductForm() {
   const { handleAdd, newProduct, setNewProduct } = useContext(AdminContext);
@@ -25,11 +26,13 @@ export default function AddProductForm() {
   };
 
   const handleChange = (e) => {
-    const eventName = e.target.name;
-    const value = e.target.value;
+    let { name, value } = e.target;
+    if (name === "isAvailable" || name === "isAdvertised") {
+      value = convertStringToBoolean(value);
+    }
     setNewProduct({
       ...newProduct,
-      [eventName]: value,
+      [name]: value,
     });
   };
 

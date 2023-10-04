@@ -6,12 +6,13 @@ import { AdminContext } from "../../../../../context/AdminContext";
 import { OrderContext } from "../../../../../context/OrderContext.jsx";
 import { replaceFrenchCommaWithDot } from "../../../../../utils/maths";
 import { isProductClicked } from "../../helpers/helper";
-import { EMPTY_PRODUCT, PRODUCT_IMAGE_DEFAULT } from "../../../../../enums/product";
+import { EMPTY_PRODUCT, IMAGE_NO_STOCK, PRODUCT_IMAGE_DEFAULT } from "../../../../../enums/product";
 import { theme } from "../../../../../theme";
 import EmptyMenu from "./EmptyMenu";
 import Loading from "../../../../reusable-ui/Loading";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { menuCardAnimation } from "../../../../../theme/animations";
+import { ribbonAnimation } from "./RibbonAnimated";
 
 export default function Menu() {
   const {
@@ -46,7 +47,7 @@ export default function Menu() {
 
   return (
     <TransitionGroup component={MenuStyled}>
-      {menu.map(({ id, imageSource, title, price }) => (
+      {menu.map(({ id, imageSource, title, price, isAvailable, isAdvertised }) => (
         <CSSTransition key={id} classNames="card-animated" timeout={500}>
           <Card
             onClick={() => handleProductSelected(id)}
@@ -59,6 +60,9 @@ export default function Menu() {
             isHoverable={isAdminMode}
             isSelected={isProductClicked(id, productToEdit.id)}
             onAdd={(e) => handleAddButton(e, id, username)}
+            isAvailable={isAvailable}
+            isAdvertised={isAdvertised}
+            outOfStockImageSource={IMAGE_NO_STOCK}
           />
         </CSSTransition>
       ))}
@@ -81,4 +85,5 @@ const MenuStyled = styled.section`
   padding: 50px 50px 150px;
 
   ${menuCardAnimation};
+  ${ribbonAnimation}
 `;

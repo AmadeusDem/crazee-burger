@@ -2,7 +2,8 @@ import { css, styled } from "styled-components";
 import Button from "./Button.jsx";
 import { theme } from "../../theme/index.js";
 import { TiDelete } from "react-icons/ti";
-import { fadeInFromRight } from "../../theme/animations.js";
+import { fadeInFromRight, notAvailableImageAnimation } from "../../theme/animations.js";
+import RibbonAnimated from "../pages/order/Main/Menu/RibbonAnimated.jsx";
 
 export default function Card({
   title,
@@ -15,9 +16,13 @@ export default function Card({
   isHoverable,
   isSelected,
   onAdd,
+  isAvailable,
+  isAdvertised,
+  outOfStockImageSource,
 }) {
   return (
     <CardStyled onClick={onClick} $isHoverable={isHoverable} $isSelected={isSelected}>
+      {isAdvertised && <RibbonAnimated />}
       <div className="card">
         {hasDeleteButton && (
           <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
@@ -26,6 +31,12 @@ export default function Card({
         )}
         <div className="image">
           <img src={image} alt={title} />
+          {!isAvailable && (
+            <div className="overlap">
+              <div className="transparent-layer"></div>
+              <img className="overlap-image" src={outOfStockImageSource} alt="overlap" />
+            </div>
+          )}
         </div>
         <div className="card-information">
           <h2>{title}</h2>
@@ -34,7 +45,12 @@ export default function Card({
               <p>{leftText}</p>
             </div>
             <div className="right-description">
-              <Button label={buttonLabel} className="primary-button" onClick={onAdd} />
+              <Button
+                disabled={!isAvailable}
+                label={buttonLabel}
+                className="primary-button"
+                onClick={onAdd}
+              />
             </div>
           </div>
         </div>
@@ -47,6 +63,7 @@ const CardStyled = styled.article`
   ${({ $isHoverable }) => $isHoverable && hoverableStyle}
   border-radius: ${theme.borderRadius.extraRound};
   height: fit-content;
+  position: relative;
 
   .card {
     // Position and layout
@@ -70,6 +87,7 @@ const CardStyled = styled.article`
       position: absolute;
       top: 15px;
       right: 15px;
+      z-index: 2;
 
       // Box model (from outside in)
       border: none;
@@ -117,6 +135,32 @@ const CardStyled = styled.article`
 
         font-family: ${theme.fonts.family.stylish};
         font-size: ${theme.fonts.P3};
+      }
+
+      .overlap {
+        .overlap-image {
+          position: absolute;
+          top: 0px;
+          bottom: 0px;
+          left: 10%;
+          width: 80%;
+          height: 100%;
+          z-index: 1;
+          border-radius: 15px;
+          animation: ${notAvailableImageAnimation} 500ms ease-out;
+        }
+
+        .transparent-layer {
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          opacity: 0.7;
+          background: snow;
+          z-index: 1;
+          border-radius: 15px;
+        }
       }
     }
 
@@ -173,6 +217,12 @@ const CardStyled = styled.article`
             width: 100%;
             font-size: ${theme.fonts.XS};
             padding: 0.75rem;
+
+            &:disabled {
+              cursor: not-allowed;
+              z-index: 1;
+              opacity: 0.5;
+            }
           }
         }
       }
@@ -207,6 +257,10 @@ const selectedStyle = css`
     &:active {
       color: ${theme.colors.primary};
       background-color: ${theme.colors.white};
+    }
+
+    &:disabled {
+      cursor: not-allowed;
     }
   }
 

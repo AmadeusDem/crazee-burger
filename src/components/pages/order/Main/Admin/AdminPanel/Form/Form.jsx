@@ -1,26 +1,14 @@
 import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
-import Input from "../../../../../../../reusable-ui/Input";
-import { getInputTextsConfig } from "../../inputTextsConfig";
 import { forwardRef } from "react";
-import { theme } from "../../../../../../../../theme";
+import { theme } from "../../../../../../../theme";
+import Inputs from "./Inputs";
 
 const Form = forwardRef(({ product, onChange, onSubmit, children, onBlur, onFocus }, ref) => {
-  const InputText = getInputTextsConfig(product);
-
   return (
     <FormStyled onSubmit={onSubmit}>
       <ImagePreview imageSource={product.imageSource} title={product.title} />
-      {InputText.map((input) => (
-        <Input
-          {...input}
-          key={input.id}
-          onChange={onChange}
-          ref={ref && input.name === "title" ? ref : null}
-          onBlur={onBlur}
-          onFocus={onFocus}
-        />
-      ))}
+      <Inputs product={product} onChange={onChange} onBlur={onBlur} onFocus={onFocus} ref={ref} />
       <div className="submit">{children}</div>
     </FormStyled>
   );
@@ -32,13 +20,13 @@ export default Form;
 const FormStyled = styled.form`
   // Position and layout
   display: grid;
-  grid-gap: ${theme.spacing.xs} ${theme.spacing.md};
+  grid-gap: ${theme.spacing.xs} ${theme.spacing.xs};
   grid-template-columns: 20% 1fr 1fr 1fr;
   grid-template-rows: repeat(4, 1fr);
   grid-template-areas:
     "preview name name name"
     "preview image image image"
-    "preview price price price"
+    "preview price availability advertising"
     ". submit submit submit";
 
   // Box model (from outside in)
@@ -60,5 +48,13 @@ const FormStyled = styled.form`
 
   .submit {
     grid-area: submit;
+  }
+
+  .availability-select {
+    grid-area: availability;
+  }
+
+  .advertising-select {
+    grid-area: advertising;
   }
 `;

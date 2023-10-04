@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import LoginForm from "./LoginForm";
 import Logo from "../../reusable-ui/Logo";
 import backgroundImage from "/images/burger-background.jpg";
+import { theme } from "../../../theme";
 
 export default function LoginPage() {
   return (
@@ -18,7 +19,7 @@ const LoginPageStyled = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: "Amatic SC", cursive;
+  font-family: ${theme.fonts.family.stylish};
 
   background: url(${backgroundImage}), rgba(0, 0, 0, 0.7);
   background-size: cover;

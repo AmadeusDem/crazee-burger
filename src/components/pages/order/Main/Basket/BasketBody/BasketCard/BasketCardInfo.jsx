@@ -2,17 +2,20 @@ import styled from "styled-components";
 import { theme } from "../../../../../../../theme";
 import CasinoEffect from "../../../../../../reusable-ui/CasinoEffect";
 
-export default function BasketCardInfo({ title, price, quantity }) {
+export default function BasketCardInfo({ title, price, quantity, isAvailable }) {
   return (
     <BasketCardInfoStyled>
       <div className="left-info">
         <div className="title">
           <span>{title}</span>
         </div>
-        <span className="price">{price}</span>
+
+        <span className="price">
+          <CasinoEffect count={price} className="price-span" />
+        </span>
       </div>
       <div className="quantity">
-        <CasinoEffect count={`x ${quantity}`} className="quantity-span" />
+        {isAvailable && <CasinoEffect count={`x ${quantity}`} className="quantity-span" />}
       </div>
     </BasketCardInfoStyled>
   );
@@ -58,6 +61,11 @@ const BasketCardInfoStyled = styled.div`
       }
     }
   }
+
+  .price-span {
+    z-index: -1;
+  }
+
   .quantity {
     // Position and layout
     display: flex;

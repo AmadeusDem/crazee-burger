@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
-import { theme } from "../../../../../../../../theme";
-import { fadeIn } from "../../../../../../../../theme/animations";
+import { theme } from "../../../../../../../theme";
+import { fadeIn } from "../../../../../../../theme/animations";
 
 export default function ImagePreview({ imageSource, title = "Titre de l'article" }) {
   return (
@@ -22,6 +22,7 @@ const ImagePreviewStyled = styled.div`
   align-items: center;
 
   // Box model (from outside in)
+  margin-right: 12px;
   border: 1px solid ${theme.colors.greyLight};
   border-radius: ${theme.borderRadius.round};
 

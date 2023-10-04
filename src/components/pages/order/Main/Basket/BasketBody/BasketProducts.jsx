@@ -9,6 +9,7 @@ import { isProductClicked } from "../../../helpers/helper";
 import { formatPrice, replaceFrenchCommaWithDot } from "../../../../../../utils/maths";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { basketProductsAnimation } from "../../../../../../theme/animations";
+import { BASKET_MESSAGE } from "../../../../../../enums/product";
 
 export default function BasketProducts() {
   const { isAdminMode, username } = useContext(OrderContext);
@@ -20,20 +21,24 @@ export default function BasketProducts() {
       <TransitionGroup component={null} appear={true}>
         {basket.map(({ id, quantity }) => {
           const menuProduct = findObjectById(id, menu);
+          const price = menuProduct.isAvailable
+            ? formatPrice(parseFloat(replaceFrenchCommaWithDot(menuProduct.price)).toFixed(1))
+            : BASKET_MESSAGE.NOT_AVAILABLE;
+
           return (
             <CSSTransition key={id} classNames="card" timeout={500}>
               <BasketCard
                 title={menuProduct.title}
                 imageSource={menuProduct.imageSource}
                 className="basket-card"
-                price={formatPrice(
-                  parseFloat(replaceFrenchCommaWithDot(menuProduct.price)).toFixed(1)
-                )}
+                price={price}
                 quantity={quantity}
                 onDelete={(e) => handleBasketDelete(e, id, username)}
                 isHoverable={isAdminMode}
                 onClick={() => handleProductSelected(id)}
                 isSelected={isProductClicked(id, productToEdit.id)}
+                isAvailable={menuProduct.isAvailable}
+                isAdvertised={menuProduct.isAdvertised}
               />
             </CSSTransition>
           );
